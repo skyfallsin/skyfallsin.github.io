@@ -13,29 +13,88 @@
       max-width: 720px;
       margin: 0 auto;
       padding: 2rem;
-      background: #fafafa;
-      color: #222;
+      background: #0a0a0f;
+      color: #e0e0e0;
     }
-    a { color: #0066cc; }
+    ::selection {
+      background: #ff00ff44;
+      color: #fff;
+    }
+    a { 
+      color: #0ff; 
+      text-decoration: none;
+      text-shadow: 0 0 8px #0ff8;
+    }
+    a:hover { 
+      color: #ff00ff; 
+      text-shadow: 0 0 12px #ff00ff;
+    }
+    .header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ff00ff44;
+    }
+    .handle {
+      font-size: 1.5rem;
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff66;
+      letter-spacing: 2px;
+    }
     pre, code {
-      background: #f0f0f0;
+      background: #1a1a2e;
       font-family: inherit;
       font-size: 13px;
+      border: 1px solid #0ff33;
     }
-    pre { padding: 1rem; overflow-x: auto; }
+    pre { 
+      padding: 1rem; 
+      overflow-x: auto; 
+      box-shadow: 0 0 10px #0ff22, inset 0 0 20px #0a0a0f;
+    }
     code { padding: 0.2em 0.4em; }
-    pre code { padding: 0; }
-    h1, h2, h3 { margin-top: 2rem; }
-    h1 { border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; }
+    pre code { padding: 0; border: none; }
+    h1, h2, h3 { 
+      margin-top: 2rem; 
+      color: #0ff;
+      text-shadow: 0 0 8px #0ff66;
+    }
+    h1 { 
+      border-bottom: 1px solid #0ff44; 
+      padding-bottom: 0.5rem; 
+    }
     .post-list { list-style: none; padding: 0; }
-    .post-list li { margin: 0.5rem 0; }
-    .post-date { color: #888; }
+    .post-list li { 
+      margin: 0.5rem 0; 
+      padding: 0.5rem;
+      border-left: 2px solid #ff00ff44;
+      transition: all 0.2s;
+    }
+    .post-list li:hover {
+      border-left-color: #ff00ff;
+      background: #ff00ff11;
+    }
+    .post-date { 
+      color: #666; 
+      font-size: 12px;
+    }
+    nav a {
+      color: #666;
+      font-size: 12px;
+    }
+    .mermaid {
+      background: #1a1a2e;
+      padding: 1rem;
+      border-radius: 4px;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true, theme:'neutral'});</script>
+  <script>mermaid.initialize({startOnLoad:true, theme:'dark'});</script>
 </head>
 <body>
-  <nav><a href="/">home</a></nav>
+  <header class="header">
+    <div class="handle">@skyfallsin</div>
+  </header>
+  <nav><a href="/">← home</a></nav>
   <main>{{ content }}</main>
 </body>
 </html>
