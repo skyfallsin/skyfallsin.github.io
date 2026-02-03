@@ -240,11 +240,9 @@ async def fetch_skill_content(session, skill):
 
 ### files
 
-All data available at [/data/skills-db/](/data/skills-db/):
-
 | File | Size | Description |
 |------|------|-------------|
-| skills.db | 37MB | SQLite database |
-| skills.json | 1MB | JSON export for table |
-| apply_quality_scores.py | 7KB | Scoring script |
-| quality_scores_collected.json | 9KB | Manual assessments |
+| [skills.db](/data/skills-db/skills.db) | 37MB | SQLite database |
+| [skills.json](/data/skills-db/skills.json) | 1MB | JSON export for table |
+| [apply_quality_scores.py](/data/skills-db/apply_quality_scores.py) | 7KB | Scoring script |
+| [quality_scores_collected.json](/data/skills-db/quality_scores_collected.json) | 9KB | Manual assessments |
