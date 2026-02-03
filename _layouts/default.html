@@ -527,7 +527,10 @@
         localStorage.setItem('theme', next);
       });
 
-
+      // Add thin spaces around em dashes
+      document.querySelectorAll('article p, article li').forEach(el => {
+        el.innerHTML = el.innerHTML.replace(/—/g, '\u2009—\u2009');
+      });
     });
   </script>
 </head>
