@@ -52,7 +52,7 @@ Chart types: line, bar, pie, doughnut, radar, scatter, bubble
 
 ## Style Guidelines
 
-- Keep titles lowercase
+- Use natural title case for headings
 - Use simple, direct language
 - Code-heavy posts are encouraged
 - No fluff or filler content
