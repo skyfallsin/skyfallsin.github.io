@@ -19,7 +19,7 @@
     h1 { color: #93a1a1; margin-bottom: 10px; font-size: 18px; }
     .stats { color: #586e75; margin-bottom: 5px; }
     .summary { color: #586e75; margin-bottom: 15px; font-size: 11px; }
-    .chart-container { margin-bottom: 20px; max-width: 800px; }
+
     .controls {
       display: flex;
       gap: 10px;
@@ -115,10 +115,6 @@
   <div class="summary" id="summary"></div>
   <div class="summary" style="color: #586e75; font-style: italic;">Data frozen as of Feb 3, 2026</div>
   
-  <div class="chart-container">
-    <canvas id="distChart" width="800" height="200"></canvas>
-  </div>
-  
   <div class="controls">
     <input type="text" id="search" placeholder="Search skills...">
     <select id="registry">
@@ -159,7 +155,6 @@
     let data = [];
     let sortCol = 'score';
     let sortDir = 'desc';
-    let chart = null;
 
     async function init() {
       const resp = await fetch('skills.json');
@@ -175,77 +170,8 @@
       document.getElementById('summary').textContent = 
         `avg score: ${avgScore} · ${highPct}% score 90+ · sorted by quality`;
       
-      renderChart();
       render();
       bindEvents();
-    }
-
-    function renderChart() {
-      const registries = ['clawdhub', 'skillssh', 'openai', 'anthropic', 'openai-experimental'];
-      const colors = {
-        'clawdhub': '#f59e0b',
-        'skillssh': '#ef4444', 
-        'openai': '#8b5cf6',
-        'anthropic': '#10b981',
-        'openai-experimental': '#6366f1'
-      };
-      
-      // Generate normal curve points for each registry
-      const xPoints = Array.from({length: 81}, (_, i) => i + 20); // 20-100
-      
-      const datasets = registries.map(reg => {
-        const scores = data.filter(s => s.registry === reg).map(s => s.score);
-        if (scores.length < 2) return null;
-        
-        const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
-        const variance = scores.reduce((a, b) => a + (b - mean) ** 2, 0) / scores.length;
-        const std = Math.sqrt(variance);
-        
-        // Normal distribution PDF
-        const yPoints = xPoints.map(x => {
-          const exp = -0.5 * ((x - mean) / std) ** 2;
-          return (1 / (std * Math.sqrt(2 * Math.PI))) * Math.exp(exp);
-        });
-        
-        // Scale by count for visibility
-        const scale = scores.length / 50;
-        
-        return {
-          label: `${reg} (μ=${mean.toFixed(0)}, n=${scores.length})`,
-          data: yPoints.map(y => y * scale),
-          borderColor: colors[reg],
-          backgroundColor: colors[reg] + '20',
-          fill: true,
-          tension: 0.4,
-          pointRadius: 0,
-          borderWidth: 2
-        };
-      }).filter(Boolean);
-      
-      chart = new Chart(document.getElementById('distChart'), {
-        type: 'line',
-        data: { labels: xPoints, datasets },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { 
-              position: 'top',
-              labels: { color: '#839496', font: { family: 'JetBrains Mono', size: 10 } }
-            },
-            title: { display: true, text: 'Score Distribution by Registry', color: '#93a1a1' }
-          },
-          scales: {
-            x: { 
-              title: { display: true, text: 'Quality Score', color: '#586e75' },
-              ticks: { color: '#586e75' },
-              grid: { color: '#073642' }
-            },
-            y: { 
-              display: false
-            }
-          }
-        }
-      });
     }
 
     function render() {

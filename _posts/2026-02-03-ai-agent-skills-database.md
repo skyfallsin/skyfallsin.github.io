@@ -79,28 +79,6 @@ new Chart(document.getElementById('registryChart'), {
 
 Closer than I expected. Everyone lands around 78-83.
 
-## Quality Distribution
-
-<canvas id="qualityDistChart" width="600" height="300" data-chart="
-new Chart(document.getElementById('qualityDistChart'), {
-  type: 'bar',
-  data: {
-    labels: ['90+', '80-89', '70-79', '60-69', '50-59', '<50'],
-    datasets: [{
-      label: 'Skills',
-      data: [1493, 1168, 857, 654, 400, 212],
-      backgroundColor: ['#10b981', '#34d399', '#60a5fa', '#fbbf24', '#f97316', '#ef4444']
-    }]
-  },
-  options: {
-    scales: { y: { beginAtZero: true } },
-    plugins: { legend: { display: false } }
-  }
-});
-"></canvas>
-
-31% score 90+. 56% score 80+. Most appear usable, atleast from these stats.
-
 ## Scoring Methodology
 
 Each skill starts with a base score, then earns (or loses) points from file-auditable heuristics.
@@ -201,7 +179,7 @@ And the part that matters: **skills are auditable artifacts**. You can read them
 
 This is early npm/pip energy: a messy ecosystem sitting on top of the right primitive. The norms will catch up. The distribution mechanism is already here.
 
-Whether we end up with a skills ecosystem that deserves trust—or just another graveyard of copy-pasted prompts—depends on what we do next.
+Whether we end up with a skills ecosystem that deserves trust, or just another graveyard of copy-pasted prompts, depends on what we do next.
 
 ## Browse
 
