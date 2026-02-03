@@ -4,6 +4,17 @@ title: Analyzing 4,784 AI Agent Skills
 date: 2026-02-03
 ---
 
+**TL;DR:**
+- 4,784 skills scraped from 5 registries
+- Average quality score ~78, 31% score 90+
+- 28% are duplicates
+- ~10% install packages via npm/pip
+- No verification, no provenance
+- Treat like early npm—read what you install
+- **[Browse all skills →](/data/skills-db/)**
+
+<br>
+
 As part of jo's upcoming launch, I collected **4,784 AI agent skills from 5 registries** for [skill-search](https://github.com/jo-inc/skill-search) and scored them for quality. **[Browse all skills →](/data/skills-db/)**
 
 This was especially important for us since we're considering adding a self-installing skills feature to make your workflows stabilize faster.
