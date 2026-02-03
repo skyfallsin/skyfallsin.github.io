@@ -81,10 +81,12 @@
     }
     .social {
       display: flex;
+      align-items: center;
       gap: 12px;
     }
     .social a {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       opacity: 0.4;
       transition: opacity 0.2s;
     }
@@ -95,6 +97,7 @@
       width: 18px;
       height: 18px;
       fill: var(--text);
+      display: block;
     }
     pre, code {
       font-family: "JetBrains Mono", monospace;
