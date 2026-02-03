@@ -7,10 +7,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
   <style>
+    :root {
+      --bg: #eceff4;
+      --bg-alt: #e5e9f0;
+      --text: #3b4252;
+      --text-muted: #4c566a;
+      --accent: #5e81ac;
+      --accent-hover: #81a1c1;
+      --border: #d8dee9;
+      --selection: #88c0d0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #2e3440;
+        --bg-alt: #3b4252;
+        --text: #d8dee9;
+        --text-muted: #81a1c1;
+        --accent: #88c0d0;
+        --accent-hover: #8fbcbb;
+        --border: #434c5e;
+        --selection: #5e81ac;
+      }
+    }
     * { box-sizing: border-box; }
     body {
       font-family: "JetBrains Mono", monospace;
@@ -19,25 +42,23 @@
       max-width: 720px;
       margin: 0 auto;
       padding: 2rem;
-      background: #fdf6e3;
-      color: #2d2a24;
+      background: var(--bg);
+      color: var(--text);
     }
     ::selection {
-      background: #d4a574;
-      color: #fff;
+      background: var(--selection);
+      color: var(--bg);
     }
     a { 
-      color: #b58900;
+      color: var(--accent);
       text-decoration: none;
     }
     a:hover { 
-      color: #cb4b16;
+      color: var(--accent-hover);
       text-decoration: underline;
     }
     .header {
       margin-bottom: 2rem;
-    }
-    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -45,7 +66,7 @@
     .handle {
       font-size: 1.4rem;
       font-weight: 600;
-      color: #657b83;
+      color: var(--text-muted);
       letter-spacing: 1px;
     }
     .social {
@@ -63,7 +84,7 @@
     .social svg {
       width: 18px;
       height: 18px;
-      fill: #2d2a24;
+      fill: var(--text);
     }
     pre, code {
       font-family: "JetBrains Mono", monospace;
@@ -73,18 +94,18 @@
       padding: 1rem; 
       overflow-x: auto;
       border-radius: 4px;
-      background: #eee8d5;
+      background: var(--bg-alt);
     }
-    code { padding: 0.2em 0.4em; border-radius: 3px; background: #eee8d5; }
+    code { padding: 0.2em 0.4em; border-radius: 3px; background: var(--bg-alt); }
     pre code { padding: 0; background: transparent; }
-    .hljs { background: #eee8d5; }
+    .hljs { background: var(--bg-alt); }
     h1, h2, h3 { 
       margin-top: 2rem; 
-      color: #586e75;
+      color: var(--text-muted);
       font-weight: 600;
     }
     h1 { 
-      border-bottom: 1px solid #eee8d5; 
+      border-bottom: 1px solid var(--border); 
       padding-bottom: 0.5rem; 
     }
     .post-list { 
@@ -98,22 +119,22 @@
       display: table-row;
     }
     .post-list li:hover {
-      background: #eee8d5;
+      background: var(--bg-alt);
     }
     .post-date, .post-list a { 
       display: table-cell;
       padding: 0.6rem 0;
-      border-bottom: 1px solid #eee8d5;
+      border-bottom: 1px solid var(--border);
     }
     .post-date { 
-      color: #93a1a1; 
+      color: var(--text-muted); 
       font-size: 10pt;
       width: 100px;
       white-space: nowrap;
       padding-right: 1.5rem;
     }
     nav a {
-      color: #93a1a1;
+      color: var(--text-muted);
       font-size: 10pt;
     }
 
@@ -126,16 +147,16 @@
     th, td {
       padding: 0.75rem 1rem;
       text-align: left;
-      border-bottom: 1px solid #eee8d5;
+      border-bottom: 1px solid var(--border);
     }
     th {
-      color: #93a1a1;
+      color: var(--text-muted);
       font-weight: 600;
       font-size: 10pt;
-      border-bottom: 2px solid #eee8d5;
+      border-bottom: 2px solid var(--border);
     }
     tr:hover {
-      background: #eee8d5;
+      background: var(--bg-alt);
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

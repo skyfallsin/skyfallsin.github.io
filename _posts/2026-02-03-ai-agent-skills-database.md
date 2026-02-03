@@ -14,58 +14,7 @@ I built a database of AI agent skills from 5 registries and scored them for qual
 - [**clawdhub**](https://github.com/openclaw/skills) — community registry (largest)
 - [**skillssh**](https://skills.sh) — community registry with web UI
 
-## what makes a skill good
-
-After reading hundreds of skills, patterns emerged:
-
-| Signal | Impact | Example |
-|--------|--------|---------|
-| Structured workflow | +15 | phases, decision trees, numbered steps |
-| Code examples | +12 | fenced blocks with real usage |
-| Bundled scripts | +10 | `.py`, `.sh` files in `scripts/` |
-| Clear triggers | +8 | "use when X", "invoke if Y" |
-| Error handling | +5 | troubleshooting, fallbacks |
-| Placeholder content | -15 | TODO, TBD, `<placeholder>` |
-| Very short (<500 chars) | -10 | insufficient guidance |
-
-## top skills
-
-| Skill | Registry | Score | Why |
-|-------|----------|-------|-----|
-| [prompt-guard](https://github.com/openclaw/skills/tree/main/skills/seojoonkim/prompt-guard) | clawdhub | 95 | 349 attack patterns, Python scripts |
-| [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | anthropic | 95 | meta-skill, progressive disclosure |
-| [systematic-debugging](https://skills.sh/skills/obra/superpowers/systematic-debugging) | skillssh | 95 | iron law methodology, 4 phases |
-| [docker-expert](https://skills.sh/skills/davila7/claude-code-templates/docker-expert) | skillssh | 94 | detection commands, security sections |
-| [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) | anthropic | 94 | decision tree, JSON schemas |
-| [develop-web-game](https://github.com/openai/skills/tree/main/skills/.curated/develop-web-game) | openai | 94 | playwright harness, test checklist |
-
-## what's missing
-
-| Gap | Problem |
-|-----|---------|
-| Evaluation criteria | how do you know the skill worked? |
-| Version constraints | which model versions support this? |
-| Conflict detection | two skills want same trigger? |
-| Composition | how do skills chain together? |
-
-The ecosystem is young.
-
-## browse
-
-**[→ Interactive table with all 4,784 skills](/data/skills-db/)** — sortable, filterable, fast.
-
-## download
-
-```bash
-curl -LO https://skyfallsin.github.io/data/skills-db/skills.db
-sqlite3 skills.db "SELECT name, quality_score FROM skills ORDER BY quality_score DESC LIMIT 10"
-```
-
----
-
-## appendix
-
-### scores by registry
+## the data
 
 | Registry | Skills | Avg Score | Range |
 |----------|--------|-----------|-------|
@@ -93,7 +42,40 @@ new Chart(document.getElementById('registryChart'), {
 });
 "></canvas>
 
-### distribution by registry
+Official registries score higher. Community registries have more variance.
+
+## what makes a skill good
+
+After reading hundreds of skills, patterns emerged:
+
+| Signal | Impact | Example |
+|--------|--------|---------|
+| Structured workflow | +15 | phases, decision trees, numbered steps |
+| Code examples | +12 | fenced blocks with real usage |
+| Bundled scripts | +10 | `.py`, `.sh` files in `scripts/` |
+| Clear triggers | +8 | "use when X", "invoke if Y" |
+| Error handling | +5 | troubleshooting, fallbacks |
+| Best practices | +5 | anti-patterns, "don't do X" |
+| Placeholder content | -15 | TODO, TBD, `<placeholder>` |
+| Very short (<500 chars) | -10 | insufficient guidance |
+| Vague claims | -8 | "world-class" without code |
+
+## top skills
+
+| Skill | Registry | Score | Why |
+|-------|----------|-------|-----|
+| [prompt-guard](https://github.com/openclaw/skills/tree/main/skills/seojoonkim/prompt-guard) | clawdhub | 95 | 349 attack patterns, Python scripts |
+| [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | anthropic | 95 | meta-skill, progressive disclosure |
+| [systematic-debugging](https://skills.sh/skills/obra/superpowers/systematic-debugging) | skillssh | 95 | iron law methodology, 4 phases |
+| [docker-expert](https://skills.sh/skills/davila7/claude-code-templates/docker-expert) | skillssh | 94 | detection commands, security sections |
+| [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) | anthropic | 94 | decision tree, JSON schemas |
+| [develop-web-game](https://github.com/openai/skills/tree/main/skills/.curated/develop-web-game) | openai | 94 | playwright harness, test checklist |
+| [docx](https://github.com/anthropics/skills/tree/main/skills/docx) | anthropic | 93 | redlining workflow, pandoc integration |
+| [security-ownership-map](https://github.com/openai/skills/tree/main/skills/.curated/security-ownership-map) | openai | 93 | bundled scripts, neo4j import |
+| [imagegen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | openai | 92 | CLI modes, prompting guidance |
+| [doc-coauthoring](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring) | anthropic | 92 | 3-stage workflow, exit conditions |
+
+## distribution
 
 <canvas id="distChart" width="600" height="300" data-chart="
 new Chart(document.getElementById('distChart'), {
@@ -111,7 +93,11 @@ new Chart(document.getElementById('distChart'), {
 });
 "></canvas>
 
-clawdhub dominates by volume but has a duplicate problem — same skill forked 15+ times.
+clawdhub dominates by volume. But it has a duplicate problem.
+
+## the duplicate problem
+
+Same skill forked 15+ times:
 
 | Skill | Copies |
 |-------|--------|
@@ -120,7 +106,9 @@ clawdhub dominates by volume but has a duplicate problem — same skill forked 1
 | humanizer | 6 |
 | remind-me | 5 |
 
-### quality by content length
+Most are unchanged forks. The registry is ~79% duplicates.
+
+## quality by content length
 
 <canvas id="lengthChart" width="600" height="250" data-chart="
 new Chart(document.getElementById('lengthChart'), {
@@ -142,33 +130,35 @@ new Chart(document.getElementById('lengthChart'), {
 });
 "></canvas>
 
-Sweet spot is 2-10K characters.
+Sweet spot is 2-10K characters. Beyond that, diminishing returns.
 
-### scoring model
+## what's missing
 
-```python
-def score_skill(content: str) -> int:
-    score = 50  # base
-    
-    # positive signals
-    if re.search(r'workflow|steps|phases', content, re.I):
-        score += 15
-    score += min(len(re.findall(r'```\w+', content)) * 4, 12)
-    if re.search(r'scripts?/|\.py\b|\.sh\b', content):
-        score += 10
-    if re.search(r'when to use|trigger|invoke', content, re.I):
-        score += 8
-    
-    # negative signals
-    if re.search(r'TODO|TBD|placeholder', content, re.I):
-        score -= 15
-    if len(content) < 500:
-        score -= 10
-    
-    return max(20, min(98, score))
+| Gap | Problem |
+|-----|---------|
+| Evaluation criteria | how do you know the skill worked? |
+| Version constraints | which model versions support this? |
+| Conflict detection | two skills want same trigger? |
+| Composition | how do skills chain together? |
+
+The ecosystem is young.
+
+## browse
+
+**[→ Interactive table with all 4,784 skills](/data/skills-db/)** — sortable, filterable, fast.
+
+## download
+
+```bash
+curl -LO https://skyfallsin.github.io/data/skills-db/skills.db
+sqlite3 skills.db "SELECT name, quality_score FROM skills ORDER BY quality_score DESC LIMIT 10"
 ```
 
-### database schema
+---
+
+## appendix: the database
+
+### schema
 
 ```sql
 CREATE TABLE skills (
@@ -202,15 +192,59 @@ WHERE skill_md LIKE '%playwright%'
 ORDER BY quality_score DESC;
 ```
 
-### more top skills
+### scoring function
 
-| Skill | Registry | Score | Why |
-|-------|----------|-------|-----|
-| [docx](https://github.com/anthropics/skills/tree/main/skills/docx) | anthropic | 93 | redlining workflow, pandoc integration |
-| [security-ownership-map](https://github.com/openai/skills/tree/main/skills/.curated/security-ownership-map) | openai | 93 | bundled scripts, neo4j import |
-| [imagegen](https://github.com/openai/skills/tree/main/skills/.curated/imagegen) | openai | 92 | CLI modes, prompting guidance |
-| [doc-coauthoring](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring) | anthropic | 92 | 3-stage workflow, exit conditions |
-| [mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) | anthropic | 91 | 4-phase workflow, TS and Python |
-| [speech](https://github.com/openai/skills/tree/main/skills/.curated/speech) | openai | 91 | bundled CLI, decision tree |
-| [playwright](https://github.com/openai/skills/tree/main/skills/.curated/playwright) | openai | 90 | CLI-first, bundled wrapper |
-| [render-deploy](https://github.com/openai/skills/tree/main/skills/.curated/render-deploy) | openai | 90 | Blueprint workflow, MCP + CLI |
+```python
+import re
+
+def score_skill(content: str) -> int:
+    score = 50  # base
+    
+    # positive signals
+    if re.search(r'workflow|steps|phases', content, re.I):
+        score += 15
+    score += min(len(re.findall(r'```\w+', content)) * 4, 12)
+    if re.search(r'scripts?/|\.py\b|\.sh\b', content):
+        score += 10
+    if re.search(r'when to use|trigger|invoke', content, re.I):
+        score += 8
+    
+    # negative signals
+    if re.search(r'TODO|TBD|placeholder', content, re.I):
+        score -= 15
+    if len(content) < 500:
+        score -= 10
+    
+    return max(20, min(98, score))
+```
+
+### scraping skills.sh
+
+skills.sh doesn't have a content API, so I scraped the pages:
+
+```python
+import aiohttp
+from bs4 import BeautifulSoup
+
+async def fetch_skill_content(session, skill):
+    url = f"https://skills.sh/skills/{skill['slug']}"
+    async with session.get(url) as resp:
+        html = await resp.text()
+        soup = BeautifulSoup(html, 'html.parser')
+        
+        content_div = soup.find('div', class_='skill-content')
+        if content_div:
+            return content_div.get_text()
+    return None
+```
+
+### files
+
+All data available at [/data/skills-db/](/data/skills-db/):
+
+| File | Size | Description |
+|------|------|-------------|
+| skills.db | 37MB | SQLite database |
+| skills.json | 1MB | JSON export for table |
+| apply_quality_scores.py | 7KB | Scoring script |
+| quality_scores_collected.json | 9KB | Manual assessments |
