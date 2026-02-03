@@ -11,10 +11,4 @@ def hello():
     return "world"
 ```
 
-And a chart:
 
-<div class="mermaid">
-graph LR
-    A[Input] --> B[Process]
-    B --> C[Output]
-</div>

@@ -28,17 +28,27 @@ def example():
     return "highlighted"
 ```
 
-### Mermaid Charts
-Use for flowcharts, sequence diagrams, etc:
+### Charts (Chart.js)
+Charts animate when scrolled into view. Use `data-chart` attribute:
 
 ```html
-<div class="mermaid">
-graph LR
-    A[Start] --> B[End]
-</div>
+<canvas id="myChart" width="400" height="200" data-chart="
+new Chart(document.getElementById('myChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar'],
+    datasets: [{
+      label: 'Values',
+      data: [10, 20, 15],
+      borderColor: '#b58900',
+      tension: 0.3
+    }]
+  }
+});
+"></canvas>
 ```
 
-Supported chart types: flowchart, sequence, class, state, gantt, pie, er
+Chart types: line, bar, pie, doughnut, radar, scatter, bubble
 
 ## Style Guidelines
 
