@@ -463,6 +463,19 @@
     [data-theme="dark"] #theme-toggle .moon { display: block; }
     [data-theme="light"] #theme-toggle .sun { display: block; }
     [data-theme="light"] #theme-toggle .moon { display: none; }
+    
+    .badges {
+      margin-top: 4rem;
+      padding: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+      opacity: 0.8;
+    }
+    .badges img {
+      image-rendering: pixelated;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -528,5 +541,13 @@
   </header>
 
   <main>{{ content }}</main>
+  
+  <footer class="badges">
+    <img src="https://cyber.dabamos.de/88x31/notepad.gif" alt="Made with Notepad" width="88" height="31">
+    <img src="https://cyber.dabamos.de/88x31/geocities.gif" alt="GeoCities" width="88" height="31">
+    <img src="https://cyber.dabamos.de/88x31/netscape.gif" alt="Netscape Now" width="88" height="31">
+    <img src="https://cyber.dabamos.de/88x31/anybrowser3.gif" alt="Best Viewed With Any Browser" width="88" height="31">
+    <img src="https://cyber.dabamos.de/88x31/vim.gif" alt="Vim" width="88" height="31">
+  </footer>
 </body>
 </html>
