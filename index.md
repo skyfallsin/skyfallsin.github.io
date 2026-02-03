@@ -1,9 +1,7 @@
 ---
 layout: default
-title: skyfallsin
+title: pradeep
 ---
-
-# posts
 
 <ul class="post-list">
 {% for post in site.posts %}
