@@ -10,11 +10,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
   <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
   <style>
     :root {
       --bg: #eceff4;
       --bg-alt: #e5e9f0;
+      --bg-alt-rgb: 229, 233, 240;
       --text: #3b4252;
       --text-muted: #4c566a;
       --accent: #5e81ac;
@@ -26,6 +28,7 @@
       :root:not([data-theme="light"]) {
         --bg: #2e3440;
         --bg-alt: #3b4252;
+        --bg-alt-rgb: 59, 66, 82;
         --text: #d8dee9;
         --text-muted: #81a1c1;
         --accent: #88c0d0;
@@ -37,6 +40,7 @@
     :root[data-theme="dark"] {
       --bg: #2e3440;
       --bg-alt: #3b4252;
+      --bg-alt-rgb: 59, 66, 82;
       --text: #d8dee9;
       --text-muted: #81a1c1;
       --accent: #88c0d0;
@@ -82,12 +86,47 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 1rem 0;
+      z-index: 100;
     }
     .handle {
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-muted);
       letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .handle:hover {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .tagline {
+      font-size: 8pt;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+    .ellipsis {
+      display: inline-block;
+      width: 1.5em;
+      text-align: left;
+    }
+    .ellipsis::after {
+      content: '';
+      animation: ellipsis 1.5s infinite;
+    }
+    @keyframes ellipsis {
+      0% { content: ''; }
+      25% { content: '.'; }
+      50% { content: '..'; }
+      75% { content: '...'; }
+      100% { content: ''; }
+    }
+    .header-left {
+      display: flex;
+      flex-direction: column;
     }
     .social {
       display: flex;
@@ -123,6 +162,13 @@
     pre code { padding: 0; background: transparent; }
     .hljs { background: var(--bg-alt); }
     
+    /* Light mode bash/shell */
+    .language-bash .hljs-built_in { color: #6c71c4; }
+    .language-bash .hljs-variable { color: #268bd2; }
+    .language-bash .hljs-string { color: #2aa198; }
+    .language-bash .hljs-meta { color: #93a1a1; }
+    .language-bash .hljs-keyword { color: #6c71c4; }
+    
     /* Neon syntax highlighting for dark mode */
     [data-theme="dark"] .hljs { color: #e0e0e0; }
     [data-theme="dark"] .hljs-keyword { color: #ff79c6; }
@@ -148,6 +194,12 @@
     [data-theme="dark"] .hljs-selector-tag { color: #ff79c6; }
     [data-theme="dark"] .hljs-selector-class { color: #50fa7b; }
     [data-theme="dark"] .hljs-selector-id { color: #8be9fd; }
+    
+    /* Bash/shell specific */
+    [data-theme="dark"] .language-bash .hljs-built_in { color: #8be9fd; }
+    [data-theme="dark"] .language-bash .hljs-variable { color: #50fa7b; }
+    [data-theme="dark"] .language-bash .hljs-string { color: #f1fa8c; }
+    [data-theme="dark"] .language-bash .hljs-meta { color: #6272a4; }
     
     /* Also apply for system dark preference when no explicit theme set */
     @media (prefers-color-scheme: dark) {
@@ -175,16 +227,30 @@
       :root:not([data-theme="light"]) .hljs-selector-tag { color: #ff79c6; }
       :root:not([data-theme="light"]) .hljs-selector-class { color: #50fa7b; }
       :root:not([data-theme="light"]) .hljs-selector-id { color: #8be9fd; }
+      
+      /* Bash/shell specific */
+      :root:not([data-theme="light"]) .language-bash .hljs-built_in { color: #8be9fd; }
+      :root:not([data-theme="light"]) .language-bash .hljs-variable { color: #50fa7b; }
+      :root:not([data-theme="light"]) .language-bash .hljs-string { color: #f1fa8c; }
+      :root:not([data-theme="light"]) .language-bash .hljs-meta { color: #6272a4; }
     }
 
     h1, h2, h3 { 
       margin-top: 3.5rem; 
-      color: var(--text-muted);
-      font-weight: 600;
+      color: var(--text);
+      font-weight: 700;
     }
     h1 { 
-      border-bottom: 1px solid var(--border); 
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--accent); 
       padding-bottom: 0.5rem; 
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      color: var(--text-muted);
     }
     .post-list { 
       list-style: none; 
@@ -227,7 +293,7 @@
     
     .post-layout {
       display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
+      grid-template-columns: 280px minmax(0, 1fr);
       gap: 2rem;
     }
     .post-layout article {
@@ -236,9 +302,9 @@
     .post-layout article h1:first-child {
       margin-top: 0;
     }
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       body:has(.post-layout) {
-        max-width: 920px;
+        max-width: 1020px;
       }
     }
     .toc {
@@ -248,6 +314,9 @@
       max-height: calc(100vh - 4rem);
       overflow-y: auto;
       font-size: 9pt;
+      background: rgba(var(--bg-alt-rgb), 0.6);
+      padding: 1rem;
+      border-radius: 8px;
     }
     .toc ul {
       list-style: none;
@@ -267,7 +336,6 @@
     }
     .toc summary {
       cursor: pointer;
-      font-weight: 600;
       list-style: none;
     }
     .toc summary::-webkit-details-marker {
@@ -279,6 +347,9 @@
     }
     .toc details[open] summary::before {
       content: '▾ ';
+    }
+    .toc details.no-children summary::before {
+      content: '';
     }
     .toc details ul {
       margin: 0.25rem 0 0 0.75rem;
@@ -297,7 +368,7 @@
     .toc a:hover {
       color: var(--accent);
     }
-    @media (max-width: 1099px) {
+    @media (max-width: 1199px) {
       .post-layout {
         display: block;
       }
@@ -427,12 +498,17 @@
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
       });
+
+
     });
   </script>
 </head>
 <body>
   <header class="header">
-    <div class="handle">pradeep</div>
+    <div class="header-left">
+      <a href="/" class="handle">pradeep elankumaran</a>
+      <span class="tagline">Thinking<span class="ellipsis"></span></span>
+    </div>
     <div class="social"><a href="https://x.com/pradeep24" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://instagram.com/skyfallsin" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><button id="theme-toggle" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button></div>
   </header>
 

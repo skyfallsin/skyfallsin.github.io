@@ -16,33 +16,35 @@ layout: default
   if (headings.length < 2) { toc.style.display = 'none'; return; }
   
   const ul = document.createElement('ul');
-  let currentDetails = null;
-  let currentUl = null;
+  let currentH2Details = null;
+  let currentH2Ul = null;
   
   headings.forEach((h, i) => {
     if (!h.id) h.id = 'section-' + i;
     
-    if (h.tagName === 'H1') {
+    if (h.tagName === 'H1' || h.tagName === 'H2') {
       const details = document.createElement('details');
+      details.className = h.tagName.toLowerCase() + '-section no-children';
       const summary = document.createElement('summary');
       const a = document.createElement('a');
       a.href = '#' + h.id;
       a.textContent = h.textContent;
       summary.appendChild(a);
       details.appendChild(summary);
-      currentUl = document.createElement('ul');
-      details.appendChild(currentUl);
+      currentH2Ul = document.createElement('ul');
+      details.appendChild(currentH2Ul);
       ul.appendChild(details);
-      currentDetails = details;
-    } else {
+      currentH2Details = details;
+    } else if (h.tagName === 'H3') {
       const li = document.createElement('li');
-      li.className = h.tagName.toLowerCase();
+      li.className = 'h3';
       const a = document.createElement('a');
       a.href = '#' + h.id;
       a.textContent = h.textContent;
       li.appendChild(a);
-      if (currentUl) {
-        currentUl.appendChild(li);
+      if (currentH2Ul) {
+        currentH2Details.classList.remove('no-children');
+        currentH2Ul.appendChild(li);
       } else {
         ul.appendChild(li);
       }

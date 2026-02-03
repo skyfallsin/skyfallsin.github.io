@@ -101,17 +101,37 @@ new Chart(document.getElementById('qualityDistChart'), {
 
 31% score 90+. 56% score 80+. Most appear usable, atleast from these stats.
 
-## Quality Signals
+## Scoring Methodology
 
-| Signal | Impact |
-|--------|--------|
-| Structured workflow | +15 |
-| Code examples | +12 |
-| Bundled scripts | +10 |
-| Clear triggers | +8 |
-| No content | -20 |
-| Placeholder text | -15 |
-| Very short (<500 chars) | -10 |
+Each skill starts with a base score, then earns (or loses) points from file-auditable heuristics.
+
+```text
+score = clamp( base + Σ(signal_points), 0, 100 )
+base = 50
+```
+
+Signals are intentionally dumb and grep-able: they reward *useful structure*, not "good writing".
+
+| Signal | Points | What I look for |
+|--------|--------|-----------------|
+| Structured workflow | +15 | Numbered steps, or sections like `## Workflow`, `## Steps`, `## Checklist` |
+| Code examples | +12 | Fenced code blocks showing commands / API usage |
+| Bundled scripts | +10 | Executable artifacts: `*.sh`, `*.py`, `*.js`, `Makefile` in the skill folder |
+| Clear triggers | +8 | Explicit "when to use" language (`When to use`, `Trigger:`) |
+| No content | -20 | Instructions file exists but is effectively empty |
+| Placeholder text | -15 | `TODO`, `TBD`, `lorem ipsum`, template filler |
+| Very short (<500 chars) | -10 | Primary instructions under 500 characters |
+
+### Example: prompt-guard (95)
+
+| | Points |
+|-|--------|
+| Base | 50 |
+| Structured workflow (step-by-step guardrail procedure) | +15 |
+| Code examples (prompt patterns, allow/deny rules) | +12 |
+| Bundled scripts (runnable validation helper) | +10 |
+| Clear triggers ("use when handling untrusted prompts") | +8 |
+| **Total** | **95** |
 
 612 skills score below 60. Empty shells, stubs, minimal CLI wrappers.
 
@@ -171,11 +191,17 @@ No provenance. No signed releases, no stable identity. "openai/pdf" and "random-
 
 ## So Why Use Skills?
 
-Because they do work. The ecosystem is messy but the primitives are right. A folder with instructions that the agent loads when needed. No server to run, no protocol to implement, no dependencies to manage. Just markdown.
+Because "agent prompts" don't scale. Skills do.
 
-The best skills encode expertise that would take you hours to write out each time. Systematic debugging. Code review checklists. Framework-specific patterns. You pay tokens only when you need them.
+A skill is the smallest unit of reusable agent behavior that's portable, inspectable, and pay-per-use: a folder of instructions the agent loads *only when relevant*. No daemon. No plugin API. No protocol handshake. Just markdown + a couple files.
 
-Treat it like early npm or pip. Read what you install. Prefer skills from known sources. Don't run random bash scripts. The norms will catch up.
+The good ones are compressed expertise: the checklist you forget at 2am, the debugging flowchart you wish you had printed, the framework gotchas you keep re-learning, the guardrails that stop the agent from confidently doing the wrong thing.
+
+And the part that matters: **skills are auditable artifacts**. You can read them. Diff them. Pin versions. Fork them. Delete them. You can't do that with "vibes" in a chat history.
+
+This is early npm/pip energy: a messy ecosystem sitting on top of the right primitive. The norms will catch up. The distribution mechanism is already here.
+
+Whether we end up with a skills ecosystem that deserves trust—or just another graveyard of copy-pasted prompts—depends on what we do next.
 
 ## Browse
 
