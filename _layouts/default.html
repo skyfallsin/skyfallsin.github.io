@@ -94,7 +94,7 @@
   <header class="header">
     <div class="handle">@skyfallsin</div>
   </header>
-  <nav><a href="/">← home</a></nav>
+  {% unless page.url == "/" %}<nav><a href="/">← home</a></nav>{% endunless %}
   <main>{{ content }}</main>
 </body>
 </html>
