@@ -1,8 +1,53 @@
 ---
 layout: default
 ---
-<article>
-  <h1><a href="/">←</a> {{ page.title }}</h1>
-  <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
-  {{ content }}
-</article>
+<div class="post-layout">
+  <nav class="toc" id="toc"></nav>
+  <article>
+    <h1><a href="/">←</a> {{ page.title }}</h1>
+    <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
+    {{ content }}
+  </article>
+</div>
+<script>
+(function() {
+  const headings = document.querySelectorAll('article h1:not(:first-of-type), article h2, article h3');
+  const toc = document.getElementById('toc');
+  if (headings.length < 2) { toc.style.display = 'none'; return; }
+  
+  const ul = document.createElement('ul');
+  let currentDetails = null;
+  let currentUl = null;
+  
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = 'section-' + i;
+    
+    if (h.tagName === 'H1') {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      summary.appendChild(a);
+      details.appendChild(summary);
+      currentUl = document.createElement('ul');
+      details.appendChild(currentUl);
+      ul.appendChild(details);
+      currentDetails = details;
+    } else {
+      const li = document.createElement('li');
+      li.className = h.tagName.toLowerCase();
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      if (currentUl) {
+        currentUl.appendChild(li);
+      } else {
+        ul.appendChild(li);
+      }
+    }
+  });
+  toc.appendChild(ul);
+})();
+</script>
