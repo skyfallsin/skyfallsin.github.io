@@ -15,7 +15,7 @@ date: 2026-02-03
 
 <br>
 
-As part of jo's upcoming launch, I collected **4,784 AI agent skills from 5 registries** for [skill-search](https://github.com/jo-inc/skill-search) and scored them for quality. **[Browse all skills →](/data/skills-db/)**
+As part of jo's upcoming launch, I collected **4,784 AI agent skills from 5 registries** for [safe-skill-search](https://github.com/jo-inc/safe-skill-search) and scored them for quality. **[Browse all skills →](/data/skills-db/)**
 
 This was especially important for us since we're considering adding a self-installing skills feature to make your workflows stabilize faster.
 
@@ -37,8 +37,7 @@ Installation varies by tool:
 
 | Tool | Personal | Project |
 |------|----------|---------|
-| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
-| Codex | `~/.codex/skills/` | `.codex/skills/` |
+| Amp | `~/.config/agents/skills/` | `.amp/skills/` |
 | OpenClaw | `~/.openclaw/skills/` | `.openclaw/skills/` |
 
 Or invoke directly with `/skill-name`. The agent follows the instructions using its existing tools.
@@ -54,9 +53,9 @@ Very cool, and inline with what we'd expect a stack that has its own machine to 
 | | Skills | MCP |
 |-|--------|-----|
 | What | Markdown + examples + scripts | Protocol for remote tool servers |
-| Loaded | As-needed into context | Tool definitions at startup |
+| Loaded | As-needed into context | Tool definitions on-demand |
 | Executes via | Agent's existing tools (bash, file ops) | Dedicated MCP tool calls |
-| Token cost | Pay when used | Pay upfront |
+| Token cost | Pay when used | Pay per tool definition |
 
 Skills are *instructions*. MCP is *tooling*. [Anthropic's framing](https://claude.com/blog/skills): "Think of Skills as custom onboarding materials that let you package expertise."
 
@@ -147,6 +146,18 @@ clawdhub dominates volume. And cloning.
 
 2,990 unique names across 3,764 skills. About 28% are duplicates.
 
+## What Skills Bundle
+
+| Content | Skills | % |
+|---------|--------|---|
+| Scripts (.sh, .py, .js) | 2,803 | 59% |
+| MCP/connector references | 382 | 8% |
+| Assets (images, etc.) | 208 | 4% |
+| allowed-tools declarations | 79 | 2% |
+| SVG files | 19 | 0.4% |
+
+59% of skills bundle executable scripts. 79 declare `allowed_tools` for sandboxing (pattern from Anthropic's examples). 19 include SVGs, which can contain JavaScript.
+
 ## Package Install Patterns
 
 | Package Manager | Skills | % |
@@ -166,9 +177,9 @@ No evaluation criteria. Most skills don't say what "success" looks like. No comp
 
 ### Markdown is an installer
 
-~10% of skills include npm/pip install commands. Many bundle scripts right in the repo. MCP doesn't protect you. Skills route around it by telling the agent to use bash.
+59% of skills bundle scripts. ~10% include npm/pip install commands. MCP doesn't protect you. Skills route around it by telling the agent to use bash. 19 skills include SVG files, which can embed JavaScript.
 
-[1Password found infostealing malware in skill registries](https://1password.com/blog/from-magic-to-malware-how-openclaws-agent-skills-become-an-attack-surface). Their line:
+[1Password found infostealing malware in skill registries](https://1password.com/blog/from-magic-to-malware-how-openclaws-agent-skills-become-an-attack-surface). [Active campaigns are being tracked](https://x.com/pyotam2/status/2019001989389320661). Their line:
 
 > "Markdown isn't content in an agent ecosystem. Markdown is an installer."
 
@@ -205,4 +216,14 @@ sqlite3 skills.db "SELECT name, quality_score FROM skills ORDER BY quality_score
 
 ---
 
-[skill-search](https://github.com/jo-inc/skill-search) is the scraper and scorer behind this. Planning to add quality scoring to the CLI so you can filter before installing. PRs welcome.
+[safe-skill-search](https://github.com/jo-inc/safe-skill-search) is a CLI that embeds these quality scores and filters skills by default (score >= 80). Install it standalone:
+
+```bash
+# macOS (Apple Silicon)
+curl -fsSL https://github.com/jo-inc/safe-skill-search/releases/latest/download/safe-skill-search-aarch64-apple-darwin.tar.gz | tar -xz -C ~/.local/bin
+
+# Search with quality filtering
+safe-skill-search search "browser automation"
+```
+
+<small>*Written and analyzed with the help of [ampcode.com](https://ampcode.com).</small>
