@@ -6,6 +6,7 @@
   <title>{{ page.title | default: site.title }}</title>
   {% assign page_desc = page.description | default: page.excerpt | strip_html | truncate: 160 | default: site.description %}
   <meta name="description" content="{{ page_desc }}">
+  {% if page.published == false %}<meta name="robots" content="noindex, nofollow">{% endif %}
   
   <!-- Open Graph -->
   <meta property="og:title" content="{{ page.title | default: site.title }}">
