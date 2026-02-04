@@ -1,0 +1,3 @@
+[submodule "data/skills-db"]
+	path = data/skills-db
+	url = https://github.com/jo-inc/skills-db.git

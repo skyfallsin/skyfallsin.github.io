@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "skill-search: low-latency local search for agent skills"
+title: "safe-skill-search: quality-filtered local search for agent skills"
 date: 2026-02-03
 published: false
 ---
 
-In my [previous post](/2026/02/03/ai-agent-skills-database.html), I analyzed 4,784 AI agent skills across 5 registries. The takeaway wasn't just "wow, lots of skills." It was: **an agent needs to navigate this space instantly.**
+In my [previous post](/2026/02/03/ai-agent-skills-database.html), I analyzed 4,784 AI agent skills across 5 registries. The takeaway wasn't just "wow, lots of skills." It was: **an agent needs to navigate this space instantly—and safely.**
 
-[skill-search](https://github.com/jo-inc/skill-search) is the tool I built to solve that. A Rust CLI that searches 4,700+ skills locally in under 100ms. This post explains why local-first matters for agent infrastructure, and how the full stack works—from skill installation to search results.
+[safe-skill-search](https://github.com/jo-inc/safe-skill-search) is the tool I built to solve that. A Rust CLI that searches 4,700+ skills locally in under 100ms, **with quality filtering built in**. By default, it only shows skills with a quality score ≥ 80.
+
+This post explains why local-first matters for agent infrastructure, how quality filtering works, and the full stack—from skill installation to search results.
 
 ## Agents don't "browse"; they route
 
@@ -102,18 +104,54 @@ let query_parser = QueryParser::for_index(
 
 Result: sub-100ms queries across 4,700+ skills on any modern machine.
 
+## Quality filtering: the safe in safe-skill-search
+
+The [skills analysis](/2026/02/03/ai-agent-skills-database.html) revealed that only ~31% of skills score 90+, and many have issues: placeholder content, broken scripts, or security concerns. An agent shouldn't blindly install from the long tail.
+
+safe-skill-search embeds the quality scores directly into the binary:
+
+```rust
+pub struct QualityScores {
+    scores: HashMap<String, QualityEntry>,
+}
+
+impl QualityScores {
+    pub fn load() -> Self {
+        let json_data = include_str!("../skills.json");  // frozen at build time
+        // ...
+    }
+}
+```
+
+Search results are filtered before display:
+
+```rust
+.filter(|r| r["quality_score"].as_i64().unwrap_or(0) >= min_score)
+```
+
+The default `--min-score 80` means you only see skills that passed quality review. Override with `--min-score 0` to see everything.
+
+Output now shows quality scores inline:
+
+```bash
+$ safe-skill-search search "browser"
+1. [✓] puppeteer (anthropic) [Q:95] - Browser automation with Puppeteer
+2. [⚠] smooth-browser ★1 (clawdhub) [Q:95] - Browser automation with error handling
+3. [⚠] browserwing (clawdhub) [Q:80] - Browser automation toolkit
+```
+
 ## End-to-end flow
 
 ### 1. Install the skill (as a skill)
 
-skill-search is itself a skill. Install it like any other:
+safe-skill-search is itself a skill. Install it like any other:
 
 ```bash
 # Claude Code
-/install-skill https://github.com/jo-inc/skill-search
+/install-skill https://github.com/jo-inc/safe-skill-search
 
 # Codex
-$skill-installer https://github.com/jo-inc/skill-search
+$skill-installer https://github.com/jo-inc/safe-skill-search
 ```
 
 ### 2. Bootstrap the binary
@@ -150,10 +188,10 @@ No Rust toolchain required. Just a curl and you're done.
 
 ### 3. First run: auto-sync
 
-On first launch, skill-search detects an empty database and syncs automatically:
+On first launch, safe-skill-search detects an empty database and syncs automatically:
 
 ```bash
-$ skill-search search "trello"
+$ safe-skill-search search "trello"
 First launch detected, syncing skills...
 Syncing registry: clawdhub
 Syncing registry: anthropic
@@ -163,23 +201,25 @@ Indexing 4784 skills
 
 This happens once. Takes ~10 seconds to clone 5 registries and build the index.
 
-### 4. Search
+### 4. Search (with quality filtering)
 
 ```bash
-$ skill-search search "browser automation"
-1. [✓] puppeteer ★0 (anthropic) - Browser automation with Puppeteer
+$ safe-skill-search search "browser automation"
+1. [✓] puppeteer (anthropic) [Q:95] - Browser automation with Puppeteer
    https://github.com/anthropics/skills/tree/main/skills/puppeteer
 
-2. [⚠] browser-use ★6 (clawdhub) - Browser automation via cloud API
-   https://github.com/openclaw/skills/tree/main/skills/shawnpana/browser-use
+2. [⚠] smooth-browser ★1 (clawdhub) [Q:95] - Browser automation with error handling
+   https://github.com/openclaw/skills/tree/main/skills/antoniocirclemind/smooth-browser
 ```
 
-`[✓]` = trusted (anthropic, openai curated). `[⚠]` = community/experimental.
+`[✓]` = trusted (anthropic, openai curated). `[⚠]` = community/experimental. `[Q:95]` = quality score.
+
+Low-quality skills are filtered out by default. Show everything with `--min-score 0`.
 
 For programmatic use:
 
 ```bash
-$ skill-search search "pdf" --json --limit 3
+$ safe-skill-search search "pdf" --json --limit 3
 ```
 
 ```json
@@ -192,7 +232,8 @@ $ skill-search search "pdf" --json --limit 3
     "github_url": "https://github.com/anthropics/skills/tree/main/skills/pdf",
     "stars": 0,
     "trusted": true,
-    "score": 25.3
+    "search_score": 25.3,
+    "quality_score": 95
   }
 ]
 ```
@@ -200,24 +241,24 @@ $ skill-search search "pdf" --json --limit 3
 ### 5. Get install URL
 
 ```bash
-$ skill-search url trello
+$ safe-skill-search url trello
 https://github.com/openclaw/skills/tree/main/skills/steipete/trello
 ```
 
 ## A skill that finds skills
 
-skill-search is intentionally recursive. It's a skill whose job is to help you find and install other skills.
+safe-skill-search is intentionally recursive. It's a skill whose job is to help you find and install other skills—safely.
 
 The workflow:
 
 ```bash
-skill-search search "calendar"      # Find
-skill-search show google-calendar   # Inspect
-skill-search url google-calendar    # Get install URL
+safe-skill-search search "calendar"      # Find (quality filtered)
+safe-skill-search show google-calendar   # Inspect (shows quality score)
+safe-skill-search url google-calendar    # Get install URL
 # → install in your agent
 ```
 
-Skills are only useful if they're discoverable. In a registry of 4,700+, discovery is infrastructure. So skill-search bootstraps itself into your agent's toolkit, then helps you build the rest.
+Skills are only useful if they're discoverable—and safe to install. In a registry of 4,700+, discovery with filtering is infrastructure. safe-skill-search bootstraps itself into your agent's toolkit, then helps you build the rest with confidence.
 
 ## Data storage
 
@@ -259,13 +300,15 @@ For now, BM25 hits the 80/20. If recall becomes a problem, hybrid search (BM25 +
 
 ## What's next
 
-- Quality scoring in CLI output (filter before installing)
+- ~~Quality scoring in CLI output (filter before installing)~~ ✓ Done
 - Field boosts for better ranking (name > description > content)
 - Maybe: prebuilt index distribution for faster first-run
+- Periodic refresh of embedded quality scores
 
-But local-first remains the core. The constraint—sub-100ms discovery inside agent loops—drives everything else.
+But local-first remains the core. The constraint—sub-100ms discovery inside agent loops—drives everything else. Quality filtering ensures agents only see skills worth installing.
 
 ---
 
-- [skill-search on GitHub](https://github.com/jo-inc/skill-search)
+- [safe-skill-search on GitHub](https://github.com/jo-inc/safe-skill-search)
+- [Skills analysis: 4,784 skills scored →](/2026/02/03/ai-agent-skills-database.html)
 - [Browse the skills database →](/data/skills-db/)
