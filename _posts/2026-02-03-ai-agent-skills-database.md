@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Analyzing 4,784 AI Agent Skills
+title: "Agent Skills: 59% Ship Scripts. 12% Are Empty. Here's the Rest."
 date: 2026-02-03
 ---
 
