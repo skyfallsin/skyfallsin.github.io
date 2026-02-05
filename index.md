@@ -28,7 +28,7 @@ title: pradeep
 
 ## ABOUT
 
-Chennai kid, hacker since 2000. Moved to Maryland for high school and college, then the Bay Area to run startups.
+Hacker since 2000. Grew up in Chennai, moved to Maryland for high school and college, then the Bay Area to run startups.
 
 I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
@@ -46,7 +46,7 @@ My businesses usually blend advanced engineering, delightful design, digital sto
 
 <div class="startup-entry">
 <a href="https://techcrunch.com/2012/12/04/kicksend-target-cvs/" class="startup-logo"><img src="/images/logos/kicksend.png" alt="Kicksend"></a>
-<div class="startup-text"><strong><a href="https://techcrunch.com/2012/12/04/kicksend-target-cvs/">Kicksend</a></strong> (YC S11) — Photo prints delivered to your door. Featured on the <a href="https://www.today.com/video/today/52066329">Today Show</a>. Millions of users, millions in revenue, and partnerships with CVS, Target, Walgreens, Walmart. Acquired by Lyft.</div>
+<div class="startup-text"><strong><a href="https://techcrunch.com/2012/12/04/kicksend-target-cvs/">Kicksend</a></strong> (YC S11) — Co-founded with <a href="https://x.com/brendanlim">Brendan Lim</a>. Photo prints delivered to your door. Featured on the <a href="https://www.today.com/video/today/52066329">Today Show</a>. Millions of users, millions in revenue, and partnerships with CVS, Target, Walgreens, Walmart. Acquired by Lyft.</div>
 </div>
 
 <div class="startup-entry">
