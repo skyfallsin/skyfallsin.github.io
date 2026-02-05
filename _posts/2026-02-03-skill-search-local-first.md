@@ -142,51 +142,15 @@ $ safe-skill-search search "browser"
 
 ## End-to-end flow
 
-### 1. Install the skill (as a skill)
-
-safe-skill-search is itself a skill. Install it like any other:
+### 1. Install
 
 ```bash
-# Claude Code
-/install-skill https://github.com/jo-inc/safe-skill-search
-
-# Codex
-$skill-installer https://github.com/jo-inc/safe-skill-search
+curl -fsSL https://github.com/jo-inc/safe-skill-search/releases/latest/download/install.sh | bash
 ```
 
-### 2. Bootstrap the binary
+The script detects your platform and downloads the right release. No Rust toolchain required.
 
-The skill's `SKILL.md` instructs the agent to run the install script:
-
-```bash
-scripts/install.sh
-```
-
-The script detects your platform and downloads the right release:
-
-```bash
-OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-ARCH=$(uname -m)
-
-case "$OS" in
-    darwin)
-        case "$ARCH" in
-            arm64) PLATFORM="aarch64-apple-darwin" ;;
-            x86_64) PLATFORM="x86_64-apple-darwin" ;;
-        esac ;;
-    linux)
-        case "$ARCH" in
-            aarch64|arm64) PLATFORM="aarch64-unknown-linux-gnu" ;;
-            x86_64) PLATFORM="x86_64-unknown-linux-gnu" ;;
-        esac ;;
-esac
-
-curl -fsSL "$RELEASE_URL" | tar -xz -C ~/.local/bin
-```
-
-No Rust toolchain required. Just a curl and you're done.
-
-### 3. First run: auto-sync
+### 2. First run: auto-sync
 
 On first launch, safe-skill-search detects an empty database and syncs automatically:
 
@@ -201,7 +165,7 @@ Indexing 4784 skills
 
 This happens once. Takes ~10 seconds to clone 5 registries and build the index.
 
-### 4. Search (with quality filtering)
+### 3. Search (with quality filtering)
 
 ```bash
 $ safe-skill-search search "browser automation"
@@ -238,7 +202,7 @@ $ safe-skill-search search "pdf" --json --limit 3
 ]
 ```
 
-### 5. Get install URL
+### 4. Get install URL
 
 ```bash
 $ safe-skill-search url trello
