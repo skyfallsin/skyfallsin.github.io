@@ -30,15 +30,15 @@
   <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
   <style>
     :root {
-      --bg: #eceff4;
-      --bg-alt: #e5e9f0;
-      --bg-alt-rgb: 229, 233, 240;
-      --text: #3b4252;
-      --text-muted: #4c566a;
-      --accent: #5e81ac;
-      --accent-hover: #81a1c1;
-      --border: #d8dee9;
-      --selection: #88c0d0;
+      --bg: #faf8f5;
+      --bg-alt: #f0ebe3;
+      --bg-alt-rgb: 240, 235, 227;
+      --text: #2c2c2c;
+      --text-muted: #6b5c4d;
+      --accent: #8b5a2b;
+      --accent-hover: #a0522d;
+      --border: #d4c4b0;
+      --selection: #deb887;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -78,13 +78,40 @@
         var(--bg);
       background-size: 20px 20px, 20px 20px, 100% 100%;
       color: var(--text);
-      --grid-color: rgba(0, 0, 0, 0.015);
+      --grid-color: rgba(139, 90, 43, 0.04);
+      cursor: crosshair;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
     }
     @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"] body) { --grid-color: rgba(255, 255, 255, 0.015); }
+      body:not([data-theme="light"] body) { 
+        --grid-color: rgba(192, 132, 252, 0.03);
+      }
+      body:not([data-theme="light"] body)::before {
+        opacity: 1;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+      }
     }
-    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: rgba(255, 255, 255, 0.015); }
-    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: rgba(0, 0, 0, 0.015); }
+    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: rgba(192, 132, 252, 0.03); }
+    [data-theme="dark"] body::before, :root[data-theme="dark"] body::before {
+      opacity: 1;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+    }
+    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: rgba(139, 90, 43, 0.04); }
+    [data-theme="light"] body::before { opacity: 0; }
+    
+    a, button, .social a { cursor: pointer; }
     ::selection {
       background: var(--selection);
       color: var(--bg);
@@ -124,21 +151,64 @@
       align-items: center;
       position: sticky;
       top: 0;
-      background: var(--bg);
+      background: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        var(--bg);
+      background-size: 20px 20px, 20px 20px, 100% 100%;
       padding: 1rem 0;
       z-index: 100;
+      animation: fadeSlideIn 0.6s ease-out both;
+    }
+    
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    main {
+      animation: fadeSlideIn 0.6s ease-out 0.15s both;
+    }
+    
+    .badges {
+      animation: fadeSlideIn 0.6s ease-out 0.3s both;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .header, main, .badges { animation: none; }
     }
     .handle {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: var(--text-muted);
       letter-spacing: -0.02em;
       text-decoration: none;
       transition: text-shadow 200ms ease-out;
+      position: relative;
+      display: inline-block;
+    }
+    .handle::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      transition: width 300ms ease-out;
     }
     .handle:hover {
       color: var(--text-muted);
       text-decoration: none;
+    }
+    .handle:hover::after {
+      width: 100%;
     }
     @media (hover: hover) and (pointer: fine) {
       .handle:hover {
@@ -147,17 +217,89 @@
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) .handle:hover {
           text-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent);
+          animation: glitch 0.3s ease-out;
         }
       }
       [data-theme="dark"] .handle:hover {
         text-shadow: 0 0 12px var(--accent), 0 0 24px var(--accent);
+        animation: glitch 0.3s ease-out;
       }
       [data-theme="light"] .handle:hover {
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
       }
     }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 1px); }
+      40% { transform: translate(2px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+      100% { transform: translate(0); }
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      0%, 50% { border-color: var(--accent); }
+      51%, 100% { border-color: transparent; }
+    }
+    
+    .page-title {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid var(--accent);
+      animation: typing 1.2s steps(20) 0.5s both, blink 0.8s step-end 1.7s infinite;
+      display: inline-block;
+      max-width: fit-content;
+    }
+    
     @media (prefers-reduced-motion: reduce) {
+      .page-title {
+        animation: none;
+        border-right: none;
+      }
       .handle { transition: none; }
+      .handle:hover { animation: none; }
+      .handle::after { transition: none; }
+    }
+    
+    article blockquote {
+      margin-left: -2rem;
+      padding-left: 1.5rem;
+      border-left: 4px solid var(--accent);
+      font-style: italic;
+      position: relative;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) article blockquote {
+        border-image: linear-gradient(180deg, var(--accent), var(--accent-hover)) 1;
+        box-shadow: -4px 0 16px rgba(192, 132, 252, 0.2);
+      }
+    }
+    [data-theme="dark"] article blockquote {
+      border-image: linear-gradient(180deg, var(--accent), var(--accent-hover)) 1;
+      box-shadow: -4px 0 16px rgba(192, 132, 252, 0.2);
+    }
+    
+    article > p:first-of-type::first-letter {
+      font-size: 3.5rem;
+      float: left;
+      line-height: 1;
+      margin-right: 0.5rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) article > p:first-of-type::first-letter {
+        text-shadow: 0 0 20px var(--accent);
+      }
+    }
+    [data-theme="dark"] article > p:first-of-type::first-letter {
+      text-shadow: 0 0 20px var(--accent);
     }
     .tagline {
       font-size: 8pt;
@@ -190,22 +332,20 @@
       flex-direction: column;
     }
     .profile-photo {
-      width: 48px;
-      height: 48px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 200ms ease-out, border-color 200ms ease;
+      border: 3px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transition: box-shadow 200ms ease-out, border-color 200ms ease, transform 200ms ease-out;
+      margin-left: -8px;
     }
     @media (hover: hover) and (pointer: fine) {
       .profile-photo:hover {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+        transform: scale(1.08) rotate(-2deg);
       }
-    }
-    .profile-photo {
-      transition: box-shadow 200ms ease-out, border-color 200ms ease, transform 200ms ease-out;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) .profile-photo {
@@ -305,12 +445,20 @@
     pre code { padding: 0; background: transparent; }
     .hljs { background: var(--bg-alt); }
     
-    /* Light mode bash/shell */
-    .language-bash .hljs-built_in { color: #6c71c4; }
-    .language-bash .hljs-variable { color: #268bd2; }
-    .language-bash .hljs-string { color: #2aa198; }
-    .language-bash .hljs-meta { color: #93a1a1; }
-    .language-bash .hljs-keyword { color: #6c71c4; }
+    /* Light mode - warm sepia syntax */
+    .hljs-keyword { color: #8b4513; }
+    .hljs-string { color: #2e8b57; }
+    .hljs-number { color: #6b5c4d; }
+    .hljs-function { color: #5c4033; }
+    .hljs-title { color: #5c4033; }
+    .hljs-comment { color: #9e9e8e; font-style: italic; }
+    .hljs-built_in { color: #8b4513; }
+    .hljs-variable { color: #6b5c4d; }
+    .language-bash .hljs-built_in { color: #8b4513; }
+    .language-bash .hljs-variable { color: #5c4033; }
+    .language-bash .hljs-string { color: #2e8b57; }
+    .language-bash .hljs-meta { color: #9e9e8e; }
+    .language-bash .hljs-keyword { color: #8b4513; }
     
     /* Neon syntax highlighting for dark mode */
     [data-theme="dark"] .hljs { color: #e0e0e0; }
@@ -660,12 +808,33 @@
       padding: 2rem 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 8px;
       justify-content: center;
-      opacity: 0.8;
+      opacity: 0.6;
+      position: relative;
+    }
+    .badges::before {
+      content: 'built with';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8pt;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.5;
     }
     .badges img {
       image-rendering: pixelated;
+      transition: opacity 200ms ease, transform 200ms ease-out;
+    }
+    .badges img:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .badges img { transition: none; }
     }
     
     .more-link {
