@@ -3,7 +3,7 @@ layout: default
 title: pradeep
 ---
 
-## RECENT WRITING
+## RECENT WRITING <a href="/feed.xml" class="rss-icon" aria-label="RSS Feed"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg></a>
 
 <ul class="post-list post-list--home">
 {% assign published_posts = site.posts | where_exp: "post", "post.published != false" %}
@@ -32,16 +32,16 @@ Hacker since 2000. Grew up in Chennai, moved to Maryland for high school and col
 
 I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
-My businesses usually blend advanced engineering, delightful design, digital storytelling and aggressive BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world. I keep co-founding with [Kevin Li](https://x.com/liveink) like it's a family tradition.
+My businesses usually blend advanced engineering, delightful design, digital storytelling and aggressive BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
 
 <div class="startup-entry">
 <a href="https://askjo.ai" class="startup-logo"><img src="/images/logos/jo.png" alt="jo"></a>
-<div class="startup-text"><strong><a href="https://askjo.ai">jo</a></strong> (YC W24) — After six months talking to LLMs for hours a day, I started building an AI that lives on your computer. Nascent.</div>
+<div class="startup-text"><strong><a href="https://askjo.ai">jo</a></strong> (YC W24) — Co-founded with <a href="https://x.com/liveink">Kevin Li</a>. After six months talking to LLMs for hours a day, I started building an AI that lives on your computer. Nascent.</div>
 </div>
 
 <div class="startup-entry">
 <a href="https://techcrunch.com/2018/12/06/farmstead-is-an-ambitious-grocery-delivery-startup-with-plans-to-defeat-instacart/" class="startup-logo"><img src="/images/logos/farmstead.png" alt="Farmstead"></a>
-<div class="startup-text"><strong><a href="https://techcrunch.com/2018/12/06/farmstead-is-an-ambitious-grocery-delivery-startup-with-plans-to-defeat-instacart/">Farmstead</a></strong> (YC S16) — My daughter turned two and started drinking a lot of milk. I found myself at the grocery store 3-4x a week. Posted on Nextdoor asking if anyone wanted milk, eggs, and bread delivered—200 people said yes in two days. Built an AI grocer that cut food waste from ~30% to 1.5%. Grew to 5 markets, double-digit millions in revenue, and a 200-person team of technologists, operators, drivers, and warehouse staff.</div>
+<div class="startup-text"><strong><a href="https://techcrunch.com/2018/12/06/farmstead-is-an-ambitious-grocery-delivery-startup-with-plans-to-defeat-instacart/">Farmstead</a></strong> (YC S16) — Co-founded with <a href="https://x.com/liveink">Kevin Li</a>. My daughter turned two and started drinking a lot of milk. I found myself at the grocery store 3-4x a week. Posted on Nextdoor asking if anyone wanted milk, eggs, and bread delivered—200 people said yes in two days. Built a vertically integrated AI grocer that cut food waste from ~30% to 1.5%. Grew to 5 markets, double-digit millions in revenue, and a 200-person team of technologists, operators, drivers, and warehouse staff.</div>
 </div>
 
 <div class="startup-entry">

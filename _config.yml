@@ -5,6 +5,12 @@ author: pradeep elankumaran
 twitter: pradeep24
 markdown: kramdown
 
+plugins:
+  - jekyll-feed
+
+feed:
+  path: feed.xml
+
 kramdown:
   input: GFM
   syntax_highlighter_opts:
