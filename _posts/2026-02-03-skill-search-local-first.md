@@ -5,17 +5,13 @@ date: 2026-02-03
 published: true
 ---
 
-In my [previous post](/2026/02/03/ai-agent-skills-database.html), I analyzed 4,784 AI agent skills across 5 registries. The takeaway wasn't just "wow, lots of skills." It was: **an agent needs to navigate this space instantly—and safely.**
+In my [previous post](/2026/02/03/ai-agent-skills-database.html), I analyzed 4,784 AI agent skills across 5 registries. An agent needs to navigate this space quickly and safely.
 
-[safe-skill-search](https://github.com/jo-inc/safe-skill-search) is the tool I built to solve that. A Rust CLI that searches 4,700+ skills locally in under 100ms, **with quality filtering built in**. By default, it only shows skills with a quality score ≥ 80.
+[safe-skill-search](https://github.com/jo-inc/safe-skill-search) is a Rust CLI that searches 4,700+ skills locally in under 100ms with quality filtering. By default, it only shows skills with a quality score ≥ 80.
 
-This post explains why local-first matters for agent infrastructure, how quality filtering works, and the full stack—from skill installation to search results.
+## Why local search
 
-## Agents don't "browse"; they route
-
-When a human searches for a skill, they're browsing. When an agent searches, it's part of the inner loop: plan → find capability → act. The difference matters.
-
-If skill discovery takes seconds, the agent feels broken. If it takes **<100ms**, it feels like autocomplete for capabilities.
+Skill discovery is part of the agent loop: plan → find capability → act. If it takes seconds, the loop stalls. Under 100ms keeps things responsive.
 
 A web API can't reliably hit that bar:
 
@@ -26,12 +22,10 @@ A web API can't reliably hit that bar:
 | Rate limits | Queuing under load |
 | Tail latency | p95 > p50, agents feel the worst case |
 
-And then there's the operational reality:
+Other considerations:
 - **Offline/CI environments**: Agents run in places with no internet
-- **Privacy**: Search queries contain project context you may not want to ship externally
+- **Privacy**: Search queries contain project context
 - **Determinism**: Local indexes don't go down
-
-For an agent, skill discovery should feel like `ripgrep`, not like a web page.
 
 ## The stack: git → SQLite → Tantivy
 
@@ -102,11 +96,11 @@ let query_parser = QueryParser::for_index(
 );
 ```
 
-Result: sub-100ms queries across 4,700+ skills on any modern machine.
+Result: sub-100ms queries across 4,700+ skills.
 
 ## Quality filtering: the safe in safe-skill-search
 
-The [skills analysis](/2026/02/03/ai-agent-skills-database.html) revealed that only ~31% of skills score 90+, and many have issues: placeholder content, broken scripts, or security concerns. An agent shouldn't blindly install from the long tail.
+The [skills analysis](/2026/02/03/ai-agent-skills-database.html) showed only ~31% of skills score 90+. Many have placeholder content, broken scripts, or security concerns.
 
 safe-skill-search embeds the quality scores directly into the binary:
 
@@ -222,7 +216,7 @@ safe-skill-search url google-calendar    # Get install URL
 # → install in your agent
 ```
 
-Skills are only useful if they're discoverable—and safe to install. In a registry of 4,700+, discovery with filtering is infrastructure. safe-skill-search bootstraps itself into your agent's toolkit, then helps you build the rest with confidence.
+With 4,700+ skills, discovery with filtering is necessary infrastructure.
 
 ## Data storage
 
@@ -236,9 +230,9 @@ Everything lives in `~/.local/share/skill-search/`:
 
 Update with `skill-search sync`. Force refresh with `skill-search sync --force`.
 
-## Why not vector search (yet)
+## Why not vector search
 
-The obvious question: why BM25 instead of embeddings?
+Why BM25 instead of embeddings?
 
 | Approach | Pros | Cons |
 |----------|------|------|
@@ -260,7 +254,7 @@ Vector search makes sense when:
 - You're building a recommendation system
 - Semantic similarity matters more than keyword match
 
-For now, BM25 hits the 80/20. If recall becomes a problem, hybrid search (BM25 + vectors with reciprocal rank fusion) is the path forward.
+BM25 covers most cases. Hybrid search (BM25 + vectors) is an option if recall becomes a problem.
 
 ## What's next
 
@@ -269,7 +263,7 @@ For now, BM25 hits the 80/20. If recall becomes a problem, hybrid search (BM25 +
 - Maybe: prebuilt index distribution for faster first-run
 - Periodic refresh of embedded quality scores
 
-But local-first remains the core. The constraint—sub-100ms discovery inside agent loops—drives everything else. Quality filtering ensures agents only see skills worth installing.
+Local-first with quality filtering is the core constraint.
 
 ---
 
