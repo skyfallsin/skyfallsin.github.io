@@ -283,23 +283,7 @@
       box-shadow: -4px 0 16px rgba(192, 132, 252, 0.2);
     }
     
-    article > p:first-of-type::first-letter {
-      font-size: 3.5rem;
-      float: left;
-      line-height: 1;
-      margin-right: 0.5rem;
-      margin-top: 0.1rem;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) article > p:first-of-type::first-letter {
-        text-shadow: 0 0 20px var(--accent);
-      }
-    }
-    [data-theme="dark"] article > p:first-of-type::first-letter {
-      text-shadow: 0 0 20px var(--accent);
-    }
+
     .tagline {
       font-size: 8pt;
       color: var(--text-muted);
