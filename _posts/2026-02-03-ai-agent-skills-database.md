@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Agent Skills: 59% Ship Scripts. 12% Are Empty. Here's the Rest."
+title: "Agent Skills: 59% Ship Scripts. 12% Are Empty."
 date: 2026-02-03
 ---
 
