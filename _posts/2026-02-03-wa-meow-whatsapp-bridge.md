@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "wa_meow: a stable WhatsApp plugin for 1:1 clawdbot chats"
+title: "Wa_Meow: A Stable WhatsApp Plugin for 1:1 Clawdbot Chats"
 date: 2026-02-03
 published: false
 ---

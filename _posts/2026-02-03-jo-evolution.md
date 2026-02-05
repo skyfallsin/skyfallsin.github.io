@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "jo, in commits: 38 months of building an always-on agent"
+title: "Jo, In Commits: 38 Months of Building an Always-On Agent"
 date: 2026-02-03
 published: false
 ---
