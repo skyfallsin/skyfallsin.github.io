@@ -32,7 +32,7 @@ Hacker since 2000. Grew up in Chennai, moved to Maryland for high school and col
 
 I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
-My businesses usually blend advanced engineering, delightful design, digital storytelling and aggressive BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
+My businesses usually blend advanced engineering, delightful design, digital storytelling and aggressive BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world. I keep co-founding with [Kevin Li](https://x.com/liveink) like it's a family tradition.
 
 <div class="startup-entry">
 <a href="https://askjo.ai" class="startup-logo"><img src="/images/logos/jo.png" alt="jo"></a>
@@ -54,7 +54,7 @@ My businesses usually blend advanced engineering, delightful design, digital sto
 <div class="startup-text"><strong>Lyft</strong> — Stayed on after acquisition. Driver growth, unlocking conversion in major markets.</div>
 </div>
 
-I solo backpack, make landscape photos, and read a lot of fiction. Based in Silicon Valley. I keep co-founding with [Kevin Li](https://x.com/liveink) like it's a family tradition.
+I solo backpack, make landscape photos, and read a lot of fiction. Based in Silicon Valley.
 
 <script>
 (function() {
