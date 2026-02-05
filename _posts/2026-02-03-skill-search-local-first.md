@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Safe-Skill-Search: Quality-Filtered Local Search for Agent Skills"
+title: "safe-skill-search: Quality-Filtered Local Search for Agent Skills"
 date: 2026-02-03
 published: true
 ---
