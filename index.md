@@ -21,7 +21,10 @@ title: pradeep
 
 ## PHONE PICS
 
-<div class="instagram-grid" id="instagram-grid"></div>
+<div class="instagram-grid-wrapper" id="instagram-wrapper">
+  <div class="instagram-grid" id="instagram-grid"></div>
+  <div class="show-more" onclick="document.getElementById('instagram-wrapper').classList.add('expanded')">show more ↓</div>
+</div>
 
 <script>
 (function() {
