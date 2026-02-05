@@ -112,7 +112,8 @@
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-muted);
-      letter-spacing: 1px;
+      letter-spacing: -0.5px;
+      word-spacing: -0.15em;
       text-decoration: none;
     }
     .handle:hover {
@@ -142,7 +143,20 @@
     }
     .header-left {
       display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-text {
+      display: flex;
       flex-direction: column;
+    }
+    .profile-photo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .social {
       display: flex;
@@ -282,7 +296,10 @@
       padding-bottom: 0.5rem; 
     }
     h2 {
-      font-size: 1.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 2rem 0 0.5rem;
+      letter-spacing: 1px;
     }
     h3 {
       font-size: 1.1rem;
@@ -307,6 +324,28 @@
     }
     .post-list a {
       border-bottom: 1px solid var(--border);
+    }
+    .post-list li:only-child a,
+    .post-list li:last-child a {
+      border-bottom: none;
+    }
+    .post-list--home li:first-child {
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .post-list--home li:first-child .post-date {
+      display: block;
+      width: auto;
+      padding: 0 0 0.25rem 0;
+      font-size: 9pt;
+    }
+    .post-list--home li:first-child a {
+      display: block;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      border-bottom: none;
+      padding: 0;
     }
     .post-date { 
       color: var(--text-muted); 
@@ -497,6 +536,39 @@
     .badges img {
       image-rendering: pixelated;
     }
+    
+    .more-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 10pt;
+    }
+    .more-link:hover {
+      color: var(--accent);
+    }
+    .instagram-grid {
+      margin: 0;
+      columns: 3;
+      column-gap: 8px;
+    }
+    @media (max-width: 500px) {
+      .instagram-grid { columns: 2; }
+    }
+    .instagram-thumb {
+      display: block;
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+    .instagram-thumb img {
+      width: 100%;
+      display: block;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      border-radius: 8px;
+    }
+    .instagram-thumb:hover img {
+      opacity: 1;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
@@ -558,8 +630,11 @@
 <body>
   <header class="header">
     <div class="header-left">
-      <a href="/" class="handle">pradeep elankumaran</a>
-      <span class="tagline">Thinking<span class="ellipsis"></span></span>
+      <img src="/images/profile.jpg" alt="" class="profile-photo">
+      <div class="header-text">
+        <a href="/" class="handle">PRADEEP ELANKUMARAN</a>
+        <span class="tagline">Thinking<span class="ellipsis"></span></span>
+      </div>
     </div>
     <div class="social"><a href="https://x.com/pradeep24" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://instagram.com/skyfallsin" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><button id="theme-toggle" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button></div>
   </header>
