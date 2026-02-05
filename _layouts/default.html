@@ -597,10 +597,39 @@
       display: block;
       opacity: 0.85;
       transition: opacity 0.2s;
-      border-radius: 8px;
+      border-radius: 4px !important;
     }
     .instagram-thumb:hover img {
       opacity: 1;
+    }
+    
+    /* Bio section styling */
+    h2#about ~ p {
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    
+    /* Startup entries */
+    .startup-entry {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+    .startup-logo {
+      display: block;
+    }
+    .startup-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .startup-text {
+      line-height: 1.6;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
