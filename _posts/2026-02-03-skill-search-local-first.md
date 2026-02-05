@@ -2,7 +2,7 @@
 layout: post
 title: "safe-skill-search: quality-filtered local search for agent skills"
 date: 2026-02-03
-published: false
+published: true
 ---
 
 In my [previous post](/2026/02/03/ai-agent-skills-database.html), I analyzed 4,784 AI agent skills across 5 registries. The takeaway wasn't just "wow, lots of skills." It was: **an agent needs to navigate this space instantly—and safely.**
