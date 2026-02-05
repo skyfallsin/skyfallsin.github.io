@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Camoufox-Browser: Why AI Agents Need C++ Anti-Detection"
+title: "camoufox-browser: Why AI Agents Need C++ Anti-Detection"
 date: 2026-02-03
 published: false
 ---
