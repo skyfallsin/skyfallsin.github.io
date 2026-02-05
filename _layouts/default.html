@@ -30,15 +30,15 @@
   <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
   <style>
     :root {
-      --bg: #faf8f5;
-      --bg-alt: #f0ebe3;
-      --bg-alt-rgb: 240, 235, 227;
-      --text: #2c2c2c;
-      --text-muted: #6b5c4d;
-      --accent: #8b5a2b;
-      --accent-hover: #a0522d;
-      --border: #d4c4b0;
-      --selection: #deb887;
+      --bg: #ffffff;
+      --bg-alt: #f5f5f5;
+      --bg-alt-rgb: 245, 245, 245;
+      --text: #111111;
+      --text-muted: #555555;
+      --accent: #0066cc;
+      --accent-hover: #0044aa;
+      --border: #e0e0e0;
+      --selection: #b3d4fc;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
@@ -78,7 +78,7 @@
         var(--bg);
       background-size: 20px 20px, 20px 20px, 100% 100%;
       color: var(--text);
-      --grid-color: rgba(139, 90, 43, 0.04);
+      --grid-color: rgba(0, 0, 0, 0.03);
       cursor: crosshair;
     }
     body::before {
@@ -108,7 +108,7 @@
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       opacity: 0.03;
     }
-    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: rgba(139, 90, 43, 0.04); }
+    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: rgba(0, 0, 0, 0.03); }
     [data-theme="light"] body::before { opacity: 0; }
     
     a, button, .social a { cursor: pointer; }
@@ -444,20 +444,20 @@
     pre code { padding: 0; background: transparent; }
     .hljs { background: var(--bg-alt); }
     
-    /* Light mode - warm sepia syntax */
-    .hljs-keyword { color: #8b4513; }
-    .hljs-string { color: #2e8b57; }
-    .hljs-number { color: #6b5c4d; }
-    .hljs-function { color: #5c4033; }
-    .hljs-title { color: #5c4033; }
-    .hljs-comment { color: #9e9e8e; font-style: italic; }
-    .hljs-built_in { color: #8b4513; }
-    .hljs-variable { color: #6b5c4d; }
-    .language-bash .hljs-built_in { color: #8b4513; }
-    .language-bash .hljs-variable { color: #5c4033; }
-    .language-bash .hljs-string { color: #2e8b57; }
-    .language-bash .hljs-meta { color: #9e9e8e; }
-    .language-bash .hljs-keyword { color: #8b4513; }
+    /* Light mode - ink blue syntax */
+    .hljs-keyword { color: #0550ae; }
+    .hljs-string { color: #0a3069; }
+    .hljs-number { color: #0550ae; }
+    .hljs-function { color: #6639ba; }
+    .hljs-title { color: #6639ba; }
+    .hljs-comment { color: #8b949e; font-style: italic; }
+    .hljs-built_in { color: #0550ae; }
+    .hljs-variable { color: #24292f; }
+    .language-bash .hljs-built_in { color: #0550ae; }
+    .language-bash .hljs-variable { color: #24292f; }
+    .language-bash .hljs-string { color: #0a3069; }
+    .language-bash .hljs-meta { color: #8b949e; }
+    .language-bash .hljs-keyword { color: #0550ae; }
     
     /* Neon syntax highlighting for dark mode */
     [data-theme="dark"] .hljs { color: #e0e0e0; }
