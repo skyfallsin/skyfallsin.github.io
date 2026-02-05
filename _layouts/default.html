@@ -112,8 +112,7 @@
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--text-muted);
-      letter-spacing: -0.5px;
-      word-spacing: -0.15em;
+      letter-spacing: -0.02em;
       text-decoration: none;
     }
     .handle:hover {
@@ -296,14 +295,22 @@
       padding-bottom: 0.5rem; 
     }
     h2 {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin: 2rem 0 0.5rem;
-      letter-spacing: 1px;
+      font-size: 1.4rem;
     }
     h3 {
       font-size: 1.1rem;
       color: var(--text-muted);
+    }
+    article h2,
+    article h3 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    main > h2 {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 2rem 0 0.5rem;
+      letter-spacing: 1px;
     }
     .post-list { 
       list-style: none; 
@@ -462,8 +469,14 @@
     }
     th, td {
       padding: 0.75rem 1rem;
-      text-align: left;
+      text-align: center;
       border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      font-size: 10pt;
+      color: var(--text-muted);
+    }
+    th:last-child, td:last-child {
+      border-right: none;
     }
     th {
       color: var(--accent);
@@ -551,8 +564,9 @@
       columns: 3;
       column-gap: 8px;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .instagram-grid { columns: 2; }
+      .chart-grid { grid-template-columns: 1fr !important; }
     }
     .instagram-thumb {
       display: block;
