@@ -209,9 +209,9 @@ $ safe-skill-search url trello
 https://github.com/openclaw/skills/tree/main/skills/steipete/trello
 ```
 
-## A skill that finds skills
+## Bootstrapping your agent's toolkit
 
-safe-skill-search is intentionally recursive. It's a skill whose job is to help you find and install other skills—safely.
+safe-skill-search is a CLI tool that helps you discover and vet skills before installing them.
 
 The workflow:
 

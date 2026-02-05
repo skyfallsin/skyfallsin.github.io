@@ -793,7 +793,6 @@
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
-      opacity: 0.6;
       position: relative;
     }
     .badges::before {
@@ -985,8 +984,10 @@
   <main>{{ content }}</main>
   
   <footer class="badges">
+    <a href="https://askjo.ai"><img data-src="/images/jo-badge.png" alt="jo" width="88" height="31"></a>
     <img data-src="https://cyber.dabamos.de/88x31/geocities.gif" alt="GeoCities" width="88" height="31">
     <img data-src="https://cyber.dabamos.de/88x31/vim.gif" alt="Vim" width="88" height="31">
+    <img data-src="http://www.slackware.com/~msimons/slackware/grfx/shared/slackwarebutton.gif" alt="Slackware" width="88" height="31">
   </footer>
   <script>
     const badgeObserver = new IntersectionObserver((entries) => {
