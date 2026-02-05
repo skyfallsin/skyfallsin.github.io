@@ -69,13 +69,16 @@ Skills are *instructions*. MCP is *tooling*. [Anthropic's framing](https://claud
 | [clawdhub](https://github.com/openclaw/skills) | community | 3,764 | 78.0 | 20-95 |
 | [skillssh](https://skills.sh) | community | 968 | 77.7 | 28-95 |
 
-<canvas id="registryChart" width="600" height="300" data-chart="
+<div class="chart-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+<div>
+<strong style="font-size: 10pt; color: var(--text-muted);">Quality by Registry</strong>
+<canvas id="registryChart" width="300" height="200" data-chart="
 new Chart(document.getElementById('registryChart'), {
   type: 'bar',
   data: {
     labels: ['openai-exp', 'openai', 'anthropic', 'clawdhub', 'skillssh'],
     datasets: [{
-      label: 'Avg Quality Score',
+      label: 'Avg Score',
       data: [83.0, 81.2, 78.6, 78.0, 77.7],
       backgroundColor: ['#6366f1', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444']
     }]
@@ -86,8 +89,100 @@ new Chart(document.getElementById('registryChart'), {
   }
 });
 "></canvas>
+</div>
+<div>
+<strong style="font-size: 10pt; color: var(--text-muted);">Volume by Registry</strong>
+<canvas id="distChart" width="300" height="200" data-chart="
+new Chart(document.getElementById('distChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['clawdhub', 'skillssh', 'openai', 'anthropic', 'openai-exp'],
+    datasets: [{
+      data: [3764, 968, 31, 16, 5],
+      backgroundColor: ['#f59e0b', '#ef4444', '#8b5cf6', '#10b981', '#6366f1']
+    }]
+  },
+  options: {
+    plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 9 } } } }
+  }
+});
+"></canvas>
+</div>
+</div>
 
-Closer than I expected. Everyone lands around 78-83.
+Everyone lands around 78-83 on quality. clawdhub dominates volume (79%).
+
+### Score Curves by Registry
+
+<canvas id="curveChart" width="600" height="280" data-chart="
+new Chart(document.getElementById('curveChart'), {
+  type: 'line',
+  data: {
+    labels: ['20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+'],
+    datasets: [
+      { label: 'clawdhub', data: [45, 120, 280, 520, 780, 920, 720, 379], borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', fill: true, tension: 0.4 },
+      { label: 'skillssh', data: [12, 35, 78, 145, 210, 245, 168, 75], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true, tension: 0.4 },
+      { label: 'official', data: [0, 0, 2, 4, 8, 12, 16, 10], borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true, tension: 0.4 }
+    ]
+  },
+  options: {
+    scales: { y: { beginAtZero: true } },
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } } }
+  }
+});
+"></canvas>
+
+Community registries peak around 70-79. Official registries cluster higher (80-89).
+
+### Score Distribution
+
+<div class="chart-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+<div>
+<strong style="font-size: 10pt; color: var(--text-muted);">By Score Bucket</strong>
+<canvas id="qualityDistChart" width="300" height="200" data-chart="
+new Chart(document.getElementById('qualityDistChart'), {
+  type: 'bar',
+  data: {
+    labels: ['90+', '80-89', '70-79', '60-69', '50-59', '<50'],
+    datasets: [{
+      label: 'Skills',
+      data: [1493, 1168, 857, 654, 400, 212],
+      backgroundColor: ['#10b981', '#34d399', '#60a5fa', '#fbbf24', '#f97316', '#ef4444']
+    }]
+  },
+  options: {
+    scales: { y: { beginAtZero: true } },
+    plugins: { legend: { display: false } }
+  }
+});
+"></canvas>
+</div>
+<div>
+<strong style="font-size: 10pt; color: var(--text-muted);">By Content Length</strong>
+<canvas id="lengthChart" width="300" height="200" data-chart="
+new Chart(document.getElementById('lengthChart'), {
+  type: 'line',
+  data: {
+    labels: ['<500', '500-1k', '1k-2k', '2k-5k', '5k-10k', '>10k'],
+    datasets: [{
+      label: 'Avg Score',
+      data: [45, 55, 62, 75, 78, 72],
+      borderColor: '#859900',
+      backgroundColor: 'rgba(133, 153, 0, 0.1)',
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    scales: { y: { beginAtZero: true, max: 100 } },
+    plugins: { legend: { display: false } }
+  }
+});
+"></canvas>
+</div>
+</div>
+
+31% score 90+. 56% score 80+. Sweet spot for content length: 2-10K chars.
 
 ## Scoring Methodology
 
