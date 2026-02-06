@@ -301,11 +301,11 @@ Whether we end up with a skills ecosystem that deserves trust, or just another g
 ## Browse
 
 - [Interactive table →](/skills/)
-- [skills.db](/data/skills-db/skills.db) (SQLite, 2.1MB)
+- [skills.db](https://github.com/jo-inc/skills-db/raw/main/skills.db) (SQLite, 2.1MB)
 - [skills.json](/skills/skills.json)
 
 ```bash
-curl -LO https://skyfallsin.github.io/data/skills-db/skills.db
+curl -LO https://github.com/jo-inc/skills-db/raw/main/skills.db
 sqlite3 skills.db "SELECT name, quality_score FROM skills ORDER BY quality_score DESC LIMIT 10"
 ```
 
