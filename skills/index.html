@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Skills Database</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #002b36;
+      color: #839496;
+      padding: 20px;
+      font-size: 13px;
+    }
+    h1 { color: #93a1a1; margin-bottom: 10px; font-size: 18px; }
+    .stats { color: #586e75; margin-bottom: 5px; }
+    .summary { color: #586e75; margin-bottom: 15px; font-size: 11px; }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    input, select {
+      background: #073642;
+      border: 1px solid #586e75;
+      color: #93a1a1;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: 13px;
+    }
+    input:focus, select:focus { outline: none; border-color: #268bd2; }
+    input[type="text"] { width: 300px; max-width: 100%; }
+    select { min-width: 120px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid #073642;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    th {
+      background: #073642;
+      color: #93a1a1;
+      cursor: pointer;
+      position: sticky;
+      top: 0;
+      user-select: none;
+    }
+    th:hover { background: #094959; }
+    th.sorted-asc::after { content: ' ▲'; }
+    th.sorted-desc::after { content: ' ▼'; }
+    tr:hover { background: #073642; }
+    .col-name { width: 25%; }
+    .col-registry { width: 12%; }
+    .col-score { width: 8%; text-align: right; }
+    .col-stars { width: 8%; text-align: right; }
+    .col-rationale { width: 47%; }
+    td.col-score, td.col-stars { text-align: right; font-variant-numeric: tabular-nums; }
+    a { color: #268bd2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .score-high { color: #859900; }
+    .score-mid { color: #b58900; }
+    .score-low { color: #cb4b16; }
+    .registry-tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+    .registry-anthropic { background: #10b981; color: #002b36; }
+    .registry-openai { background: #8b5cf6; color: #fff; }
+    .registry-openai-experimental { background: #6366f1; color: #fff; }
+    .registry-clawdhub { background: #f59e0b; color: #002b36; }
+    .registry-skillssh { background: #ef4444; color: #fff; }
+    #tableBody { height: calc(100vh - 380px); overflow-y: auto; display: block; }
+    thead, tbody tr { display: table; width: 100%; table-layout: fixed; }
+    thead { width: calc(100% - 12px); }
+    .loading { text-align: center; padding: 40px; color: #586e75; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { padding: 10px; font-size: 12px; }
+      h1 { font-size: 16px; }
+      .controls { flex-direction: column; }
+      input[type="text"] { width: 100%; }
+      select { width: 100%; }
+      .col-stars, .col-rationale { display: none; }
+      .col-name { width: 55%; }
+      .col-registry { width: 25%; }
+      .col-score { width: 20%; }
+      #tableBody { height: calc(100vh - 420px); }
+      .chart-container { margin-bottom: 15px; }
+    }
+    @media (max-width: 480px) {
+      .registry-tag { font-size: 9px; padding: 1px 4px; }
+      th, td { padding: 6px 4px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Agent Skills Database</h1>
+  <div class="stats" id="stats">Loading...</div>
+  <div class="summary" id="summary"></div>
+  <div class="summary" style="color: #586e75; font-style: italic;">Data frozen as of Feb 3, 2026</div>
+  
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search skills...">
+    <select id="registry">
+      <option value="">All registries</option>
+      <option value="anthropic">anthropic</option>
+      <option value="openai">openai</option>
+      <option value="openai-experimental">openai-experimental</option>
+      <option value="clawdhub">clawdhub</option>
+      <option value="skillssh">skillssh</option>
+    </select>
+    <select id="minScore">
+      <option value="0">Any score</option>
+      <option value="90">90+</option>
+      <option value="80">80+</option>
+      <option value="70">70+</option>
+      <option value="60">60+</option>
+      <option value="50">50+</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name" data-sort="name">Name</th>
+        <th class="col-registry" data-sort="registry">Registry</th>
+        <th class="col-score" data-sort="score">Score</th>
+        <th class="col-stars" data-sort="stars">Stars</th>
+        <th class="col-rationale">Rationale</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <tr><td colspan="5" class="loading">Loading 4,784 skills...</td></tr>
+    </tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let data = [];
+    let sortCol = 'score';
+    let sortDir = 'desc';
+
+    async function init() {
+      const resp = await fetch('skills.json');
+      data = await resp.json();
+      
+      // Calculate summary stats
+      const avgScore = (data.reduce((a, s) => a + s.score, 0) / data.length).toFixed(1);
+      const high = data.filter(s => s.score >= 90).length;
+      const highPct = ((high / data.length) * 100).toFixed(0);
+      
+      document.getElementById('stats').textContent = 
+        `${data.length.toLocaleString()} skills from 5 registries`;
+      document.getElementById('summary').textContent = 
+        `avg score: ${avgScore} · ${highPct}% score 90+ · sorted by quality`;
+      
+      render();
+      bindEvents();
+    }
+
+    function render() {
+      const search = document.getElementById('search').value.toLowerCase();
+      const registry = document.getElementById('registry').value;
+      const minScore = parseInt(document.getElementById('minScore').value) || 0;
+
+      let filtered = data.filter(s => {
+        if (registry && s.registry !== registry) return false;
+        if (s.score < minScore) return false;
+        if (search && !s.name.toLowerCase().includes(search)) return false;
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        let av = a[sortCol], bv = b[sortCol];
+        if (typeof av === 'string') av = av.toLowerCase();
+        if (typeof bv === 'string') bv = bv.toLowerCase();
+        if (av < bv) return sortDir === 'asc' ? -1 : 1;
+        if (av > bv) return sortDir === 'asc' ? 1 : -1;
+        return 0;
+      });
+
+      document.querySelectorAll('th').forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+        if (th.dataset.sort === sortCol) {
+          th.classList.add(sortDir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
+      });
+
+      const html = filtered.map(s => {
+        const scoreClass = s.score >= 80 ? 'score-high' : s.score >= 60 ? 'score-mid' : 'score-low';
+        const regClass = 'registry-' + s.registry;
+        const regUrls = {
+          'anthropic': 'https://github.com/anthropics/skills',
+          'openai': 'https://github.com/openai/codex/tree/main/codex-cli/.codex/skills',
+          'openai-experimental': 'https://github.com/openai/codex/tree/main/codex-cli/.codex/skills/.experimental',
+          'clawdhub': 'https://github.com/openclaw/skills',
+          'skillssh': 'https://skills.sh'
+        };
+        const name = s.url ? `<a href="${s.url}" target="_blank">${esc(s.name)}</a>` : esc(s.name);
+        const regLink = `<a href="${regUrls[s.registry]}" target="_blank" class="registry-tag ${regClass}">${s.registry}</a>`;
+        return `<tr>
+          <td class="col-name" title="${esc(s.name)}">${name}</td>
+          <td class="col-registry">${regLink}</td>
+          <td class="col-score ${scoreClass}">${s.score}</td>
+          <td class="col-stars">${s.stars || '-'}</td>
+          <td class="col-rationale" title="${esc(s.rationale || '')}">${esc(s.rationale || '')}</td>
+        </tr>`;
+      }).join('');
+
+      document.getElementById('tableBody').innerHTML = html || '<tr><td colspan="5">No results</td></tr>';
+      document.getElementById('stats').textContent = 
+        `${filtered.length.toLocaleString()} of ${data.length.toLocaleString()} skills`;
+    }
+
+    function esc(s) {
+      if (!s) return '';
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function bindEvents() {
+      document.getElementById('search').addEventListener('input', debounce(render, 150));
+      document.getElementById('registry').addEventListener('change', render);
+      document.getElementById('minScore').addEventListener('change', render);
+
+      document.querySelectorAll('th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = th.dataset.sort;
+          if (sortCol === col) {
+            sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+          } else {
+            sortCol = col;
+            sortDir = col === 'name' ? 'asc' : 'desc';
+          }
+          render();
+        });
+      });
+    }
+
+    function debounce(fn, ms) {
+      let t;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+    }
+
+    init();
+  </script>
+</body>
+</html>
