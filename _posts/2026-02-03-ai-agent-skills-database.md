@@ -11,11 +11,11 @@ date: 2026-02-03
 - ~10% install packages via npm/pip
 - No verification, no provenance
 - Treat like early npm—read what you install
-- **[Browse all skills →](/data/skills-db/)**
+- **[Browse all skills →](/skills/)**
 
 <br>
 
-As part of jo's upcoming launch, I collected **4,784 AI agent skills from 5 registries** for [safe-skill-search](https://github.com/jo-inc/safe-skill-search) and scored them for quality. **[Browse all skills →](/data/skills-db/)**
+As part of jo's upcoming launch, I collected **4,784 AI agent skills from 5 registries** for [safe-skill-search](https://github.com/jo-inc/safe-skill-search) and scored them for quality. **[Browse all skills →](/skills/)**
 
 This was especially important for us since we're considering adding a self-installing skills feature to make your workflows stabilize faster.
 
@@ -300,9 +300,9 @@ Whether we end up with a skills ecosystem that deserves trust, or just another g
 
 ## Browse
 
-- [Interactive table →](/data/skills-db/)
+- [Interactive table →](/skills/)
 - [skills.db](/data/skills-db/skills.db) (SQLite, 2.1MB)
-- [skills.json](/data/skills-db/skills.json)
+- [skills.json](/skills/skills.json)
 
 ```bash
 curl -LO https://skyfallsin.github.io/data/skills-db/skills.db

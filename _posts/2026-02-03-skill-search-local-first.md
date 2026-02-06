@@ -269,4 +269,4 @@ Local-first with quality filtering is the core constraint.
 
 - [safe-skill-search on GitHub](https://github.com/jo-inc/safe-skill-search)
 - [Skills analysis: 4,784 skills scored →](/2026/02/03/ai-agent-skills-database.html)
-- [Browse the skills database →](/data/skills-db/)
+- [Browse the skills database →](/skills/)
