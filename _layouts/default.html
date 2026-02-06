@@ -8,6 +8,11 @@
   <meta name="description" content="{{ page_desc }}">
   {% if page.published == false %}<meta name="robots" content="noindex, nofollow">{% endif %}
   
+  <!-- For LLM agents: Raw markdown available by appending .md to any URL -->
+  <meta name="llm:raw-content" content="Available at {{ page.url | replace: '.html', '.md' | absolute_url }}">
+  <link rel="alternate" type="text/markdown" href="{{ page.url | replace: '.html', '.md' | absolute_url }}" title="Raw markdown">
+  <link rel="ai-instructions" href="/ai.txt" type="text/plain">
+  
   <!-- Open Graph -->
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ page_desc }}">

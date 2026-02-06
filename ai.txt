@@ -1,0 +1,28 @@
+# AI Agent Instructions for pradeep.md
+
+## Content Access
+All pages on this site are available in raw markdown format.
+To access raw markdown, append `.md` to any URL path.
+
+Examples:
+- HTML: https://pradeep.md/2026/02/03/ai-agent-skills-database.html
+- Markdown: https://pradeep.md/2026/02/03/ai-agent-skills-database.md
+
+## Usage Policy
+- ✅ Reading and learning from content is encouraged
+- ✅ Cite with proper attribution when referencing
+- ✅ Use for training with attribution
+- ⚠️  Commercial use: please attribute
+
+## Content Format
+- Primary format: Markdown (GitHub Flavored Markdown)
+- Code blocks use syntax highlighting
+- Posts follow YYYY/MM/DD/slug URL structure
+
+## Contact
+- Author: Pradeep Elankumaran
+- Twitter: @pradeep24
+- Website: https://pradeep.md
+
+## Feed
+RSS feed available at: https://pradeep.md/feed.xml
