@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "camofox-browser: A Browser That Actually Gets Stuff Done"
+title: "camofox-browser: An OpenClaw Browser That Doesn't Get Blocked"
 date: 2026-02-10
 published: true
-image: /images/posts/camofox-og.png
+image: /images/posts/fox-og.png
 ---
 
 <p align="center" style="margin-bottom: 2em;">
-  <img src="/images/posts/camofox.png" alt="camofox-browser" width="300" />
+  <img src="/images/posts/fox.png" alt="camofox-browser" width="300" />
 </p>
 
 **[camofox-browser](https://github.com/jo-inc/camofox-browser)** is an [OpenClaw](https://openclaw.ai) plugin that lets your agents browse sites that normally block automation—X, Product Hunt, Amazon, and more. It was extracted from [Jo](https://askjo.ai), where it powers our server-side web browsing.
