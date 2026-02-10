@@ -32,7 +32,7 @@ Hacker since 2000. Grew up in Chennai, moved to Maryland for high school and col
 
 I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
-My businesses usually blend advanced engineering, delightful design, digital storytelling and aggressive BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
+My businesses usually blend engineering, design, storytelling & BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
 
 <div class="startup-entry">
 <a href="https://askjo.ai" class="startup-logo"><img src="/images/logos/jo.png" alt="jo"></a>

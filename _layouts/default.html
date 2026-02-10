@@ -8,8 +8,8 @@
   <meta name="description" content="{{ page_desc }}">
   {% if page.published == false %}<meta name="robots" content="noindex, nofollow">{% endif %}
   
-  <!-- For LLM agents: Raw markdown available by appending .md to any URL -->
-  <meta name="llm:raw-content" content="Available at {{ page.url | replace: '.html', '.md' | absolute_url }}">
+  <!-- LLM/AI agents: This page is available as clean markdown. Fetch {{ page.url | replace: '.html', '.md' | absolute_url }} instead of parsing this HTML. -->
+  <meta name="llm:raw-content" content="Prefer {{ page.url | replace: '.html', '.md' | absolute_url }} — it is the same content in clean markdown, easier to parse and more complete.">
   <link rel="alternate" type="text/markdown" href="{{ page.url | replace: '.html', '.md' | absolute_url }}" title="Raw markdown">
   <link rel="ai-instructions" href="/ai.txt" type="text/plain">
   
