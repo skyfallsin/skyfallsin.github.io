@@ -1,0 +1,182 @@
+/*
+ * LiftKit Design Tokens
+ * Golden ratio (φ = 1.618) scale system + semantic color tokens
+ * https://liftkit.design
+ */
+
+:root {
+  /* ─── Scale Factor ─────────────────────────────────── */
+  --lk-scalefactor: 1.618;
+  --lk-wholestep: 1.618;
+  --lk-halfstep: 1.272;    /* √φ  */
+  --lk-quarterstep: 1.128; /* √√φ */
+
+  /* ─── Size Scale (golden ratio progression) ────────── */
+  --lk-size-3xs: calc(1rem / 1.618 / 1.618 / 1.618);          /* ~0.236rem */
+  --lk-size-2xs: calc(1rem / 1.618 / 1.618);                   /* ~0.382rem */
+  --lk-size-xs:  calc(1rem / 1.618);                            /* ~0.618rem */
+  --lk-size-sm:  calc(1rem / 1.272);                            /* ~0.786rem */
+  --lk-size-md:  1rem;
+  --lk-size-lg:  calc(1rem * 1.618);                            /* ~1.618rem */
+  --lk-size-xl:  calc(1rem * 1.618 * 1.618);                   /* ~2.618rem */
+  --lk-size-2xl: calc(1rem * 1.618 * 1.618 * 1.618);           /* ~4.236rem */
+  --lk-size-3xl: calc(1rem * 1.618 * 1.618 * 1.618 * 1.618);  /* ~6.854rem */
+
+  /* ─── Typography — Font Sizes ──────────────────────── */
+  --lk-font-display1:   calc(1rem * 1.618 * 1.618 * 1.618);    /* ~4.236rem */
+  --lk-font-title1:     calc(1rem * 1.618 * 1.618);             /* ~2.618rem */
+  --lk-font-title2:     calc(1rem * 1.618 * 1.272);             /* ~2.058rem — wholestep × halfstep */
+  --lk-font-heading:    calc(1rem * 1.618);                      /* ~1.618rem */
+  --lk-font-subheading: calc(1rem * 1.272);                      /* ~1.272rem */
+  --lk-font-body:       1rem;
+  --lk-font-callout:    calc(1rem / 1.128);                      /* ~0.886rem — down a quarterstep */
+  --lk-font-caption:    calc(1rem / 1.272);                      /* ~0.786rem — down a halfstep */
+
+  /* ─── Typography — Line Heights ────────────────────── */
+  --lk-leading-tight:  1.272;  /* halfstep — headings, display */
+  --lk-leading-normal: 1.618;  /* wholestep — body, callout */
+  --lk-leading-loose:  calc(1.618 * 1.128); /* ~1.826 — captions, spacious */
+
+  /* ─── Typography — Letter Spacing ──────────────────── */
+  --lk-tracking-tight:   -0.022em; /* display, title1 */
+  --lk-tracking-snug:    -0.012em; /* title2, heading */
+  --lk-tracking-normal:  -0.004em; /* body, subheading */
+  --lk-tracking-wide:     0.006em; /* callout, caption */
+
+  /* ─── Light Mode Colors ────────────────────────────── */
+  --lk-surface:                 #ffffff;
+  --lk-on-surface:              #111111;
+  --lk-surface-container:       #f5f5f5;
+  --lk-surface-container-high:  #ebebeb;
+
+  --lk-primary:    #0066cc;
+  --lk-on-primary: #ffffff;
+
+  --lk-secondary:  #555555;
+  --lk-tertiary:   #0044aa;
+
+  --lk-outline:         #e0e0e0;
+  --lk-outline-variant: #cccccc;
+
+  --lk-selection:  #b3d4fc;
+
+  /* ─── Light Mode Shadows ───────────────────────────── */
+  --lk-shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  --lk-shadow-md:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.06);
+  --lk-shadow-lg:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    0 16px 32px rgba(0, 0, 0, 0.04);
+  --lk-shadow-xl:
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.06),
+    0 32px 64px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Dark Mode — explicit toggle ──────────────────────── */
+:root[data-theme="dark"] {
+  --lk-surface:                 #0d0d0d;
+  --lk-on-surface:              #e8e8e8;
+  --lk-surface-container:       #1a1a2e;
+  --lk-surface-container-high:  #252540;
+
+  --lk-primary:    #c084fc;
+  --lk-on-primary: #0d0d0d;
+
+  --lk-secondary:  #a78bfa;
+  --lk-tertiary:   #e879f9;
+
+  --lk-outline:         #2d1b4e;
+  --lk-outline-variant: #3d2b5e;
+
+  --lk-selection:  #7c3aed;
+
+  --lk-shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.20),
+    0 1px 3px rgba(0, 0, 0, 0.24);
+  --lk-shadow-md:
+    0 2px 4px rgba(0, 0, 0, 0.20),
+    0 4px 8px rgba(0, 0, 0, 0.24);
+  --lk-shadow-lg:
+    0 4px 8px rgba(0, 0, 0, 0.20),
+    0 8px 16px rgba(0, 0, 0, 0.24),
+    0 16px 32px rgba(0, 0, 0, 0.16);
+  --lk-shadow-xl:
+    0 8px 16px rgba(0, 0, 0, 0.20),
+    0 16px 32px rgba(0, 0, 0, 0.24),
+    0 32px 64px rgba(0, 0, 0, 0.32);
+}
+
+/* ─── Dark Mode — system preference ────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lk-surface:                 #0d0d0d;
+    --lk-on-surface:              #e8e8e8;
+    --lk-surface-container:       #1a1a2e;
+    --lk-surface-container-high:  #252540;
+
+    --lk-primary:    #c084fc;
+    --lk-on-primary: #0d0d0d;
+
+    --lk-secondary:  #a78bfa;
+    --lk-tertiary:   #e879f9;
+
+    --lk-outline:         #2d1b4e;
+    --lk-outline-variant: #3d2b5e;
+
+    --lk-selection:  #7c3aed;
+
+    --lk-shadow-sm:
+      0 1px 2px rgba(0, 0, 0, 0.20),
+      0 1px 3px rgba(0, 0, 0, 0.24);
+    --lk-shadow-md:
+      0 2px 4px rgba(0, 0, 0, 0.20),
+      0 4px 8px rgba(0, 0, 0, 0.24);
+    --lk-shadow-lg:
+      0 4px 8px rgba(0, 0, 0, 0.20),
+      0 8px 16px rgba(0, 0, 0, 0.24),
+      0 16px 32px rgba(0, 0, 0, 0.16);
+    --lk-shadow-xl:
+      0 8px 16px rgba(0, 0, 0, 0.20),
+      0 16px 32px rgba(0, 0, 0, 0.24),
+      0 32px 64px rgba(0, 0, 0, 0.32);
+  }
+}
+
+/* ─── Light Mode — explicit toggle override ────────────── */
+:root[data-theme="light"] {
+  --lk-surface:                 #ffffff;
+  --lk-on-surface:              #111111;
+  --lk-surface-container:       #f5f5f5;
+  --lk-surface-container-high:  #ebebeb;
+
+  --lk-primary:    #0066cc;
+  --lk-on-primary: #ffffff;
+
+  --lk-secondary:  #555555;
+  --lk-tertiary:   #0044aa;
+
+  --lk-outline:         #e0e0e0;
+  --lk-outline-variant: #cccccc;
+
+  --lk-selection:  #b3d4fc;
+
+  --lk-shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  --lk-shadow-md:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.06);
+  --lk-shadow-lg:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    0 16px 32px rgba(0, 0, 0, 0.04);
+  --lk-shadow-xl:
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.06),
+    0 32px 64px rgba(0, 0, 0, 0.08);
+}
