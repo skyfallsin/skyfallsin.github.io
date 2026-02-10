@@ -19,12 +19,14 @@
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}">{% endif %}
   
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:site" content="@{{ site.twitter }}">
   <meta name="twitter:title" content="{{ page.title | default: site.title }}">
   <meta name="twitter:description" content="{{ page_desc }}">
+  {% if page.image %}<meta name="twitter:image" content="{{ page.image | absolute_url }}">{% endif %}
   
   <!-- RSS Feed -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
