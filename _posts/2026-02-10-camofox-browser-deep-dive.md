@@ -3,7 +3,7 @@ layout: post
 title: "camofox-browser: A Browser That Actually Gets Stuff Done"
 date: 2026-02-10
 published: true
-image: /images/posts/camofox.png
+image: /images/posts/camofox-og.png
 ---
 
 <p align="center" style="margin-bottom: 2em;">
