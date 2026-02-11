@@ -34,6 +34,10 @@ I build teams that ship joyful consumer products (usually from scratch). I work 
 
 My businesses usually blend engineering, design, storytelling & BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
 
+I solo backpack, make landscape photos, and read a lot of fiction. Based in Silicon Valley.
+
+## PROJECTS
+
 <div class="startup-entry">
 <a href="https://askjo.ai" class="startup-logo"><img src="/images/logos/jo.png" alt="jo"></a>
 <div class="startup-text"><strong><a href="https://askjo.ai">jo</a></strong> (YC W24) — Co-founded with <a href="https://x.com/liveink">Kevin Li</a>. After six months talking to LLMs for hours a day, I started building an AI that lives on your computer. Nascent.</div>
@@ -54,7 +58,12 @@ My businesses usually blend engineering, design, storytelling & BD. I'm very int
 <div class="startup-text"><strong>Lyft</strong> — Stayed on after acquisition. Driver growth, unlocking conversion in major markets.</div>
 </div>
 
-I solo backpack, make landscape photos, and read a lot of fiction. Based in Silicon Valley.
+## OPEN SOURCE
+
+<div class="startup-entry">
+<a href="https://github.com/jo-inc/camofox-browser" class="startup-logo"><img src="/images/logos/camofox.png" alt="camofox-browser" class="logo-padded"></a>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/camofox-browser">camofox-browser</a></strong> — Anti-detection browser server for AI agents. Wraps <a href="https://camoufox.com">Camoufox</a> (Firefox fork with C++ level fingerprint spoofing) in a REST API built for agents: accessibility snapshots, stable element refs, and search macros. The same engine behind <a href="https://askjo.ai">jo</a>'s web browsing.</div>
+</div>
 
 <script>
 (function() {
