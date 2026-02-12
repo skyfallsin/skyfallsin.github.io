@@ -1238,24 +1238,25 @@
     });
     document.querySelectorAll('.badges img[data-src]').forEach(img => badgeObserver.observe(img));
 
-    // Parallax tilt on article images — driven by page-wide mouse position
-    const parallaxImages = document.querySelectorAll('article img');
-    parallaxImages.forEach(img => {
-      img.style.transition = 'transform 0.2s ease-out';
-      img.style.willChange = 'transform';
-      img.parentElement.style.perspective = '600px';
-    });
-    if (parallaxImages.length > 0) {
+    // Parallax tilt on article images
+    (function() {
+      const imgs = document.querySelectorAll('article img');
+      console.log('parallax: found', imgs.length, 'images');
+      imgs.forEach(img => {
+        img.style.transition = 'transform 0.2s ease-out';
+        img.style.willChange = 'transform';
+        img.style.transformStyle = 'preserve-3d';
+      });
       document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) - 0.5;
-        const y = (e.clientY / window.innerHeight) - 0.5;
-        parallaxImages.forEach(img => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        imgs.forEach(img => {
           if (getComputedStyle(img).display !== 'none') {
-            img.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg) scale(1.02)`;
+            img.style.transform = 'perspective(500px) rotateY(' + (x * 15) + 'deg) rotateX(' + (-y * 15) + 'deg)';
           }
         });
       });
-    }
+    })();
 
     // Scroll-in animation for index page sections
     document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
