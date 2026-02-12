@@ -420,6 +420,15 @@
       to { max-width: 10ch; }
     }
     
+    @media (max-width: 600px) {
+      .handle {
+        font-size: var(--lk-font-heading);
+      }
+      .post-layout article h1:first-child {
+        font-size: var(--lk-font-title2);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .handle.page-title {
         animation: none;
