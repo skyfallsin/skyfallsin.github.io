@@ -406,6 +406,16 @@
     .handle.page-title {
       white-space: nowrap;
     }
+
+    .scroll-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .scroll-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .handle.page-title .ext {
       margin-left: -0.35ch;
     }
@@ -1228,6 +1238,20 @@
     });
     document.querySelectorAll('.badges img[data-src]').forEach(img => badgeObserver.observe(img));
 
+    // Scroll-in animation for index page sections
+    document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
+      el.classList.add('scroll-in');
+      el.style.transitionDelay = `${i * 0.05}s`;
+    });
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.scroll-in').forEach(el => scrollObserver.observe(el));
 
   </script>
 </body>

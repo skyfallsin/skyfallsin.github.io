@@ -66,7 +66,7 @@ I solo backpack, make landscape photos, and read a lot of fiction. Based in Sili
 </div>
 
 <div class="startup-entry">
-<a href="https://github.com/skyfallsin/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded"></a>
+<a href="https://github.com/skyfallsin/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded theme-img-light"><img src="/images/logos/pi-mem-dark.png" alt="pi-mem" class="logo-padded theme-img-dark"></a>
 <div class="startup-text"><strong><a href="https://github.com/skyfallsin/pi-mem">pi-mem</a></strong> — Plain-Markdown memory extension for the <a href="https://pi.dev/">pi</a> coding agent. Three tiers — long-term facts, daily logs, scratchpad checklist — injected into context every turn. No embeddings, no vector DB, just files on disk. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
 </div>
 
