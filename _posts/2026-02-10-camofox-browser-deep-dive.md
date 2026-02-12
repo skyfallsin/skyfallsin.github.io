@@ -118,3 +118,7 @@ curl http://localhost:9377/health
 ```
 
 The repo is MIT-licensed and still early — there will be bugs. Contributions are welcome, and if you run into anything, [file an issue](https://github.com/jo-inc/camofox-browser/issues). We hope the OpenClaw community finds it useful.
+
+---
+
+[Discuss on X](https://x.com/pradeep24/status/2021319785947316490)
