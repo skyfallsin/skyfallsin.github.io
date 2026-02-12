@@ -438,6 +438,17 @@
       font-style: italic;
       position: relative;
     }
+    .theme-img-dark { display: none; }
+    .theme-img-light { display: inline; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .theme-img-dark { display: inline; }
+      :root:not([data-theme="light"]) .theme-img-light { display: none; }
+    }
+    [data-theme="dark"] .theme-img-dark { display: inline; }
+    [data-theme="dark"] .theme-img-light { display: none; }
+    [data-theme="light"] .theme-img-dark { display: none; }
+    [data-theme="light"] .theme-img-light { display: inline; }
+
     article blockquote + p {
       margin-top: 2.5em;
       font-size: 1.15em;
