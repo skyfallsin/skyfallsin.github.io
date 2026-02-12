@@ -5,15 +5,25 @@ title: pradeep
 
 ## RECENT WRITING <a href="/feed.xml" class="rss-icon" aria-label="RSS Feed"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg></a>
 
-<ul class="post-list post-list--home">
+<div class="post-list post-list--home">
 {% assign published_posts = site.posts | where_exp: "post", "post.published != false" %}
 {% for post in published_posts limit:5 %}
-  <li>
+  {% if post.image %}
+  <a href="{{ post.url }}" class="post-entry post-entry--img">
+    <img src="{{ post.image }}" alt="" class="post-thumb" />
+    <span class="post-entry-text">
+      <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <span class="post-entry-title">{{ post.title }}</span>
+    </span>
+  </a>
+  {% else %}
+  <a href="{{ post.url }}" class="post-entry">
     <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>
+    <span class="post-entry-title">{{ post.title }}</span>
+  </a>
+  {% endif %}
 {% endfor %}
-</ul>
+</div>
 
 {% if published_posts.size > 5 %}
 <a href="/posts" class="more-link">more →</a>
