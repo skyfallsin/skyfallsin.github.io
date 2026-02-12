@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html{% if page.force %} data-force-theme="{{ page.force }}"{% endif %}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1149,8 +1149,14 @@
 
       // Theme toggle
       const toggle = document.getElementById('theme-toggle');
+      const forceTheme = document.documentElement.dataset.forceTheme;
       const stored = localStorage.getItem('theme');
-      if (stored) document.documentElement.setAttribute('data-theme', stored);
+      let userOverrode = false;
+      if (forceTheme) {
+        document.documentElement.setAttribute('data-theme', forceTheme);
+      } else if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
       
       toggle?.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
@@ -1160,7 +1166,8 @@
         else if (current === 'light') next = 'dark';
         else next = systemDark ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+        userOverrode = true;
+        if (!forceTheme) localStorage.setItem('theme', next);
       });
 
       // Add thin spaces around em dashes
