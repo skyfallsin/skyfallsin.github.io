@@ -1238,6 +1238,20 @@
     });
     document.querySelectorAll('.badges img[data-src]').forEach(img => badgeObserver.observe(img));
 
+    // Parallax tilt on article images
+    document.querySelectorAll('article img').forEach(img => {
+      img.style.transition = 'transform 0.15s ease-out';
+      img.addEventListener('mousemove', (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        img.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+      });
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'perspective(600px) rotateY(0) rotateX(0) scale(1)';
+      });
+    });
+
     // Scroll-in animation for index page sections
     document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
       el.classList.add('scroll-in');
