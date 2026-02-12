@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html{% if page.force %} data-force-theme="{{ page.force }}"{% endif %}>
+<html{% if page.force %} data-force-theme="{{ page.force }}" data-theme="{{ page.force }}"{% endif %}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -438,6 +438,7 @@
       font-style: italic;
       position: relative;
     }
+    .theme-img-dark, .theme-img-light { border-radius: 16px; }
     .theme-img-dark { display: none; }
     .theme-img-light { display: inline; }
     @media (prefers-color-scheme: dark) {
@@ -455,13 +456,11 @@
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) article blockquote {
-        border-image: linear-gradient(180deg, var(--accent), var(--accent-hover)) 1;
-        box-shadow: -4px 0 16px color-mix(in srgb, var(--lk-primary) 20%, transparent);
+        border-left-color: var(--accent);
       }
     }
     [data-theme="dark"] article blockquote {
-      border-image: linear-gradient(180deg, var(--accent), var(--accent-hover)) 1;
-      box-shadow: -4px 0 16px color-mix(in srgb, var(--lk-primary) 20%, transparent);
+      border-left-color: var(--accent);
     }
     
 
