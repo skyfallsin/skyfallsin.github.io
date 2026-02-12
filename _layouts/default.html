@@ -1241,16 +1241,17 @@
     // Parallax tilt on article images — driven by page-wide mouse position
     const parallaxImages = document.querySelectorAll('article img');
     parallaxImages.forEach(img => {
-      img.style.transition = 'transform 0.3s ease-out';
+      img.style.transition = 'transform 0.2s ease-out';
       img.style.willChange = 'transform';
+      img.parentElement.style.perspective = '600px';
     });
     if (parallaxImages.length > 0) {
       document.addEventListener('mousemove', (e) => {
         const x = (e.clientX / window.innerWidth) - 0.5;
         const y = (e.clientY / window.innerHeight) - 0.5;
         parallaxImages.forEach(img => {
-          if (img.offsetParent !== null) {
-            img.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+          if (getComputedStyle(img).display !== 'none') {
+            img.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg) scale(1.02)`;
           }
         });
       });
