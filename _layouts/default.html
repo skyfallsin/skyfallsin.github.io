@@ -816,6 +816,15 @@
       margin-top: 0;
       font-size: calc(1rem * 1.618 * 1.618 * 1.128);
       letter-spacing: var(--lk-tracking-tight);
+      padding-bottom: var(--lk-size-sm);
+      border-bottom: 1px solid var(--lk-outline);
+      margin-bottom: 0;
+    }
+    .post-layout article h1:first-child + .post-date {
+      text-align: right;
+      width: auto;
+      padding-top: var(--lk-size-xs);
+      margin-top: 0;
     }
     @media (min-width: 1200px) {
       body:has(.post-layout) {
