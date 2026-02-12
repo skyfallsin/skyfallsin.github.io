@@ -62,7 +62,7 @@ I solo backpack, make landscape photos, and read a lot of fiction. Based in Sili
 
 <div class="startup-entry">
 <a href="https://github.com/jo-inc/camofox-browser" class="startup-logo"><img src="/images/logos/camofox.png" alt="camofox-browser" class="logo-padded"></a>
-<div class="startup-text"><strong><a href="https://github.com/jo-inc/camofox-browser">camofox-browser</a></strong> — Anti-detection headless browser for AI agents. Wraps <a href="https://camoufox.com">Camoufox</a> (Firefox fork with C++ fingerprint spoofing) in a REST API. Powers <a href="https://askjo.ai">jo</a>'s web browsing.</div>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/camofox-browser">camofox-browser</a></strong> — Anti-detection headless browser for AI agents. Wraps <a href="https://camoufox.com">Camoufox</a> (Firefox fork with C++ fingerprint spoofing) in a REST API. Powers <a href="https://askjo.ai">jo</a>'s web browsing. <a href="/2026/02/10/camofox-browser-deep-dive.html">Blog post</a>.</div>
 </div>
 
 <div class="startup-entry">
