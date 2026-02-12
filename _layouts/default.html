@@ -1238,26 +1238,23 @@
     });
     document.querySelectorAll('.badges img[data-src]').forEach(img => badgeObserver.observe(img));
 
-    // Parallax tilt on article images
-    document.querySelectorAll('article p > img, article .theme-img-light, article .theme-img-dark').forEach(img => {
-      const wrapper = img.parentElement;
-      wrapper.style.perspective = '800px';
-      wrapper.style.display = 'inline-block';
-      img.style.transition = 'transform 0.2s ease-out';
+    // Parallax tilt on article images — driven by page-wide mouse position
+    const parallaxImages = document.querySelectorAll('article img');
+    parallaxImages.forEach(img => {
+      img.style.transition = 'transform 0.3s ease-out';
       img.style.willChange = 'transform';
-      wrapper.addEventListener('mousemove', (e) => {
-        const rect = wrapper.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const visibleImg = wrapper.querySelector('img:not([style*="display: none"])') || img;
-        visibleImg.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg) scale(1.03)`;
-      });
-      wrapper.addEventListener('mouseleave', () => {
-        wrapper.querySelectorAll('img').forEach(i => {
-          i.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+    });
+    if (parallaxImages.length > 0) {
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+        parallaxImages.forEach(img => {
+          if (img.offsetParent !== null) {
+            img.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+          }
         });
       });
-    });
+    }
 
     // Scroll-in animation for index page sections
     document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
