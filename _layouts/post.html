@@ -22,7 +22,7 @@ layout: default
 (function() {
   const headings = document.querySelectorAll('article h1:not(:first-of-type), article h2, article h3');
   const toc = document.getElementById('toc');
-  if (headings.length < 2) { toc.style.display = 'none'; return; }
+  if (headings.length < 2) return;
   
   const ul = document.createElement('ul');
   let currentH2Details = null;
