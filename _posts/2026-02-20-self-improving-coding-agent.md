@@ -11,8 +11,8 @@ description: "I say 'bro' a lot when my coding agent does the wrong thing. All o
 ---
 
 <p align="center" style="margin: 4em 0;">
-  <img src="/images/posts/pi-reflect.png" alt="pi-reflect" width="550" class="theme-img-light" />
-  <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect" width="550" class="theme-img-dark" />
+  <img src="/images/posts/pi-reflect.png" alt="pi-reflect" style="max-width: 550px; width: 100%;" class="theme-img-light" />
+  <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect" style="max-width: 550px; width: 100%;" class="theme-img-dark" />
 </p>
 
 I say "bro" a lot when my coding agent does the wrong thing. I say "no" and "not that" and "I literally just said." I repeat myself. I undo its work. I sigh audibly even though it can't hear me.
