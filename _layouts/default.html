@@ -28,6 +28,27 @@
   <meta name="twitter:description" content="{{ page_desc }}">
   {% if page.image %}<meta name="twitter:image" content="{{ page.image | absolute_url }}">{% endif %}
   
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Article Schema -->
+  {% if page.date %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": {{ page.title | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
+    "author": {"@type": "Person", "name": "{{ site.author }}", "url": "{{ site.url }}"},
+    "publisher": {"@type": "Person", "name": "{{ site.author }}"},
+    "url": "{{ page.url | absolute_url }}",
+    {% if page.image %}"image": "{{ page.image | absolute_url }}",{% endif %}
+    "description": {{ page_desc | jsonify }}
+  }
+  </script>
+  {% endif %}
+
   <!-- RSS Feed -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
   
@@ -1232,7 +1253,7 @@
 <body>
   <header class="header">
     <div class="header-left">
-      <img src="/images/profile.jpg" alt="" class="profile-photo">
+      <img src="/images/profile.jpg" alt="Pradeep Elankumaran" class="profile-photo">
       <div class="header-text">
         <a href="/" class="handle page-title">PRADEEP<span class="ext">.md</span></a>
         <span class="tagline">Thinking<span class="ellipsis"></span></span>

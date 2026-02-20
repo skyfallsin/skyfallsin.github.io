@@ -7,12 +7,12 @@ image: /images/posts/pi-reflect-og.png
 thumb: /images/logos/pi-reflect.png
 thumb_dark: /images/logos/pi-reflect-dark.png
 force: light
-description: "I say 'bro' a lot when my coding agent does the wrong thing. All of that frustration is data. pi-reflect reviews recent conversations, finds the friction, and edits its own rules so the same mistakes don't happen again."
+description: "pi-reflect reads your coding agent's session logs, finds where you got frustrated, and edits its rules so the same mistakes don't happen again."
 ---
 
 <p align="center" style="margin: 4em 0;">
-  <img src="/images/posts/pi-reflect.png" alt="pi-reflect" style="max-width: 550px; width: 100%;" class="theme-img-light" />
-  <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect" style="max-width: 550px; width: 100%;" class="theme-img-dark" />
+  <img src="/images/posts/pi-reflect.png" alt="pi-reflect logo — self-improving behavioral rules for coding agents" style="max-width: 550px; width: 100%;" class="theme-img-light" loading="lazy" />
+  <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect logo — self-improving behavioral rules for coding agents" style="max-width: 550px; width: 100%;" class="theme-img-dark" loading="lazy" />
 </p>
 
 I say "bro" a lot when my coding agent does the wrong thing. I say "no" and "not that" and "I literally just said." I repeat myself. I undo its work. I sigh audibly even though it can't hear me.
