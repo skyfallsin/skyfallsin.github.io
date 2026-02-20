@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "My Coding Agent Watches Me Get Frustrated, Then Fixes Itself"
-date: 2026-02-13
+date: 2026-02-19
 published: true
 image: /images/posts/pi-reflect.png
 thumb: /images/logos/pi-reflect.png
