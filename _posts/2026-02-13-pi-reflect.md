@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mind-melding with my coding agent Pi"
+title: "All you need is SOUL.md"
 date: 2026-02-13
 published: true
 image: /images/posts/pi-reflect.png
