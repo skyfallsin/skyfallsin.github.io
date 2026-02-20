@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Mind-melding with my coding agent Pi"
+title: "My Coding Agent Watches Me Get Frustrated, Then Fixes Itself"
 date: 2026-02-13
 published: true
 image: /images/posts/pi-reflect.png
