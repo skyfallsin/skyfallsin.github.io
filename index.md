@@ -65,8 +65,13 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 </div>
 
 <div class="startup-entry">
-<a href="https://github.com/skyfallsin/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded theme-img-light"><img src="/images/logos/pi-mem-dark.png" alt="pi-mem" class="logo-padded theme-img-dark"></a>
-<div class="startup-text"><strong><a href="https://github.com/skyfallsin/pi-mem">pi-mem</a></strong> — Plain-Markdown memory for the <a href="https://pi.dev/">pi</a> coding agent. Long-term facts, daily logs, and a scratchpad — just files on disk injected into context. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
+<a href="https://github.com/jo-inc/pi-reflect" class="startup-logo"><img src="/images/logos/pi-reflect.png" alt="pi-reflect" class="logo-padded theme-img-light"><img src="/images/logos/pi-reflect-dark.png" alt="pi-reflect" class="logo-padded theme-img-dark"></a>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-reflect">pi-reflect</a></strong> — Self-improving behavioral rules for the <a href="https://pi.dev/">pi</a> coding agent. Reviews session transcripts, finds where the user got frustrated, and edits the rules file. <a href="/2026/02/20/self-improving-coding-agent.html">Blog post</a>.</div>
+</div>
+
+<div class="startup-entry">
+<a href="https://github.com/jo-inc/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded theme-img-light"><img src="/images/logos/pi-mem-dark.png" alt="pi-mem" class="logo-padded theme-img-dark"></a>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-mem">pi-mem</a></strong> — Plain-Markdown memory for the <a href="https://pi.dev/">pi</a> coding agent. Long-term facts, daily logs, and a scratchpad — just files on disk injected into context. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
 </div>
 
 <script>
