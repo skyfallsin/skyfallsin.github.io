@@ -1063,6 +1063,27 @@
       .badges img { transition: none; }
     }
     
+    .related-posts {
+      margin-top: var(--lk-size-xl);
+      border-top: 1px solid var(--border);
+      padding-top: var(--lk-size-lg);
+    }
+    .related-posts h2 {
+      font-size: var(--lk-font-callout);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      border: none;
+      margin-bottom: var(--lk-size-sm);
+    }
+    .related-posts ul {
+      list-style: none;
+      padding: 0;
+    }
+    .related-posts li {
+      margin-bottom: var(--lk-size-xs);
+      font-size: var(--lk-font-callout);
+    }
     .more-link {
       display: inline-block;
       margin-top: var(--lk-size-2xs);
@@ -1263,6 +1284,19 @@
   </header>
 
   <main>{{ content }}</main>
+  {% if page.date %}
+  {% assign related = site.posts | where_exp: "post", "post.url != page.url" | where_exp: "post", "post.published != false" %}
+  {% if related.size > 0 %}
+  <nav class="related-posts">
+    <h2>More posts</h2>
+    <ul>
+    {% for post in related limit:4 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+  {% endif %}
   
   <footer class="badges">
     <a href="https://askjo.ai"><img data-src="/images/jo-badge.png" alt="jo" width="88" height="31"></a>
