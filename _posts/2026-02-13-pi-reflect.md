@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "All you need is SOUL.md"
+title: "*.md is all you need"
 date: 2026-02-13
 published: true
 image: /images/posts/pi-reflect.png
