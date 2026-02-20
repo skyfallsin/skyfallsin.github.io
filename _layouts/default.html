@@ -1081,8 +1081,12 @@
       padding: 0;
     }
     .related-posts li {
-      margin-bottom: var(--lk-size-xs);
+      padding: var(--lk-size-xs) 0;
       font-size: var(--lk-font-callout);
+      border-bottom: 1px solid var(--border);
+    }
+    .related-posts li:last-child {
+      border-bottom: none;
     }
     .more-link {
       display: inline-block;
