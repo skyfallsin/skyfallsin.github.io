@@ -3,7 +3,7 @@ layout: post
 title: "My Coding Agent Watches Me Get Frustrated, Then Fixes Itself"
 date: 2026-02-20
 published: true
-image: /images/posts/pi-reflect-og.png
+image: /images/posts/pi-reflect-og.jpg
 thumb: /images/logos/pi-reflect.png
 thumb_dark: /images/logos/pi-reflect-dark.png
 force: light
