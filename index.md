@@ -31,13 +31,9 @@ title: pradeep
 
 ## ABOUT
 
-Hacker since 2000. Grew up in Chennai, moved to Maryland for high school and college, then the Bay Area to run startups.
+Hacker since 2000. I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
-I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
-
-My businesses usually blend engineering, design, storytelling & BD. I'm very interested in products that have the unit economic structures to improve the quality of life for every person in the world.
-
-I solo backpack, make landscape photos, and read a lot of fiction. Based in Silicon Valley.
+I solo backpack, make landscape photos, and read a lot of fiction.
 
 ## PROJECTS
 
