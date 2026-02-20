@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "*.md is all you need"
+title: "Self-reflection in Markdown is all you need"
 date: 2026-02-13
 published: true
 image: /images/posts/pi-reflect.png
@@ -13,6 +13,8 @@ force: light
   <img src="/images/posts/pi-reflect.png" alt="pi-reflect" width="550" class="theme-img-light" />
   <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect" width="550" class="theme-img-dark" />
 </p>
+
+It's possible to mind-meld with your agent with just markdown file iteration, but it has to be done automatically.
 
 My obsession with [pi](https://pi.dev/) continues. Session files in pi are stored on disk as structured JSONL. Every user message, every assistant response, every tool call. That's uncommon in the coding agent ecosystem, and it means you can build a self-improving agent for yourself with just markdown files.
 
