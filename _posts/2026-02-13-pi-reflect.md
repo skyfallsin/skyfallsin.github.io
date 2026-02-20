@@ -14,6 +14,8 @@ force: light
   <img src="/images/posts/pi-reflect-dark.png" alt="pi-reflect" width="550" class="theme-img-dark" />
 </p>
 
+My obsession with [pi](https://pi.dev/) continues. Session files in pi are stored on disk as structured JSONL. Every user message, every assistant response, every tool call. That's uncommon in the coding agent ecosystem, and it means there's a wealth of behavioral data just sitting there.
+
 [pi-mem](/2026/02/11/pi-mem.html) solved cold starts. The agent remembers what you told it. But memory is passive. It doesn't learn from what it's already done.
 
 **[pi-reflect](https://github.com/jo-inc/pi-reflect)** reviews recent conversations, finds where the agent screwed up, and edits the behavioral rules file so it doesn't happen again. Schedule it daily. Wake up to a better agent.
