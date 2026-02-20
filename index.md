@@ -71,7 +71,7 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 
 <div class="startup-entry">
 <a href="https://github.com/jo-inc/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded theme-img-light"><img src="/images/logos/pi-mem-dark.png" alt="pi-mem" class="logo-padded theme-img-dark"></a>
-<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-mem">pi-mem</a></strong> — Plain-Markdown memory for the <a href="https://pi.dev/">pi</a> coding agent. Long-term facts, daily logs, and a scratchpad — just files on disk injected into context. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-mem">pi-mem</a></strong> — Plain-Markdown memory for the <a href="https://pi.dev/">pi</a> coding agent. Long-term facts, daily logs, and a scratchpad. Files on disk injected into context. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
 </div>
 
 <script>
