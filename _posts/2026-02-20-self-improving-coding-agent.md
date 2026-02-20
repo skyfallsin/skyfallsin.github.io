@@ -1,12 +1,13 @@
 ---
 layout: post
 title: "My Coding Agent Watches Me Get Frustrated, Then Fixes Itself"
-date: 2026-02-19
+date: 2026-02-20
 published: true
 image: /images/posts/pi-reflect-og.png
 thumb: /images/logos/pi-reflect.png
 thumb_dark: /images/logos/pi-reflect-dark.png
 force: light
+description: "I say 'bro' a lot when my coding agent does the wrong thing. All of that frustration is data. pi-reflect reviews recent conversations, finds the friction, and edits its own rules so the same mistakes don't happen again."
 ---
 
 <p align="center" style="margin: 4em 0;">
@@ -89,7 +90,7 @@ The SOUL.md case is the interesting one. Jo is a consumer AI assistant with a pe
 
 It also tracks which rules aren't sticking:
 
-```
+```text
 Recurring (not sticking):
   Read Before Acting     ×9 (6 strengthen, 3 add)
   Scope & Precision      ×5 (2 strengthen, 3 add)
