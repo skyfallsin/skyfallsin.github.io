@@ -80,7 +80,7 @@ The SOUL.md case is the interesting one. Jo is a consumer AI assistant with a pe
 2026-02-13  0.10  █           (3/29 sessions)
 2026-02-14  0.52  █████       (24/46 sessions)
 2026-02-15  1.07  ███████████ (47/44 sessions)
-2026-02-18  0.67  ███████     (28/42 sessions)
+2026-02-16  0.67  ███████     (28/42 sessions)
 ```
 
 The drop from 0.45 to 0.07 is the agent absorbing my patterns. The spike on Feb 14-15 is real. I started an extensive Rust project unlike anything I'd built before, generating novel correction patterns the rules hadn't seen. The file grew from 180 to 325 lines.
