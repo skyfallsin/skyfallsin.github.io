@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Self-reflection in Markdown is all you need"
+title: "Mind-melding with my coding agent Pi"
 date: 2026-02-13
 published: true
 image: /images/posts/pi-reflect.png
