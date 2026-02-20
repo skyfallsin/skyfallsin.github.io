@@ -61,17 +61,17 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 
 <div class="startup-entry">
 <a href="https://github.com/jo-inc/camofox-browser" class="startup-logo"><img src="/images/logos/camofox.png" alt="camofox-browser" class="logo-padded"></a>
-<div class="startup-text"><strong><a href="https://github.com/jo-inc/camofox-browser">camofox-browser</a></strong> — Anti-detection headless browser for AI agents. Wraps <a href="https://camoufox.com">Camoufox</a> (Firefox fork with C++ fingerprint spoofing) in a REST API. Powers <a href="https://askjo.ai">jo</a>'s web browsing. <a href="/2026/02/10/camofox-browser-deep-dive.html">Blog post</a>.</div>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/camofox-browser">camofox-browser</a></strong> — Headless browser that doesn't get blocked. C++ fingerprint spoofing via <a href="https://camoufox.com">Camoufox</a>. <a href="/2026/02/10/camofox-browser-deep-dive.html">Blog post</a>.</div>
 </div>
 
 <div class="startup-entry">
 <a href="https://github.com/jo-inc/pi-reflect" class="startup-logo"><img src="/images/logos/pi-reflect.png" alt="pi-reflect" class="logo-padded theme-img-light"><img src="/images/logos/pi-reflect-dark.png" alt="pi-reflect" class="logo-padded theme-img-dark"></a>
-<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-reflect">pi-reflect</a></strong> — Self-improving behavioral rules for the <a href="https://pi.dev/">pi</a> coding agent. Reviews session transcripts, finds where the user got frustrated, and edits the rules file. <a href="/2026/02/20/self-improving-coding-agent.html">Blog post</a>.</div>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-reflect">pi-reflect</a></strong> — Your <a href="https://pi.dev/">pi</a> agent watches you get frustrated, then rewrites its own rules. <a href="/2026/02/20/self-improving-coding-agent.html">Blog post</a>.</div>
 </div>
 
 <div class="startup-entry">
 <a href="https://github.com/jo-inc/pi-mem" class="startup-logo"><img src="/images/logos/pi-mem.png" alt="pi-mem" class="logo-padded theme-img-light"><img src="/images/logos/pi-mem-dark.png" alt="pi-mem" class="logo-padded theme-img-dark"></a>
-<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-mem">pi-mem</a></strong> — Plain-Markdown memory for the <a href="https://pi.dev/">pi</a> coding agent. Long-term facts, daily logs, and a scratchpad. Files on disk injected into context. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
+<div class="startup-text"><strong><a href="https://github.com/jo-inc/pi-mem">pi-mem</a></strong> — Persistent memory for <a href="https://pi.dev/">pi</a>. Three tiers of plain Markdown, no vector DB. <a href="/2026/02/11/pi-mem.html">Blog post</a>.</div>
 </div>
 
 <script>
