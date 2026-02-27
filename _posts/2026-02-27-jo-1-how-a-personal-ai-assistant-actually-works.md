@@ -6,116 +6,92 @@ published: false
 description: "A personal AI assistant that lives on your Mac, knows your context, and gets better every day."
 ---
 
-Jo is a personal AI assistant. Half of it runs on your Mac: voice, screen reading, photos, files. Anything that touches your personal data. The other half runs on a dedicated machine in the cloud: conversations, memory, tools, scheduled tasks. Nobody else's data touches yours on either side. The two halves sync with minimal data crossing the boundary. Just your question and enough context to answer it.
+Jo is a new AI that makes you go 10x faster, without compromising on raw power or sovereignty.
 
-This is the philosophy behind it.
+**For whom?** Whether you're checking bitcoin prices or reading the endless emails from your kids' schools, Jo is for people who want an AI assistant that actually knows them and doesn't hand their personal data to a shared cloud.
 
----
-
-## Your personal data stays on your Mac
-
-Voice, screen, photos, files, reminders, notes. All processed locally. None of it leaves your Mac.
-
-Jo reads your screen by pulling the actual content from Safari, Chrome, Notes, Slack, Messages. Not screenshots. A local model that ships with Jo processes all of this into clips, grouped by what you're working on, without anything leaving your machine.
+**How?** Half runs on your Mac, half on a dedicated machine in the cloud. Available on macOS, Telegram, and WhatsApp. With UX designed for daily life.
 
 ---
 
-## Voice is a first-class citizen
+# Jo makes you 10x better
 
-Transcription runs locally on your Mac. Echo cancellation means you can talk through your laptop speakers without headphones. No AirPods required. You can be cooking, walking around, doing laundry, and just talk.
+## It knows you
 
-You can also send voice messages on Telegram or WhatsApp, and have Jo respond in audio.
+Jo remembers everything. Every conversation across every channel is searchable. "Find all convos that mentioned Japan." It maintains plain text notes, daily logs, and decisions. Not a black box. Just files you can read and edit.
 
----
+A nightly reflection loop reviews the day's sessions and rewrites its own behavioral rules. Jo gets better at being your assistant without you doing anything.
 
-## Your own zero-maintenance machine in the cloud
+## It notices things
 
-Most AI products put everyone in the same database. Jo gives each user their own machine. Dedicated storage, dedicated compute. Nobody else's data touches yours.
+A local model runs on your Mac, processing what you're working on into organized clips. Researching flights, comparing apartments, reading about Tokyo neighborhoods. Jo groups and summarizes these automatically.
 
-Your storage shows up as a drive on your Mac. Browse your files, read your memories, see your conversation history. Regular files on a mounted drive.
+Nothing leaves your machine. But when you ask Jo a question, it has context you never had to provide.
 
-**Your data is physically separate from everyone else's.** Different machine, different storage, different everything.
+## It talks and listens
 
-**No noisy neighbors.** Someone else's heavy request doesn't slow you down.
+Voice transcription runs locally. Echo cancellation means no headphones needed. You talk, Jo responds. On Telegram and WhatsApp, it handles voice messages too, and can respond in audio.
 
----
+## It does things when you're not there
 
-## One Jo across every channel
+Morning briefings. Weekly planning. Custom alerts: "tell me if BTC drops below $90K." Scheduled tasks run on your dedicated machine and deliver to whichever channel you're on.
 
-Mac, Telegram, WhatsApp. Same Jo, same conversations, same memory. The channels are windows into the same system, not separate bots.
+## Deep app integrations
 
-Every message follows the same path to your machine and back.
+Local: Safari, Chrome, Notes, Slack, Messages, Photos, Reminders, Finder. With your permission, Jo reads actual content, not screenshots.
 
----
+Remote: Google Calendar, Gmail, Google Drive. Connected through your account, with your permission, queried from your cloud machine.
 
-## Fast for simple things, thorough for hard things
+## Same Jo everywhere
 
-The most powerful AI models are also the slowest. "What's on my calendar today?" doesn't need 30 seconds of deep reasoning.
-
-A fast model handles most requests in 1-2 seconds: calendar, search, reminders, weather. When a request needs more depth, it hands off to a reasoning model with the full set of tools.
-
-You pick the models. OpenAI, Anthropic, Grok, Kimi — each with their own routing and reasoning pair, and more coming soon. Jo also ships with a local model that runs entirely on your Mac.
+Mac, Telegram, WhatsApp. Same memory, same personality, same capabilities. Start a conversation on your Mac, continue it on Telegram from your phone.
 
 ---
 
-## Tools that run on your Mac, triggered from the cloud
+# Raw power, but fast
 
-When Jo needs to search your photos, the request travels from the cloud to your Mac, runs locally, and sends the results back. Same for reminders, notes, files, browser tabs. Everything that only exists on your machine.
+## Two tiers, not one
 
-The things that make a personal assistant useful live on your Mac. So the tools run there too.
+Simple requests hit a fast model and come back in one to two seconds. Complex requests route to a reasoning model automatically. You don't choose. Jo does.
 
----
+## You pick the models
 
-## Real web browsing
+OpenAI, Anthropic, Grok, Kimi. More coming. Jo also ships with a local model that runs entirely on your Mac. Swap anytime.
 
-Jo can browse the web. Not just fetch pages, but actually navigate, click, scroll, and fill out forms. It runs a fingerprint-resistant browser on a separate machine so sites treat it like a real user.
+## Real browser
 
-Works well for searching, reading articles, checking prices, and filling forms. Adversarial sites with heavy bot detection are harder. This is the area with the most room to improve.
-
----
-
-## Memory
-
-Jo's memory has two sides.
-
-**What we've done together.** Every conversation is stored and searchable. "What did we talk about last week about restaurants" works across all channels. Plain text files track the ongoing relationship: notes and decisions, what happened each day, things to come back to. If you want to see what Jo remembers, open the files. They're right there in plain text.
-
-**The facts about you.** Preferences, locations, routines, contacts. When Jo knows you prefer window seats, live in San Francisco, and have a meeting with Sarah every Tuesday, it doesn't need to be told again.
+Jo doesn't simulate browsing. It controls a real browser on a separate machine. It reads pages, clicks links, fills forms. Sites see a normal user, not a bot.
 
 ---
 
-## It notices what you're working on
+# Sovereignty
 
-Most productivity tools ask you to organize. Create folders, apply tags, sort into categories. Jo does it differently.
+## Your own machine
 
-It watches your browser tabs, notes, and saved content, then groups related activity into clips. All locally, using the model that ships with Jo. Eight tabs about Tokyo neighborhoods, a saved article about cherry blossoms, and a restaurant list becomes "Japan Trip Planning." None of that activity leaves your Mac.
+Every Jo user gets a dedicated machine in the cloud. Your storage, your compute, your data. Not a row in someone else's database. A real machine that only you use.
 
-It focuses on *what you're thinking about*, not *what you're clicking on*.
+Your cloud storage mounts as a drive on your Mac. Open it in Finder. Browse your notes, logs, and memory files like any other folder.
 
----
+## What stays local
 
-## Jo does things when you're not there
+Personal data never leaves your Mac. Screen content, photos, files, voice audio. All processed locally. The local model that builds your clips runs on-device with no network calls.
 
-Jo runs scheduled tasks. A morning briefing with your calendar, weather, and things you're tracking. Weekly planning on Sunday evening.
+Jo's cloud machine handles conversations and tasks. Your Mac handles everything personal.
 
-You can create your own too. "Alert me if BTC drops below $90K" checks the price and only messages you when the condition is met. No "nothing to report" noise.
+## Inference you can trust
 
-Delivery goes wherever you want. This shifts Jo from something you go to into something that comes to you.
+Cloud inference runs on providers with contracts that prevent training on your data. You can run fully local if you want.
 
----
+## Built on open roots
 
-## What's actually private
-
-**Never leaves your Mac:** Voice, screen content, photos, files. All processed locally.
-
-**Lives on your machine in the cloud:** Conversations, memories, skills. Physically separate from every other user.
-
-**Cloud inference:** Your prompts go to the AI model you choose. Our cloud models run on contracts that prevent training on your data.
+Jo stands on the shoulders of open-source giants. Battle-tested code, part of the community we love and [contribute back to](https://github.com/jo-inc).
 
 ---
 
-## Is this just OpenClaw?
+## What's next
 
-Jo is built on the same [pi](https://github.com/mariozechner/pi-coding-agent) roots as [OpenClaw](https://openclaw.com). Plain text memory, self-extensible skills, markdown rules that the AI reads and writes directly. But Jo goes deeper. A nightly reflection loop reviews each day's sessions, finds where things went wrong, and rewrites the behavioral rules so the same mistakes don't repeat. On top of that, custom tools for calendar, email, photos, screen reading, browser automation, voice, and scheduled tasks that turn a general-purpose agent into a personal assistant.
+We're just getting started. Coming: the native mobile app, multiplayer, trusted purchases, grocery shopping, and more.
 
-less planning. more doing.
+Who's working on this? [Pradeep](https://x.com/pradeep24) and [Kevin](https://x.com/liveink). With assists from pi, ampcode, claude, and codex.
+
+[Sign up for the beta.](https://askjo.ai/signup)
