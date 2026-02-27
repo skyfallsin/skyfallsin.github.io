@@ -3,7 +3,7 @@ layout: post
 title: "Jo 1.0"
 date: 2026-02-27
 published: false
-description: "A personal AI assistant that lives on your Mac, knows your context, and gets better every day."
+description: "A new AI that makes you go 10x faster, without compromising on raw power or sovereignty."
 ---
 
 Jo is a new AI that makes you go 10x faster, without compromising on raw power or sovereignty.
@@ -110,6 +110,6 @@ Jo stands on the shoulders of open-source giants. Battle-tested code, part of th
 
 We're just getting started. Coming: the native mobile app, multiplayer, trusted purchases, grocery shopping, and more.
 
-Who's working on this? [Pradeep](https://x.com/pradeep24) and [Kevin](https://x.com/liveink). With assists from pi, ampcode, claude, and codex.
+Who's working on this? [Pradeep](https://x.com/pradeep24) and [Kevin](https://x.com/liveink). Cofounders for a decade, consumer founders since the mid-2000s. With assists from pi, ampcode, claude, and codex.
 
 [Sign up for the beta.](https://askjo.ai/signup)
