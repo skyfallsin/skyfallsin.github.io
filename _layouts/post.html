@@ -7,15 +7,6 @@ layout: default
     <h1><a href="/">←</a> {{ page.title }}</h1>
     <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
     {{ content }}
-    
-    <nav class="post-nav">
-      {% if page.previous.url and page.previous.published != false %}
-        <a href="{{ page.previous.url }}" class="prev">← {{ page.previous.title }}</a>
-      {% endif %}
-      {% if page.next.url and page.next.published != false %}
-        <a href="{{ page.next.url }}" class="next">{{ page.next.title }} →</a>
-      {% endif %}
-    </nav>
   </article>
 </div>
 <script>

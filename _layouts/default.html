@@ -442,6 +442,9 @@
     }
     
     @media (max-width: 768px) {
+      body {
+        padding: var(--lk-size-md);
+      }
       .handle {
         font-size: var(--lk-font-subheading);
       }
@@ -451,6 +454,11 @@
       }
       .post-list--home .post-entry:first-child .post-entry-title {
         font-size: 1.4rem !important;
+      }
+      pre {
+        margin-left: calc(-1 * var(--lk-size-xs));
+        margin-right: calc(-1 * var(--lk-size-xs));
+        border-radius: 0;
       }
     }
 
@@ -484,6 +492,26 @@
     [data-theme="light"] .theme-img-dark { display: none; }
     [data-theme="light"] .theme-img-light { display: inline; }
 
+    article p {
+      margin-bottom: var(--lk-size-md);
+    }
+    article ul, article ol {
+      margin-bottom: var(--lk-size-md);
+      padding-left: var(--lk-size-lg);
+    }
+    article li {
+      margin-bottom: var(--lk-size-2xs);
+    }
+    article img {
+      max-width: 100%;
+      height: auto;
+    }
+    article hr {
+      display: block;
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--lk-size-xl) 0;
+    }
     article blockquote + p {
       margin-top: 2.5em;
       font-size: 1.15em;
@@ -620,6 +648,7 @@
       border-radius: var(--lk-size-3xs);
       background: var(--bg-alt);
       transition: box-shadow 200ms ease-out;
+      margin: var(--lk-size-lg) 0;
     }
     pre {
       box-shadow: var(--lk-shadow-sm), inset 0 0 0 1px color-mix(in srgb, var(--lk-on-surface) 5%, transparent);
@@ -726,22 +755,7 @@
     hr {
       display: none;
     }
-    .post-nav {
-      display: flex;
-      justify-content: space-between;
-      margin-top: var(--lk-size-2xl);
-      padding-top: var(--lk-size-lg);
-      border-top: 1px solid var(--border);
-      font-size: var(--lk-font-callout);
-    }
-    .post-nav a {
-      color: var(--text-muted);
-      max-width: 45%;
-    }
-    .post-nav .next {
-      margin-left: auto;
-      text-align: right;
-    }
+    
     h1, h2, h3 { 
       margin-top: var(--lk-size-2xl); 
       color: var(--text);
@@ -751,7 +765,7 @@
     }
     h1 { 
       font-size: var(--lk-font-title1);
-      border-bottom: 2px solid var(--accent); 
+      border-bottom: none; 
       padding-bottom: var(--lk-size-2xs); 
     }
     h1 {
@@ -760,12 +774,10 @@
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) h1 {
         text-shadow: 0 0 20px color-mix(in srgb, var(--lk-primary) 30%, transparent);
-        border-image: linear-gradient(90deg, var(--accent), var(--accent-hover)) 1;
       }
     }
     [data-theme="dark"] h1 {
       text-shadow: 0 0 20px color-mix(in srgb, var(--lk-primary) 30%, transparent);
-      border-image: linear-gradient(90deg, var(--accent), var(--accent-hover)) 1;
     }
     [data-theme="light"] h1 {
       text-shadow: 0 1px 2px color-mix(in srgb, var(--lk-on-surface) 6%, transparent);
@@ -779,9 +791,13 @@
     }
     article h2 {
       font-size: var(--lk-font-heading);
+      margin-top: var(--lk-size-2xl);
+      margin-bottom: var(--lk-size-sm);
     }
     article h3 {
       font-size: var(--lk-font-subheading);
+      margin-top: var(--lk-size-xl);
+      margin-bottom: var(--lk-size-xs);
     }
     main > h2 {
       font-size: var(--lk-font-caption);
@@ -869,7 +885,7 @@
       font-size: calc(1rem * 1.618 * 1.618 * 1.128);
       letter-spacing: var(--lk-tracking-tight);
       padding-bottom: var(--lk-size-sm);
-      border-bottom: 1px solid var(--lk-outline);
+      border-bottom: none;
       margin-bottom: 0;
     }
     .post-layout article h1:first-child + .post-date {
@@ -877,6 +893,7 @@
       width: auto;
       padding-top: var(--lk-size-xs);
       margin-top: 0;
+      margin-bottom: var(--lk-size-lg);
     }
     @media (min-width: 1200px) {
       body:has(.post-layout) {
@@ -954,7 +971,7 @@
     }
     .table-wrapper {
       overflow-x: auto;
-      margin: var(--lk-size-lg) 0;
+      margin: var(--lk-size-xl) 0;
     }
     table {
       width: 100%;
@@ -962,7 +979,7 @@
       min-width: max-content;
     }
     th, td {
-      padding: var(--lk-size-xs) var(--lk-size-md);
+      padding: var(--lk-size-sm) var(--lk-size-md);
       text-align: left;
       border-bottom: 1px solid var(--border);
       border-right: 1px solid var(--border);
@@ -1065,29 +1082,18 @@
     }
     
     .related-posts {
-      margin-top: var(--lk-size-xl);
+      margin-top: var(--lk-size-3xl);
       border-top: 1px solid var(--border);
       padding-top: var(--lk-size-lg);
     }
     .related-posts h2 {
-      font-size: var(--lk-font-callout);
+      font-size: var(--lk-font-caption);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       color: var(--text-muted);
       border: none;
-      margin-bottom: var(--lk-size-sm);
-    }
-    .related-posts ul {
-      list-style: none;
-      padding: 0;
-    }
-    .related-posts li {
-      padding: var(--lk-size-xs) 0;
-      font-size: var(--lk-font-callout);
-      border-bottom: 1px solid var(--border);
-    }
-    .related-posts li:last-child {
-      border-bottom: none;
+      margin-top: 0;
+      margin-bottom: var(--lk-size-md);
     }
     .more-link {
       display: inline-block;
@@ -1294,11 +1300,14 @@
   {% if related.size > 0 %}
   <nav class="related-posts">
     <h2>More posts</h2>
-    <ul>
-    {% for post in related limit:4 %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    <div class="post-list">
+    {% for post in related %}
+      <a href="{{ post.url }}" class="post-entry">
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="post-entry-title">{{ post.title }}</span>
+      </a>
     {% endfor %}
-    </ul>
+    </div>
   </nav>
   {% endif %}
   {% endif %}
