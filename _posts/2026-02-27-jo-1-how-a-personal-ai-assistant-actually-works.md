@@ -102,7 +102,7 @@ Cloud inference runs on providers with contracts that prevent training on your d
 
 ## Built on open roots
 
-Jo stands on the shoulders of open-source giants. Battle-tested code, part of the community we love and [contribute back to](https://github.com/jo-inc).
+Jo stands on the shoulders of [open-source giants](https://askjo.ai/acknowledgements). Battle-tested code, part of the community we love and [contribute back to](https://github.com/jo-inc).
 
 ---
 
