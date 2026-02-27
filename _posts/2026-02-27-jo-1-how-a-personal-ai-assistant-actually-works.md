@@ -12,39 +12,57 @@ Jo is a new AI that makes you go 10x faster, without compromising on raw power o
 
 **How?** Half runs on your Mac, half on a dedicated machine in the cloud. Available on macOS, Telegram, and WhatsApp. With UX designed for daily life.
 
+Let's say you're planning a weekend trip to Yosemite with your kids. Here's how Jo helps, end to end.
+
 ---
 
-# Jo makes you 10x better
-
-## It knows you
-
-Jo remembers everything. Every conversation across every channel is searchable. "Find all convos that mentioned Japan." It maintains plain text notes, daily logs, and decisions. Not a black box. Just files you can read and edit.
-
-A nightly reflection loop reviews the day's sessions and rewrites its own behavioral rules. Jo gets better at being your assistant without you doing anything.
+# 10x faster everywhere
 
 ## It notices things
 
-A local model runs on your Mac, processing what you're working on into organized clips. Researching flights, comparing apartments, reading about Tokyo neighborhoods. Jo groups and summarizes these automatically.
+You've been browsing Yosemite trail guides, checking campsite availability, and reading a blog post about kid-friendly hikes. A local model on your Mac groups all of this into a clip: "Yosemite Weekend Trip." You never tagged anything or created a folder. Jo just noticed.
 
-Nothing leaves your machine. But when you ask Jo a question, it has context you never had to provide.
+Nothing leaves your machine. But when you ask Jo a question, it already has the context.
 
-## It talks and listens
+[STUB: screenshot of macOS app showing Yosemite clip]
 
-Voice transcription runs locally. Echo cancellation means no headphones needed. You talk, Jo responds. On Telegram and WhatsApp, it handles voice messages too, and can respond in audio.
+## It knows you
 
-## It does things when you're not there
+"What was that campsite Sarah recommended last summer?" Jo searches every conversation across every channel and finds it. It knows your kids' ages, that you prefer tent camping over cabins, and that you always pack the car the night before.
 
-Morning briefings. Weekly planning. Custom alerts: "tell me if BTC drops below $90K." Scheduled tasks run on your dedicated machine and deliver to whichever channel you're on.
+Plain text notes, daily logs, and decisions. Not a black box. Just files you can read and edit. A nightly reflection loop reviews the day's sessions and rewrites its own behavioral rules. Jo gets better at being your assistant without you doing anything.
+
+## Voice while you do other things
+
+You're packing the car and your hands are full. "Hey Jo, what's the weather in Yosemite this weekend?" Voice transcription runs locally on your Mac. Echo cancellation means no headphones needed. You talk while you work. Jo responds.
+
+[STUB: screenshot of macOS app voice interaction]
+
+## Always in your messengers
+
+On the road, text Jo on Telegram to find a lunch stop. At the campsite, send a voice message on WhatsApp: "What time does the visitor center close?" Jo responds in audio. Your phone is always with you. So is Jo.
+
+[STUB: screenshot of WhatsApp voice message with Jo]
 
 ## Deep app integrations
+
+Jo checks your Google Calendar for conflicts, reads your Gmail for the campsite reservation confirmation, and pulls up the trail photos you saved last time from your Photos library. 
 
 Local: Safari, Chrome, Notes, Slack, Messages, Photos, Reminders, Finder. With your permission, Jo reads actual content, not screenshots.
 
 Remote: Google Calendar, Gmail, Google Drive. Connected through your account, with your permission, queried from your cloud machine.
 
+## It does things when you're not there
+
+The morning of the trip, Jo sends a briefing: weather forecast for Yosemite, your campsite check-in time pulled from Gmail, a reminder to pack the kids' hiking boots, and current road conditions.
+
+You set it up once: "Every Friday before a weekend trip, send me a prep briefing." It runs on your dedicated machine and delivers to whichever channel you're on.
+
+[STUB: screenshot of Telegram morning briefing]
+
 ## Same Jo everywhere
 
-Mac, Telegram, WhatsApp. Same memory, same personality, same capabilities. Start a conversation on your Mac, continue it on Telegram from your phone.
+Voice on your Mac at home. Telegram in the car. WhatsApp at the campsite. Same memory, same personality, same context. One conversation that flows across every channel.
 
 ---
 
@@ -52,7 +70,7 @@ Mac, Telegram, WhatsApp. Same memory, same personality, same capabilities. Start
 
 ## Two tiers, not one
 
-Simple requests hit a fast model and come back in one to two seconds. Complex requests route to a reasoning model automatically. You don't choose. Jo does.
+"What time is check-in?" comes back in one to two seconds. "Research the best kid-friendly trails in Yosemite Valley, compare distances and elevation, and build us a two-day itinerary" routes to a reasoning model automatically. You don't choose. Jo does.
 
 ## You pick the models
 
@@ -60,7 +78,7 @@ OpenAI, Anthropic, Grok, Kimi. More coming. Jo also ships with a local model tha
 
 ## Real browser
 
-Jo doesn't simulate browsing. It controls a real browser on a separate machine. It reads pages, clicks links, fills forms. Sites see a normal user, not a bot.
+Jo doesn't simulate browsing. It controls a real browser on a separate machine. It checks campsite availability on recreation.gov, reads trail conditions on the NPS site, and finds gas stations along your route. Sites see a normal user, not a bot.
 
 ---
 
@@ -70,11 +88,11 @@ Jo doesn't simulate browsing. It controls a real browser on a separate machine. 
 
 Every Jo user gets a dedicated machine in the cloud. Your storage, your compute, your data. Not a row in someone else's database. A real machine that only you use.
 
-Your cloud storage mounts as a drive on your Mac. Open it in Finder. Browse your notes, logs, and memory files like any other folder.
+Your cloud storage mounts as a drive on your Mac. Open it in Finder. Your trip notes, your packing lists, your conversation history. Regular files in a regular folder.
 
 ## What stays local
 
-Personal data never leaves your Mac. Screen content, photos, files, voice audio. All processed locally. The local model that builds your clips runs on-device with no network calls.
+Personal data never leaves your Mac. The photos from last year's trip, your kids' school schedule, your screen content. All processed locally. The local model that builds your clips runs on-device with no network calls.
 
 Jo's cloud machine handles conversations and tasks. Your Mac handles everything personal.
 
