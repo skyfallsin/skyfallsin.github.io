@@ -252,6 +252,7 @@
       --border: var(--lk-outline);
       --selection: var(--lk-selection);
     }
+    html { scroll-padding-top: 120px; }
     * { box-sizing: border-box; }
     body {
       font-family: "JetBrains Mono", monospace;
@@ -871,6 +872,16 @@
       font-weight: 600;
     }
 
+    .footnotes {
+      font-size: var(--lk-font-caption);
+      color: var(--text-muted);
+      line-height: var(--lk-leading-normal);
+      margin-top: var(--lk-size-2xl);
+      padding-top: var(--lk-size-md);
+    }
+    .footnotes ol { padding-left: var(--lk-size-lg); }
+    .footnotes li { margin-bottom: var(--lk-size-xs); }
+    .footnotes p { margin-bottom: var(--lk-size-3xs); }
     canvas { max-width: 100%; margin: var(--lk-size-lg) 0; }
     
     .post-layout {
@@ -953,7 +964,9 @@
       padding-left: 0;
     }
     .toc li.h3 {
-      padding-left: var(--lk-size-xs);
+      padding-left: var(--lk-size-md);
+      border-left: 1px solid var(--border);
+      margin-left: var(--lk-size-3xs);
     }
     .toc a {
       color: var(--text-muted);
