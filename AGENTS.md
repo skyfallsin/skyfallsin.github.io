@@ -58,16 +58,19 @@ Chart types: line, bar, pie, doughnut, radar, scatter, bubble
 - No fluff or filler content
 - Monospace aesthetic - let the content speak
 
+## Images
+- **All images < 500KB**. Resize with `sips -Z 1200`.
+- Image responsiveness: `style="max-width: 550px; width: 100%; height: auto;"` not `width="550"`.
+- Use `loading="lazy"` on below-fold images.
+
+## CSS & Responsiveness
+- Test mobile breakpoints for CSS changes. Use responsive units.
+
+## Local Dev
+```bash
+bundle exec jekyll serve --drafts --unpublished --livereload  # in tmux `blog`
+```
+
 ## Deployment
 
 Push to `main` branch. GitHub Pages auto-builds and deploys to https://skyfallsin.github.io
-
-## Commands
-
-```bash
-# Local dev (requires Docker)
-docker run --rm -v "$PWD:/srv/jekyll" -p 4000:4000 jekyll/jekyll:4.2.2 jekyll serve --watch --force_polling
-
-# Deploy
-git add -A && git commit -m "message" && git push
-```
