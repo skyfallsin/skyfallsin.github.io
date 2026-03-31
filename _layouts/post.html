@@ -11,6 +11,21 @@ layout: default
 </div>
 <script>
 (function() {
+  // Wrap TL;DR paragraph + following ul in a .tldr callout
+  const tldrP = document.querySelector('article p > strong');
+  if (tldrP && /^TL;?DR/i.test(tldrP.textContent)) {
+    const p = tldrP.parentElement;
+    const ul = p.nextElementSibling;
+    if (ul && ul.tagName === 'UL') {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'tldr';
+      p.parentNode.insertBefore(wrapper, p);
+      wrapper.appendChild(p);
+      wrapper.appendChild(ul);
+    }
+  }
+})();
+(function() {
   const headings = document.querySelectorAll('article h1:not(:first-of-type), article h2, article h3');
   const toc = document.getElementById('toc');
   if (headings.length < 2) return;

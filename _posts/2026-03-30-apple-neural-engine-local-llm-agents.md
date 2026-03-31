@@ -7,16 +7,17 @@ description: "Qwen3.5-4B hits 11.66 tok/s single-stream on ANE with int8 quantiz
 ---
 
 **TL;DR:**
-- Dense 4B and 9B language models running entirely on Apple's Neural Engine, bypassing CoreML
-- Single-stream generation tops out around 7–8 tok/s on M3 Max, but four concurrent streams hit ~13 tok/s aggregate while the GPU and CPU stay idle
-- The Neural Engine is the same 16-core block on every M1 through M5 regardless of SKU — performance is predictable across devices
-- Code: [ane.cpp](https://github.com/skyfallsin/ane.cpp). Companion [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide) documents 40+ ANE experiments in an autoresearch-style loop
+- 4B and 9B models on ANE, bypassing CoreML entirely
+- 11.66 tok/s single-stream, 28.62 tok/s with four concurrent streams — GPU and CPU idle
+- Same 16-core ANE on every M1 through M5, regardless of SKU
+- Bottleneck is dispatch overhead, not compute or bandwidth
+- Code: [ane.cpp](https://github.com/skyfallsin/ane.cpp) + [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide)
 
 ---
 
 GPUs are great for local inference if the goal is raw tokens per second on one chat, but they're a poor fit if what you actually want is many small inference streams running quietly in the background for hours — on an M3 Max, sustained GPU inference pulls 40–60W from the GPU cluster alone[^1], and that adds up fast on battery.
 
-[Jo](https://askjo.ai) runs a local macOS component that handles on-device context — browser history clustering, note indexing, local tool dispatch — and today those workloads either wake the GPU or wait for the cloud, both of which have tradeoffs in power draw and latency respectively.
+[Jo](https://askjo.ai) is a personal AI that runs on a hybrid stack — important things never leave your Mac, and sensitive external tasks are handled on your own cloud machine. The local macOS side handles on-device context: browser history clustering, note indexing, local tool dispatch. Today those workloads either wake the GPU or wait for the cloud, both of which have tradeoffs in power draw and latency respectively.
 
 What we really want is an autonomous ambient layer on your machine, things organizing by themselves and context building up quietly. Getting that to work without draining the battery means finding hardware that can carry parallel inference at low power — and if something can do that, the local side of Jo becomes a thing that runs continuously instead of intermittently. That's the target.
 

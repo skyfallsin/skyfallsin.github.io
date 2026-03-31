@@ -540,6 +540,36 @@
     [data-theme="dark"] article blockquote {
       border-left-color: var(--accent);
     }
+
+    /* ─── TL;DR callout ──────────────────────────────── */
+    .tldr {
+      border-left: 3px solid var(--accent);
+      padding: var(--lk-size-md) var(--lk-size-lg);
+      margin-bottom: var(--lk-size-xl);
+      background: color-mix(in srgb, var(--accent) 4%, transparent);
+      border-radius: 0 var(--lk-radius-sm) var(--lk-radius-sm) 0;
+    }
+    .tldr > p:first-child {
+      font-size: var(--lk-font-caption);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 var(--lk-size-xs) 0;
+      line-height: 1;
+    }
+    .tldr ul {
+      margin-bottom: 0;
+      padding-left: var(--lk-size-md);
+    }
+    .tldr li {
+      margin-bottom: var(--lk-size-2xs);
+      font-size: var(--lk-font-body);
+      line-height: var(--lk-leading-relaxed);
+    }
+    .tldr li:last-child {
+      margin-bottom: 0;
+    }
     
 
     .tagline {
