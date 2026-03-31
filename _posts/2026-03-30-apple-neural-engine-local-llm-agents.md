@@ -40,21 +40,36 @@ TOPS have doubled from M3 to M4, but we're nowhere near saturating even the M1's
 
 [ane.cpp](https://github.com/skyfallsin/ane.cpp) runs dense 4B and 9B models end-to-end on the Neural Engine, building on [maderix](https://github.com/maderix/ANE)[^4]'s reverse-engineering of Apple's private ANE framework and [johnmai-dev](https://github.com/johnmai-dev/ANE-LM)[^5]'s first working LLM runtime on ANE. Current M3 Max numbers:
 
-| Model | Prompt | Generate |
-|---|---:|---:|
-| Qwen3-4B | 26.59 tok/s | 7.27 tok/s |
-| Qwen3.5-4B[^7] | 13.68 tok/s | 8.37 tok/s |
-| Qwen3.5-9B | 3.97 tok/s | 4.27 tok/s |
+| Model | Mode | Prompt | Generate |
+|---|---|---:|---:|
+| Qwen3.5-4B[^7] | fp16 | 18.93 tok/s | 9.21 tok/s |
+| Qwen3.5-4B[^7] | int8 | 30.08 tok/s | 11.66 tok/s |
+| Qwen3.5-9B | fp16 | 6.49 tok/s | 4.27 tok/s |
+| Qwen3.5-9B | int8 | 7.39 tok/s | 7.01 tok/s |
 
 ### Concurrency
 
-Seven tokens per second isn't fast. But single-stream speed isn't really the point — what's more interesting is concurrency. During token generation most of the ANE's capacity goes unused, which means we can run multiple streams at once:
+Single-stream generation isn't fast. But single-stream speed isn't really the point — what's more interesting is concurrency. During token generation most of the ANE's capacity goes unused, which means we can run multiple streams at once.
 
-| Active streams | Aggregate tok/s | Per-stream avg |
-|---:|---:|---:|
-| 1 | 7.18 | ~7.18 |
-| 2 | 8.55 | ~4.28 |
-| 4 | 12.9–13.1 | ~3.3 |
+The tables below are from warmed serve-mode runs with Qwen's thinking defaults (`--enable-thinking`, `top_p=0.95`, `top_k=20`, `presence_penalty=1.5`, `repeat_penalty=1.0`, `temp=1.0`), 8 requests at 100 generated tokens each, 3 repeats per concurrency level, `--sessions 4`.
+
+Aggregate generation throughput across all active requests:
+
+| Model | Mode | c1 | c2 | c4 |
+|---|---|---:|---:|---:|
+| Qwen3.5-4B | fp16 | 8.62 | 12.59 | 20.75 |
+| Qwen3.5-4B | int8 | 10.53 | 15.95 | 28.62 |
+| Qwen3.5-9B | fp16 | 3.62 | 4.44 | 4.89 |
+| Qwen3.5-9B | int8 | 5.76 | 5.81 | 6.57 |
+
+Average per-request generation throughput:
+
+| Model | Mode | c1 | c2 | c4 |
+|---|---|---:|---:|---:|
+| Qwen3.5-4B | fp16 | 9.91 | 7.97 | 6.67 |
+| Qwen3.5-4B | int8 | 12.19 | 9.61 | 9.25 |
+| Qwen3.5-9B | fp16 | 4.31 | 2.77 | 1.71 |
+| Qwen3.5-9B | int8 | 7.38 | 3.80 | 2.09 |
 
 Four concurrent inference streams, locally, one process, on the neural engine, with the GPU and CPU staying free for everything else. If you just look at tokens-per-joule, the neural engine looks roughly comparable to GPU/CPU work in our measurements so far. But combine that with slower token generation and it means you can run this in parallel with multiple jobs for a much longer time.
 
