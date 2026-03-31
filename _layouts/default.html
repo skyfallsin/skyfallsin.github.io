@@ -131,15 +131,15 @@
     :root[data-theme="dark"] {
       --lk-surface:                 #0d0d0d;
       --lk-on-surface:              #e8e8e8;
-      --lk-surface-container:       #1a1a2e;
-      --lk-surface-container-high:  #252540;
-      --lk-primary:    #c084fc;
+      --lk-surface-container:       #0a1a0f;
+      --lk-surface-container-high:  #0f2a17;
+      --lk-primary:    #39FF14;
       --lk-on-primary: #0d0d0d;
-      --lk-secondary:  #a78bfa;
-      --lk-tertiary:   #e879f9;
-      --lk-outline:         #2d1b4e;
-      --lk-outline-variant: #3d2b5e;
-      --lk-selection:  #7c3aed;
+      --lk-secondary:  #2ECC71;
+      --lk-tertiary:   #00FF88;
+      --lk-outline:         #1A3A1A;
+      --lk-outline-variant: #2A4A2A;
+      --lk-selection:  #1A5C2E;
       --lk-shadow-sm:
         0 1px 2px rgba(0, 0, 0, 0.20),
         0 1px 3px rgba(0, 0, 0, 0.24);
@@ -161,15 +161,15 @@
       :root:not([data-theme="light"]) {
         --lk-surface:                 #0d0d0d;
         --lk-on-surface:              #e8e8e8;
-        --lk-surface-container:       #1a1a2e;
-        --lk-surface-container-high:  #252540;
-        --lk-primary:    #c084fc;
+        --lk-surface-container:       #0a1a0f;
+        --lk-surface-container-high:  #0f2a17;
+        --lk-primary:    #39FF14;
         --lk-on-primary: #0d0d0d;
-        --lk-secondary:  #a78bfa;
-        --lk-tertiary:   #e879f9;
-        --lk-outline:         #2d1b4e;
-        --lk-outline-variant: #3d2b5e;
-        --lk-selection:  #7c3aed;
+        --lk-secondary:  #2ECC71;
+        --lk-tertiary:   #00FF88;
+        --lk-outline:         #1A3A1A;
+        --lk-outline-variant: #2A4A2A;
+        --lk-selection:  #1A5C2E;
         --lk-shadow-sm:
           0 1px 2px rgba(0, 0, 0, 0.20),
           0 1px 3px rgba(0, 0, 0, 0.24);
@@ -232,7 +232,7 @@
       :root:not([data-theme="light"]) {
         --bg: var(--lk-surface);
         --bg-alt: var(--lk-surface-container);
-        --bg-alt-rgb: 26, 26, 46;
+        --bg-alt-rgb: 10, 26, 15;
         --text: var(--lk-on-surface);
         --text-muted: var(--lk-secondary);
         --accent: var(--lk-primary);
@@ -244,7 +244,7 @@
     :root[data-theme="dark"] {
       --bg: var(--lk-surface);
       --bg-alt: var(--lk-surface-container);
-      --bg-alt-rgb: 26, 26, 46;
+      --bg-alt-rgb: 10, 26, 15;
       --text: var(--lk-on-surface);
       --text-muted: var(--lk-secondary);
       --accent: var(--lk-primary);
@@ -690,68 +690,68 @@
     
     /* Neon syntax highlighting for dark mode */
     [data-theme="dark"] .hljs { color: #e0e0e0; }
-    [data-theme="dark"] .hljs-keyword { color: #ff79c6; }
+    [data-theme="dark"] .hljs-keyword { color: #39FF14; }
     [data-theme="dark"] .hljs-string { color: #50fa7b; }
-    [data-theme="dark"] .hljs-number { color: #bd93f9; }
-    [data-theme="dark"] .hljs-function { color: #8be9fd; }
-    [data-theme="dark"] .hljs-title { color: #8be9fd; }
-    [data-theme="dark"] .hljs-params { color: #ffb86c; }
-    [data-theme="dark"] .hljs-comment { color: #6272a4; font-style: italic; }
-    [data-theme="dark"] .hljs-built_in { color: #ff79c6; }
-    [data-theme="dark"] .hljs-literal { color: #bd93f9; }
-    [data-theme="dark"] .hljs-type { color: #8be9fd; }
+    [data-theme="dark"] .hljs-number { color: #2ECC71; }
+    [data-theme="dark"] .hljs-function { color: #88ffaa; }
+    [data-theme="dark"] .hljs-title { color: #88ffaa; }
+    [data-theme="dark"] .hljs-params { color: #b5f5c0; }
+    [data-theme="dark"] .hljs-comment { color: #3a5a3a; font-style: italic; }
+    [data-theme="dark"] .hljs-built_in { color: #39FF14; }
+    [data-theme="dark"] .hljs-literal { color: #2ECC71; }
+    [data-theme="dark"] .hljs-type { color: #88ffaa; }
     [data-theme="dark"] .hljs-attr { color: #50fa7b; }
-    [data-theme="dark"] .hljs-variable { color: #f8f8f2; }
-    [data-theme="dark"] .hljs-operator { color: #ff79c6; }
-    [data-theme="dark"] .hljs-punctuation { color: #f8f8f2; }
+    [data-theme="dark"] .hljs-variable { color: #e0e0e0; }
+    [data-theme="dark"] .hljs-operator { color: #39FF14; }
+    [data-theme="dark"] .hljs-punctuation { color: #e0e0e0; }
     [data-theme="dark"] .hljs-property { color: #50fa7b; }
-    [data-theme="dark"] .hljs-class { color: #8be9fd; }
-    [data-theme="dark"] .hljs-symbol { color: #ffb86c; }
-    [data-theme="dark"] .hljs-regexp { color: #f1fa8c; }
-    [data-theme="dark"] .hljs-meta { color: #ff79c6; }
-    [data-theme="dark"] .hljs-name { color: #ff79c6; }
-    [data-theme="dark"] .hljs-selector-tag { color: #ff79c6; }
+    [data-theme="dark"] .hljs-class { color: #88ffaa; }
+    [data-theme="dark"] .hljs-symbol { color: #b5f5c0; }
+    [data-theme="dark"] .hljs-regexp { color: #66ff88; }
+    [data-theme="dark"] .hljs-meta { color: #39FF14; }
+    [data-theme="dark"] .hljs-name { color: #39FF14; }
+    [data-theme="dark"] .hljs-selector-tag { color: #39FF14; }
     [data-theme="dark"] .hljs-selector-class { color: #50fa7b; }
-    [data-theme="dark"] .hljs-selector-id { color: #8be9fd; }
+    [data-theme="dark"] .hljs-selector-id { color: #88ffaa; }
     
     /* Bash/shell specific */
-    [data-theme="dark"] .language-bash .hljs-built_in { color: #8be9fd; }
+    [data-theme="dark"] .language-bash .hljs-built_in { color: #88ffaa; }
     [data-theme="dark"] .language-bash .hljs-variable { color: #50fa7b; }
-    [data-theme="dark"] .language-bash .hljs-string { color: #f1fa8c; }
-    [data-theme="dark"] .language-bash .hljs-meta { color: #6272a4; }
+    [data-theme="dark"] .language-bash .hljs-string { color: #66ff88; }
+    [data-theme="dark"] .language-bash .hljs-meta { color: #3a5a3a; }
     
     /* Also apply for system dark preference when no explicit theme set */
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) .hljs { color: #e0e0e0; }
-      :root:not([data-theme="light"]) .hljs-keyword { color: #ff79c6; }
+      :root:not([data-theme="light"]) .hljs-keyword { color: #39FF14; }
       :root:not([data-theme="light"]) .hljs-string { color: #50fa7b; }
-      :root:not([data-theme="light"]) .hljs-number { color: #bd93f9; }
-      :root:not([data-theme="light"]) .hljs-function { color: #8be9fd; }
-      :root:not([data-theme="light"]) .hljs-title { color: #8be9fd; }
-      :root:not([data-theme="light"]) .hljs-params { color: #ffb86c; }
-      :root:not([data-theme="light"]) .hljs-comment { color: #6272a4; font-style: italic; }
-      :root:not([data-theme="light"]) .hljs-built_in { color: #ff79c6; }
-      :root:not([data-theme="light"]) .hljs-literal { color: #bd93f9; }
-      :root:not([data-theme="light"]) .hljs-type { color: #8be9fd; }
+      :root:not([data-theme="light"]) .hljs-number { color: #2ECC71; }
+      :root:not([data-theme="light"]) .hljs-function { color: #88ffaa; }
+      :root:not([data-theme="light"]) .hljs-title { color: #88ffaa; }
+      :root:not([data-theme="light"]) .hljs-params { color: #b5f5c0; }
+      :root:not([data-theme="light"]) .hljs-comment { color: #3a5a3a; font-style: italic; }
+      :root:not([data-theme="light"]) .hljs-built_in { color: #39FF14; }
+      :root:not([data-theme="light"]) .hljs-literal { color: #2ECC71; }
+      :root:not([data-theme="light"]) .hljs-type { color: #88ffaa; }
       :root:not([data-theme="light"]) .hljs-attr { color: #50fa7b; }
-      :root:not([data-theme="light"]) .hljs-variable { color: #f8f8f2; }
-      :root:not([data-theme="light"]) .hljs-operator { color: #ff79c6; }
-      :root:not([data-theme="light"]) .hljs-punctuation { color: #f8f8f2; }
+      :root:not([data-theme="light"]) .hljs-variable { color: #e0e0e0; }
+      :root:not([data-theme="light"]) .hljs-operator { color: #39FF14; }
+      :root:not([data-theme="light"]) .hljs-punctuation { color: #e0e0e0; }
       :root:not([data-theme="light"]) .hljs-property { color: #50fa7b; }
-      :root:not([data-theme="light"]) .hljs-class { color: #8be9fd; }
-      :root:not([data-theme="light"]) .hljs-symbol { color: #ffb86c; }
-      :root:not([data-theme="light"]) .hljs-regexp { color: #f1fa8c; }
-      :root:not([data-theme="light"]) .hljs-meta { color: #ff79c6; }
-      :root:not([data-theme="light"]) .hljs-name { color: #ff79c6; }
-      :root:not([data-theme="light"]) .hljs-selector-tag { color: #ff79c6; }
+      :root:not([data-theme="light"]) .hljs-class { color: #88ffaa; }
+      :root:not([data-theme="light"]) .hljs-symbol { color: #b5f5c0; }
+      :root:not([data-theme="light"]) .hljs-regexp { color: #66ff88; }
+      :root:not([data-theme="light"]) .hljs-meta { color: #39FF14; }
+      :root:not([data-theme="light"]) .hljs-name { color: #39FF14; }
+      :root:not([data-theme="light"]) .hljs-selector-tag { color: #39FF14; }
       :root:not([data-theme="light"]) .hljs-selector-class { color: #50fa7b; }
-      :root:not([data-theme="light"]) .hljs-selector-id { color: #8be9fd; }
+      :root:not([data-theme="light"]) .hljs-selector-id { color: #88ffaa; }
       
       /* Bash/shell specific */
-      :root:not([data-theme="light"]) .language-bash .hljs-built_in { color: #8be9fd; }
+      :root:not([data-theme="light"]) .language-bash .hljs-built_in { color: #88ffaa; }
       :root:not([data-theme="light"]) .language-bash .hljs-variable { color: #50fa7b; }
-      :root:not([data-theme="light"]) .language-bash .hljs-string { color: #f1fa8c; }
-      :root:not([data-theme="light"]) .language-bash .hljs-meta { color: #6272a4; }
+      :root:not([data-theme="light"]) .language-bash .hljs-string { color: #66ff88; }
+      :root:not([data-theme="light"]) .language-bash .hljs-meta { color: #3a5a3a; }
     }
 
     hr {
