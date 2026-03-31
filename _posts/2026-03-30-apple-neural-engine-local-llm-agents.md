@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Running 4B+ models on Apple's Neural Engine"
+title: "Running Qwen3.5 on Apple's Neural Engine"
 date: 2026-03-30
 published: true
-description: "Dense 4B and 9B models run end-to-end on ANE. The interesting part isn't single-stream speed — it's running four concurrent agent streams locally without draining the battery."
+description: "Qwen3.5-4B hits 11.66 tok/s single-stream on ANE with int8 quantization, and four concurrent streams reach 28.62 tok/s aggregate — all on the Neural Engine, GPU and CPU idle."
 ---
 
 **TL;DR:**
@@ -38,7 +38,7 @@ TOPS have doubled from M3 to M4, but we're nowhere near saturating even the M1's
 
 ## What we built
 
-[ane.cpp](https://github.com/skyfallsin/ane.cpp) runs dense 4B and 9B models end-to-end on the Neural Engine, building on [maderix](https://github.com/maderix/ANE)[^4]'s reverse-engineering of Apple's private ANE framework and [johnmai-dev](https://github.com/johnmai-dev/ANE-LM)[^5]'s first working LLM runtime on ANE. Current M3 Max numbers:
+[ane.cpp](https://github.com/skyfallsin/ane.cpp) runs Qwen3.5 end-to-end on the Neural Engine, building on [maderix](https://github.com/maderix/ANE)[^4]'s reverse-engineering of Apple's private ANE framework and [johnmai-dev](https://github.com/johnmai-dev/ANE-LM)[^5]'s first working LLM runtime on ANE. Current M3 Max numbers (warmed 5-run medians, 500 generated tokens, Qwen thinking defaults[^7]):
 
 | Model | Mode | Prompt | Generate |
 |---|---|---:|---:|
@@ -131,13 +131,13 @@ Beyond that, the things we're most interested in:
 
 **Newer chips.** All of our measurements are on M3 Max, and several dead ends — runtime-weight convolutions, `_ANEClient` direct evaluation, multi-procedure MIL chaining — have external reports suggesting they may work on M4 or M5. The M4 doubled ANE TOPS from 18 to 38, and the M5 introduced per-GPU-core Neural Accelerators and a higher-bandwidth memory path. We don't know yet whether those translate into meaningfully faster dispatch or just more headroom we can't saturate, but finding out is near the top of the list.
 
-**Smaller models.** A 1–2B dense model that's good enough for classification, routing, and summarization would be substantially faster on ANE — fewer layers means fewer dispatches per token, which is exactly where our bottleneck is. We currently support Qwen3 and Qwen3.5 at 4B and 9B; adding smaller variants or other architectures is straightforward.
+**Smaller models.** A 1–2B dense model that's good enough for classification, routing, and summarization would be substantially faster on ANE — fewer layers means fewer dispatches per token, which is exactly where our bottleneck is. We currently support Qwen3.5 at 4B and 9B; adding smaller variants or other architectures is straightforward.
 
 **Rigorous energy measurement.** The energy story is central to the thesis but we haven't published proper numbers yet. We have `powermetrics`-based tooling in the repo (`scripts/energy_benchmark.sh`) that measures per-subsystem power draw during inference, and the preliminary picture is encouraging. We just need to run it systematically across workloads and concurrency levels and publish the results.
 
 **More model architectures.** ane.cpp currently only runs Qwen-family models. The compilation and dispatch infrastructure is generic enough that adding other dense transformer architectures (Llama, Gemma, Phi) should be mostly a matter of wiring up the layer configs and any architecture-specific attention patterns.
 
-The optimizations that survived are the boring ones — fused kernels[^10], W-lane batching[^11], chunked FFN — and plenty of ideas didn't. The companion [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide)[^13] records dead ends alongside wins in a [karpathy/autoresearch](https://github.com/karpathy/autoresearch)-style loop: write a focused test, measure it, keep or discard, repeat.
+The optimizations that survived are the boring ones — fused kernels[^10], W-lane batching[^11], chunked FFN, and int8 weight quantization via `constexpr_affine_dequantize` — and plenty of ideas didn't: ANE decode attention, speculative decode / self-draft, ANE RMSNorm fusion mega-kernels, cross-layer norm fusion, 3-runtime-input kernels, packed-slice workarounds, INT4, and runtime-weight convolutions all failed on M3 Max. The companion [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide)[^13] records each dead end alongside wins in a [karpathy/autoresearch](https://github.com/karpathy/autoresearch)-style loop: write a focused test, measure it, keep or discard, repeat.
 
 ## Repos
 
@@ -162,7 +162,7 @@ This work wouldn't exist without [maderix](https://github.com/maderix/ANE), who 
 
 [^5]: [johnmai-dev/ANE-LM](https://github.com/johnmai-dev/ANE-LM) — built the first working LLM inference runtime on top of maderix's ANE bridge, including safetensors loading, tokenizer support, chat templates, and a full Qwen3 forward pass on ANE. ane.cpp is a fork of this project.
 
-[^6]: [Qwen3](https://huggingface.co/Qwen/Qwen3-4B) and [Qwen3.5](https://huggingface.co/Qwen/Qwen3.5-4B) are dense transformer models from Alibaba's Qwen team. Qwen3.5 uses a hybrid architecture mixing full attention with DeltaNet linear attention layers. We currently support the 4B and 9B parameter variants.
+[^6]: [Qwen3.5](https://huggingface.co/Qwen/Qwen3.5-4B) is a dense transformer model from Alibaba's Qwen team, using a hybrid architecture that mixes full attention with DeltaNet linear attention layers. We support the [4B](https://huggingface.co/Qwen/Qwen3.5-4B) and [9B](https://huggingface.co/Qwen/Qwen3.5-9B) parameter variants.
 
 [^7]: Qwen3.5-4B uses a [hybrid DeltaNet + full attention architecture](https://qwenlm.github.io/blog/qwen3.5/) where most layers use linear attention with convolutional state, and every Nth layer uses standard full attention with KV cache. This means the per-layer ANE kernel structure varies — linear attention layers use a different projection pattern than full attention layers.
 
