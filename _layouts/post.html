@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="post-layout">
-  <nav class="toc" id="toc"></nav>
+  <nav class="toc" id="toc"><button class="toc-toggle" onclick="this.parentElement.classList.toggle('toc-open')">Contents</button></nav>
   <article>
     <h1><a href="/" class="back-arrow" aria-label="Back to home">←</a> {{ page.title }}</h1>
     <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
