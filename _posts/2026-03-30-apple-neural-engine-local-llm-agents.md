@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Running 4B models on Apple's Neural Engine"
+title: "Running 4B+ models on Apple's Neural Engine"
 date: 2026-03-30
 published: true
 description: "Qwen3.5-4B hits 11.66 tok/s single-stream on ANE with int8 quantization, and four concurrent streams reach 28.62 tok/s aggregate — all on the Neural Engine, GPU and CPU idle."
