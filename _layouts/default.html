@@ -98,17 +98,17 @@
       --lk-tracking-wide:     0.006em;
 
       /* ─── Light Mode Colors ──────────────────────────── */
-      --lk-surface:                 #ffffff;
-      --lk-on-surface:              #111111;
-      --lk-surface-container:       #f5f5f5;
-      --lk-surface-container-high:  #ebebeb;
-      --lk-primary:    #0066cc;
-      --lk-on-primary: #ffffff;
-      --lk-secondary:  #555555;
-      --lk-tertiary:   #0044aa;
-      --lk-outline:         #e0e0e0;
-      --lk-outline-variant: #cccccc;
-      --lk-selection:  #b3d4fc;
+      --lk-surface:                 #f5f0e8;
+      --lk-on-surface:              #2a2218;
+      --lk-surface-container:       #ede7dc;
+      --lk-surface-container-high:  #e4ddd1;
+      --lk-primary:    #8b572a;
+      --lk-on-primary: #f5f0e8;
+      --lk-secondary:  #7a7068;
+      --lk-tertiary:   #6b3f1a;
+      --lk-outline:         #d5cec4;
+      --lk-outline-variant: #c4bbb0;
+      --lk-selection:  #d4b896;
 
       /* ─── Light Mode Shadows ─────────────────────────── */
       --lk-shadow-sm:
@@ -130,7 +130,7 @@
     /* ─── Dark Mode — explicit toggle ──────────────────── */
     :root[data-theme="dark"] {
       --lk-surface:                 #0d0d0d;
-      --lk-on-surface:              #e8e8e8;
+      --lk-on-surface:              #c8c8c8;
       --lk-surface-container:       #0a1a0f;
       --lk-surface-container-high:  #0f2a17;
       --lk-primary:    #39FF14;
@@ -160,7 +160,7 @@
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
         --lk-surface:                 #0d0d0d;
-        --lk-on-surface:              #e8e8e8;
+        --lk-on-surface:              #c8c8c8;
         --lk-surface-container:       #0a1a0f;
         --lk-surface-container-high:  #0f2a17;
         --lk-primary:    #39FF14;
@@ -189,17 +189,17 @@
 
     /* ─── Light Mode — explicit override ───────────────── */
     :root[data-theme="light"] {
-      --lk-surface:                 #ffffff;
-      --lk-on-surface:              #111111;
-      --lk-surface-container:       #f5f5f5;
-      --lk-surface-container-high:  #ebebeb;
-      --lk-primary:    #0066cc;
-      --lk-on-primary: #ffffff;
-      --lk-secondary:  #555555;
-      --lk-tertiary:   #0044aa;
-      --lk-outline:         #e0e0e0;
-      --lk-outline-variant: #cccccc;
-      --lk-selection:  #b3d4fc;
+      --lk-surface:                 #f5f0e8;
+      --lk-on-surface:              #2a2218;
+      --lk-surface-container:       #ede7dc;
+      --lk-surface-container-high:  #e4ddd1;
+      --lk-primary:    #8b572a;
+      --lk-on-primary: #f5f0e8;
+      --lk-secondary:  #7a7068;
+      --lk-tertiary:   #6b3f1a;
+      --lk-outline:         #d5cec4;
+      --lk-outline-variant: #c4bbb0;
+      --lk-selection:  #d4b896;
       --lk-shadow-sm:
         0 1px 2px rgba(0, 0, 0, 0.04),
         0 1px 3px rgba(0, 0, 0, 0.06);
@@ -265,7 +265,7 @@
         linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
         var(--bg);
-      background-size: 20px 20px, 20px 20px, 100% 100%;
+      background-size: 16px 16px, 16px 16px, 100% 100%;
       color: var(--text);
       --grid-color: color-mix(in srgb, var(--lk-on-surface) 3%, transparent);
       cursor: crosshair;
@@ -298,7 +298,11 @@
       opacity: 0.03;
     }
     [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 3%, transparent); }
-    [data-theme="light"] body::before { opacity: 0; }
+    [data-theme="light"] body::before {
+      opacity: 1;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+    }
     
     a, button, .social a { cursor: pointer; }
     ::selection {
@@ -344,7 +348,7 @@
         linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
         var(--bg);
-      background-size: 20px 20px, 20px 20px, 100% 100%;
+      background-size: 16px 16px, 16px 16px, 100% 100%;
       padding: var(--lk-size-md) 0;
       z-index: 100;
       animation: fadeSlideIn 0.6s ease-out both;
@@ -397,11 +401,12 @@
       text-decoration: none;
     }
     .handle:hover::after {
-      width: 100%;
+      width: 0;
     }
     @media (hover: hover) and (pointer: fine) {
       .handle:hover {
         text-shadow: 0 2px 4px color-mix(in srgb, var(--lk-on-surface) 12%, transparent);
+        animation: glitch 0.3s ease-out;
       }
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) .handle:hover {
@@ -415,6 +420,7 @@
       }
       [data-theme="light"] .handle:hover {
         text-shadow: 0 2px 4px color-mix(in srgb, var(--lk-on-surface) 12%, transparent);
+        animation: glitch 0.3s ease-out;
       }
     }
     @keyframes glitch {
@@ -432,8 +438,8 @@
 
     .scroll-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      transform: translateY(8px);
+      transition: opacity 0.15s ease-out, transform 0.15s ease-out;
     }
     .scroll-in.visible {
       opacity: 1;
@@ -447,6 +453,16 @@
       body {
         padding: var(--lk-size-md);
       }
+      .post-entry {
+        flex-wrap: wrap;
+      }
+      .post-date {
+        flex-basis: 100%;
+        order: 1;
+      }
+      .post-entry-title {
+        order: 0;
+      }
       .handle {
         font-size: var(--lk-font-subheading);
       }
@@ -454,9 +470,7 @@
       h1 {
         font-size: 1.4rem !important;
       }
-      .post-list--home .post-entry:first-child .post-entry-title {
-        font-size: 1.4rem !important;
-      }
+
       pre {
         margin-left: calc(-1 * var(--lk-size-xs));
         margin-right: calc(-1 * var(--lk-size-xs));
@@ -557,6 +571,7 @@
     .header-text {
       display: flex;
       flex-direction: column;
+      gap: 2px;
     }
     .profile-photo {
       width: 72px;
@@ -805,13 +820,19 @@
       margin-bottom: var(--lk-size-xs);
     }
     main > h2 {
-      font-size: var(--lk-font-callout);
+      font-size: var(--lk-font-caption);
       color: var(--text-muted);
       margin: var(--lk-size-2xl) 0 var(--lk-size-md);
-      letter-spacing: 1px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--lk-size-xs);
     }
     main > h2:first-child {
       margin-top: 0;
+    }
+    h2 + .post-list {
+      margin-top: calc(-1 * var(--lk-size-sm));
     }
     .post-list { 
       padding: 0;
@@ -821,7 +842,7 @@
     }
     .post-entry {
       display: flex;
-      align-items: start;
+      align-items: baseline;
       padding: var(--lk-size-sm) 0;
       border-bottom: 1px solid var(--border);
       text-decoration: none;
@@ -833,40 +854,37 @@
     }
     .post-entry:hover {
       background: var(--bg-alt);
-    }
-    .post-date-col {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      gap: var(--lk-size-xs);
-      flex-shrink: 0;
-      width: 100px;
-    }
-    .post-list--home .post-entry:first-child .post-date-col {
-      padding-top: 0.45em;
-    }
-    .post-thumb {
-      width: 100px;
-      height: 100px;
+      padding-left: var(--lk-size-xs);
+      margin-left: calc(-1 * var(--lk-size-xs));
+      padding-right: var(--lk-size-xs);
+      margin-right: calc(-1 * var(--lk-size-xs));
       border-radius: var(--lk-size-2xs);
-      object-fit: cover;
-      border: 1px solid var(--border);
     }
     .post-entry-title {
       color: var(--text);
-      padding-top: 1px;
+      flex: 1;
+      min-width: 0;
     }
     .post-entry:hover .post-entry-title {
-      text-decoration: underline;
+      color: var(--accent);
     }
     .post-list--home .post-entry:first-child .post-entry-title {
       font-size: var(--lk-font-title2);
       font-weight: 700;
+      line-height: var(--lk-leading-tight);
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .post-thumb-col {
+      display: none;
     }
     .post-date { 
       color: var(--text-muted); 
       font-size: var(--lk-font-callout);
       white-space: nowrap;
+      flex-shrink: 0;
     }
     nav a {
       color: var(--text-muted);
@@ -1180,9 +1198,12 @@
       color: var(--text-muted);
       font-size: var(--lk-font-callout);
       white-space: nowrap;
+      letter-spacing: 0.05em;
+      transition: color 150ms ease, letter-spacing 200ms ease;
     }
     .more-link:hover {
       color: var(--accent);
+      letter-spacing: 0.12em;
     }
     .rss-icon {
       display: inline-flex;
@@ -1284,6 +1305,11 @@
       object-fit: cover;
       border: 2px solid var(--border);
       box-shadow: var(--lk-shadow-md);
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .startup-entry:hover .startup-logo img {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: var(--lk-shadow-lg);
     }
     .startup-logo img.logo-padded {
       padding: 6px;
@@ -1386,8 +1412,8 @@
     <div class="post-list">
     {% for post in related %}
       <a href="{{ post.url }}" class="post-entry">
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <span class="post-entry-title">{{ post.title }}</span>
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       </a>
     {% endfor %}
     </div>
@@ -1416,7 +1442,7 @@
     // Scroll-in animation for index page sections
     document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
       el.classList.add('scroll-in');
-      el.style.transitionDelay = `${i * 0.05}s`;
+      el.style.transitionDelay = `${i * 0.02}s`;
     });
     const scrollObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1427,6 +1453,23 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.scroll-in').forEach(el => scrollObserver.observe(el));
+
+    // Relative timestamps
+    document.querySelectorAll('time.post-date[datetime]').forEach(el => {
+      const d = new Date(el.getAttribute('datetime'));
+      const now = new Date();
+      const diff = Math.floor((now - d) / 1000);
+      const abs = Math.abs(diff);
+      let rel;
+      if (abs < 86400) rel = 'today';
+      else if (abs < 86400 * 2) rel = '1d ago';
+      else if (abs < 86400 * 14) rel = Math.floor(abs / 86400) + 'd ago';
+      else if (abs < 86400 * 60) rel = Math.floor(abs / (86400 * 7)) + 'w ago';
+      else if (abs < 86400 * 365) rel = Math.floor(abs / (86400 * 30)) + 'mo ago';
+      else rel = Math.floor(abs / (86400 * 365)) + 'y ago';
+      el.title = el.textContent;
+      el.textContent = rel;
+    });
 
   </script>
 </body>
