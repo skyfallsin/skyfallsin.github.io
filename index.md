@@ -60,7 +60,7 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 ## OPEN SOURCE
 
 <div class="startup-entry">
-<a href="https://github.com/skyfallsin/ane.cpp" class="startup-logo"><img src="/images/logos/ane-cpp.png" alt="ane.cpp" class="logo-padded theme-img-light"><img src="/images/logos/ane-cpp-dark.png" alt="ane.cpp" class="logo-padded theme-img-dark"></a>
+<a href="https://github.com/skyfallsin/ane.cpp" class="startup-logo"><img src="/images/logos/ane-cpp.png" alt="ane.cpp" class="logo-padded"></a>
 <div class="startup-text"><strong><a href="https://github.com/skyfallsin/ane.cpp">ane.cpp</a></strong> — LLM inference on Apple's Neural Engine, bypassing CoreML. Companion <a href="https://github.com/skyfallsin/apple-neural-engine-field-guide">field guide</a> documents 40+ ANE experiments. <a href="/2026/03/30/apple-neural-engine-local-llm-agents.html">Blog post</a>.</div>
 </div>
 
