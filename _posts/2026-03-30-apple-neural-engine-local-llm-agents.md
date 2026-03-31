@@ -122,6 +122,13 @@ new Chart(document.getElementById('concurrencyChart'), {
 "></canvas>
 </div>
 
+| Model | Mode | 1 stream | 2 streams | 4 streams |
+|---|---|---:|---:|---:|
+| Qwen3.5-4B | fp16 | 8.62 | 12.59 | 20.75 |
+| Qwen3.5-4B | int8 | 10.53 | 15.95 | 28.62 |
+| Qwen3.5-9B | fp16 | 3.62 | 4.44 | 4.89 |
+| Qwen3.5-9B | int8 | 5.76 | 5.81 | 6.57 |
+
 Per-stream average at each concurrency level:
 
 | Model | Mode | 1 stream | 2 streams | 4 streams |
