@@ -98,17 +98,17 @@
       --lk-tracking-wide:     0.006em;
 
       /* ─── Light Mode Colors ──────────────────────────── */
-      --lk-surface:                 #f5f0e8;
-      --lk-on-surface:              #2a2218;
-      --lk-surface-container:       #ede7dc;
-      --lk-surface-container-high:  #e4ddd1;
-      --lk-primary:    #8b572a;
-      --lk-on-primary: #f5f0e8;
-      --lk-secondary:  #7a7068;
-      --lk-tertiary:   #6b3f1a;
-      --lk-outline:         #d5cec4;
-      --lk-outline-variant: #c4bbb0;
-      --lk-selection:  #d4b896;
+      --lk-surface:                 #f8f6f2;
+      --lk-on-surface:              #1e2a32;
+      --lk-surface-container:       #f0ede8;
+      --lk-surface-container-high:  #e8e5df;
+      --lk-primary:    #3d4f5f;
+      --lk-on-primary: #f8f6f2;
+      --lk-secondary:  #6b7580;
+      --lk-tertiary:   #2a3a48;
+      --lk-outline:         #d8d5d0;
+      --lk-outline-variant: #cac7c2;
+      --lk-selection:  #b8cad8;
 
       /* ─── Light Mode Shadows ─────────────────────────── */
       --lk-shadow-sm:
@@ -189,17 +189,17 @@
 
     /* ─── Light Mode — explicit override ───────────────── */
     :root[data-theme="light"] {
-      --lk-surface:                 #f5f0e8;
-      --lk-on-surface:              #2a2218;
-      --lk-surface-container:       #ede7dc;
-      --lk-surface-container-high:  #e4ddd1;
-      --lk-primary:    #8b572a;
-      --lk-on-primary: #f5f0e8;
-      --lk-secondary:  #7a7068;
-      --lk-tertiary:   #6b3f1a;
-      --lk-outline:         #d5cec4;
-      --lk-outline-variant: #c4bbb0;
-      --lk-selection:  #d4b896;
+      --lk-surface:                 #f8f6f2;
+      --lk-on-surface:              #1e2a32;
+      --lk-surface-container:       #f0ede8;
+      --lk-surface-container-high:  #e8e5df;
+      --lk-primary:    #3d4f5f;
+      --lk-on-primary: #f8f6f2;
+      --lk-secondary:  #6b7580;
+      --lk-tertiary:   #2a3a48;
+      --lk-outline:         #d8d5d0;
+      --lk-outline-variant: #cac7c2;
+      --lk-selection:  #b8cad8;
       --lk-shadow-sm:
         0 1px 2px rgba(0, 0, 0, 0.04),
         0 1px 3px rgba(0, 0, 0, 0.06);
@@ -267,7 +267,7 @@
         var(--bg);
       background-size: 16px 16px, 16px 16px, 100% 100%;
       color: var(--text);
-      --grid-color: color-mix(in srgb, var(--lk-on-surface) 3%, transparent);
+      --grid-color: color-mix(in srgb, var(--lk-on-surface) 1.5%, transparent);
       cursor: crosshair;
     }
     body::before {
@@ -283,7 +283,7 @@
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"] body) { 
-        --grid-color: color-mix(in srgb, var(--lk-primary) 3%, transparent);
+        --grid-color: color-mix(in srgb, var(--lk-primary) 1.5%, transparent);
       }
       body:not([data-theme="light"] body)::before {
         opacity: 1;
@@ -291,13 +291,13 @@
         opacity: 0.03;
       }
     }
-    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: color-mix(in srgb, var(--lk-primary) 3%, transparent); }
+    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: color-mix(in srgb, var(--lk-primary) 1.5%, transparent); }
     [data-theme="dark"] body::before, :root[data-theme="dark"] body::before {
       opacity: 1;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       opacity: 0.03;
     }
-    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 3%, transparent); }
+    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 1.5%, transparent); }
     [data-theme="light"] body::before {
       opacity: 1;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");

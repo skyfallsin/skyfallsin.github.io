@@ -54,18 +54,77 @@ Single-stream generation isn't fast. But single-stream speed isn't really the po
 
 The tables below are from warmed serve-mode runs with Qwen's thinking defaults (`--enable-thinking`, `top_p=0.95`, `top_k=20`, `presence_penalty=1.5`, `repeat_penalty=1.0`, `temp=1.0`), 8 requests at 100 generated tokens each, 3 repeats per concurrency level, `--sessions 4`.
 
-Aggregate generation throughput across all active requests:
+Aggregate generation throughput across all active streams:
 
-| Model | Mode | c1 | c2 | c4 |
-|---|---|---:|---:|---:|
-| Qwen3.5-4B | fp16 | 8.62 | 12.59 | 20.75 |
-| Qwen3.5-4B | int8 | 10.53 | 15.95 | 28.62 |
-| Qwen3.5-9B | fp16 | 3.62 | 4.44 | 4.89 |
-| Qwen3.5-9B | int8 | 5.76 | 5.81 | 6.57 |
+<div style="max-width: 520px; margin: 1.5em auto;">
+<canvas id="concurrencyChart" height="280" data-chart="
+new Chart(document.getElementById('concurrencyChart'), {
+  type: 'line',
+  data: {
+    labels: ['1 stream', '2 streams', '4 streams'],
+    datasets: [{
+      label: '4B int8',
+      data: [10.53, 15.95, 28.62],
+      borderColor: '#0066cc',
+      backgroundColor: 'rgba(0, 102, 204, 0.08)',
+      borderWidth: 2.5,
+      pointRadius: 5,
+      pointBackgroundColor: '#0066cc',
+      tension: 0.2,
+      fill: true
+    }, {
+      label: '4B fp16',
+      data: [8.62, 12.59, 20.75],
+      borderColor: '#66a3d2',
+      borderWidth: 2,
+      pointRadius: 4,
+      pointBackgroundColor: '#66a3d2',
+      tension: 0.2
+    }, {
+      label: '9B int8',
+      data: [5.76, 5.81, 6.57],
+      borderColor: '#6c757d',
+      borderWidth: 2,
+      pointRadius: 4,
+      pointBackgroundColor: '#6c757d',
+      tension: 0.2
+    }, {
+      label: '9B fp16',
+      data: [3.62, 4.44, 4.89],
+      borderColor: '#adb5bd',
+      borderWidth: 2,
+      pointRadius: 4,
+      pointBackgroundColor: '#adb5bd',
+      tension: 0.2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'top' },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ': ' + ctx.raw + ' tok/s';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: 'Aggregate tok/s' },
+        max: 32
+      }
+    }
+  }
+});
+"></canvas>
+</div>
 
-Average per-request generation throughput:
+Per-stream average at each concurrency level:
 
-| Model | Mode | c1 | c2 | c4 |
+| Model | Mode | 1 stream | 2 streams | 4 streams |
 |---|---|---:|---:|---:|
 | Qwen3.5-4B | fp16 | 9.91 | 7.97 | 6.67 |
 | Qwen3.5-4B | int8 | 12.19 | 9.61 | 9.25 |
@@ -138,7 +197,7 @@ Beyond that, the things we're most interested in:
 
 **More model architectures.** ane.cpp currently only runs Qwen-family models. The compilation and dispatch infrastructure is generic enough that adding other dense transformer architectures (Llama, Gemma, Phi) should be mostly a matter of wiring up the layer configs and any architecture-specific attention patterns.
 
-The optimizations that survived are the boring ones — fused kernels[^10], W-lane batching[^11], chunked FFN, and int8 weight quantization via `constexpr_affine_dequantize` — and plenty of ideas didn't: ANE decode attention, speculative decode / self-draft, ANE RMSNorm fusion mega-kernels, cross-layer norm fusion, 3-runtime-input kernels, packed-slice workarounds, INT4, and runtime-weight convolutions all failed on M3 Max. The companion [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide)[^13] records each dead end alongside wins in a [karpathy/autoresearch](https://github.com/karpathy/autoresearch)-style loop: write a focused test, measure it, keep or discard, repeat.
+The optimizations that survived are the boring ones — fused kernels[^10], W-lane batching[^11], chunked FFN, and int8 weight quantization via `constexpr_blockwise_shift_scale` — and plenty of ideas didn't: ANE decode attention, speculative decode / self-draft, ANE RMSNorm fusion mega-kernels, cross-layer norm fusion, 3-runtime-input kernels, packed-slice workarounds, INT4, and runtime-weight convolutions all failed on M3 Max. The companion [field guide](https://github.com/skyfallsin/apple-neural-engine-field-guide)[^13] records each dead end alongside wins in a [karpathy/autoresearch](https://github.com/karpathy/autoresearch)-style loop: write a focused test, measure it, keep or discard, repeat.
 
 ## Repos
 
