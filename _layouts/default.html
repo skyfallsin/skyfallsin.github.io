@@ -522,6 +522,20 @@
       max-width: 100%;
       height: auto;
     }
+    .post-hero {
+      margin: 0 0 var(--lk-size-lg);
+    }
+    .post-hero img {
+      display: block;
+      width: 100%;
+      border-radius: 12px;
+    }
+    .post-hero figcaption {
+      margin-top: var(--lk-size-2xs);
+      color: var(--text-muted);
+      font-size: var(--lk-font-caption);
+      text-align: right;
+    }
     article hr {
       display: block;
       border: none;
@@ -1402,7 +1416,11 @@
         document.documentElement.setAttribute('data-theme', stored);
       }
       
+      if (forceTheme && toggle) {
+        toggle.hidden = true;
+      }
       toggle?.addEventListener('click', () => {
+        if (forceTheme) return;
         const current = document.documentElement.getAttribute('data-theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         let next;
