@@ -2,16 +2,17 @@
 layout: post
 title: The One Pizza Startup
 date: 2026-06-30
+published: false
 description: Zero-to-one teams used to trade O(n²) communication for speed. LLMs flip that math. Two disciplined engineers can now get to PMF faster.
 ---
 
 Roughly around December 2025, seasoned engineers noticed that frontier coding models now generated consistently high-quality code at a low cost. This has changed the dynamics of starting companies, and technical founders seem to be realizing collectively that there’s a new path, one that could increase the chances of success to an IPO while reducing the costs of getting there.
 
-The problem: no number of engineers saves a company that lacks product-market-fit.  Except the engine of PMF is a tight, compounding learning loop, which requires a focused team. They need to maximize their probability of success by using as few at-bats as possible to make a company’s growth durably skyrocket. Otherwise the paths are failure or being annoyingly diluted, not to mention founder opportunity cost.
+The problem: no number of engineers saves a company that lacks product-market-fit.  Except, the engine of PMF is a tight, compounding learning loop, which requires a focused team. They need to maximize their probability of success by using as few at-bats as possible to make a company’s growth durably skyrocket. Otherwise the paths are failure or being annoyingly diluted, not to mention founder opportunity cost.
 
 This post is intended to start the conversation on how LLMs can change this, using back-of-the-napkin math and thinking.
 
-# Pre-LLM startup life
+### Pre-LLM startup life
 Before LLMs, new startups were told to hire slowly but most never listened. The usual advice as the business scaled was:
 
 > Hire a solid team of engineers, and as a technical founder/CEO you free up your time to “run the business” while increasing the probability of creating best-in-class IP, at the expense of reducing your runway. But your team will ship faster.
@@ -47,7 +48,7 @@ If you were an especially good founding team, in practice 12-14 months gets you 
 
 Going from seed-stage startup to a robust company was and is quite brutal.
 
-How does this change with LLMs in the mix?
+### LLMs break the patterns
 
 LLMs also behave non-deterministically and need human oversight. However, if an engineering team consists instead of a small number of engineers running many LLM code threads, this materially changes the velocity & survival possibilities for an early startup.
 
@@ -84,10 +85,12 @@ And once you have product-market-fit, there’s a higher probability of above-av
 
 That single trade at the beginning: going from the _O(n²)_ personal communication problem to the _O(n)_ attention problem could actually compound from seed-stage runway all the way to IPO. 
 
-
+---- 
+_Thank you to Naveen Selvadurai, Walter Chen, Silas Hundt, Hiten Shah and Michael Galpert for reading drafts_
 
 
 [^1]:	Pre-LLM — Since code was more expensive to create but highly leveraged, a notion also seems to have developed among seed-stage financiers that “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is also a part of the moat of a new product”. This means optically you were lower risk with a larger team. A team is always interesting to acquirers even if the product fails, increasing the chances of any return at all. 
+
 
 	Post-LLM — The worst-case downside scenario from before is now markedly different - if there is an acqui-hire, it’ll look more like an extra-rich IC offer at a big shop for phenomenal engineers. But there may also not be an offer at all, since the team size is small.
 
