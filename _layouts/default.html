@@ -267,7 +267,7 @@
         var(--bg);
       background-size: 16px 16px, 16px 16px, 100% 100%;
       color: var(--text);
-      --grid-color: color-mix(in srgb, var(--lk-on-surface) 1.5%, transparent);
+      --grid-color: color-mix(in srgb, var(--lk-on-surface) 5%, transparent);
       cursor: crosshair;
     }
     body::before {
@@ -283,7 +283,7 @@
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"] body) { 
-        --grid-color: color-mix(in srgb, var(--lk-primary) 1.5%, transparent);
+        --grid-color: color-mix(in srgb, var(--lk-primary) 3%, transparent);
       }
       body:not([data-theme="light"] body)::before {
         opacity: 1;
@@ -291,13 +291,13 @@
         opacity: 0.03;
       }
     }
-    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: color-mix(in srgb, var(--lk-primary) 1.5%, transparent); }
+    [data-theme="dark"] body, :root[data-theme="dark"] body { --grid-color: color-mix(in srgb, var(--lk-primary) 3%, transparent); }
     [data-theme="dark"] body::before, :root[data-theme="dark"] body::before {
       opacity: 1;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       opacity: 0.03;
     }
-    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 1.5%, transparent); }
+    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 5%, transparent); }
     [data-theme="light"] body::before {
       opacity: 1;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -444,6 +444,15 @@
     .scroll-in.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    /* No-JS + reduced-motion: always render content. Nothing should ever
+       be trapped at opacity:0 waiting for an observer that won't fire. */
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-in, .scroll-in.visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
     }
     .handle.page-title .ext {
       margin-left: -0.35ch;
@@ -912,15 +921,7 @@
     .post-entry:hover .post-entry-title {
       color: var(--accent);
     }
-    .post-list--home .post-entry:first-child .post-entry-title {
-      font-size: var(--lk-font-title2);
-      font-weight: 700;
-      line-height: var(--lk-leading-tight);
-      background: linear-gradient(135deg, var(--text), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    /* uniform post list — engineer's index, no arbitrary emphasis on first row */
     .post-thumb-col {
       display: none;
     }
@@ -1235,19 +1236,21 @@
       margin-bottom: var(--lk-size-md);
     }
     .more-link {
-      display: inline-flex;
+      display: flex;
+      justify-content: flex-end;
       align-items: center;
       min-height: 44px;
       margin-top: var(--lk-size-2xs);
       color: var(--text-muted);
-      font-size: var(--lk-font-callout);
+      font-size: var(--lk-font-caption);
       white-space: nowrap;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       transition: color 150ms ease, letter-spacing 200ms ease;
     }
     .more-link:hover {
       color: var(--accent);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.22em;
     }
     .rss-icon {
       display: inline-flex;
@@ -1438,6 +1441,7 @@
       });
     });
   </script>
+  <noscript><style>.scroll-in{opacity:1 !important;transform:none !important;}</style></noscript>
 </head>
 <body>
   <header class="header">
@@ -1445,7 +1449,7 @@
       <img src="/images/profile.jpg" alt="Pradeep Elankumaran" class="profile-photo">
       <div class="header-text">
         <a href="/" class="handle page-title">PRADEEP<span class="ext">.md</span></a>
-        <span class="tagline">Thinking<span class="ellipsis"></span></span>
+        <span class="tagline">building jo &middot; sf</span>
       </div>
     </div>
     <div class="social"><a href="https://x.com/pradeep24" target="_blank" aria-label="X"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a><a href="https://instagram.com/skyfallsin" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><button id="theme-toggle" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button></div>
@@ -1487,20 +1491,36 @@
     document.querySelectorAll('.badges img[data-src]').forEach(img => badgeObserver.observe(img));
 
 
-    // Scroll-in animation for index page sections
-    document.querySelectorAll('main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul').forEach((el, i) => {
-      el.classList.add('scroll-in');
-      el.style.transitionDelay = `${i * 0.02}s`;
-    });
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          scrollObserver.unobserve(entry.target);
-        }
+    // Scroll-in animation for index page sections.
+    // Only hide items that are BELOW the fold at load — anything already in
+    // the viewport stays visible so first paint is never an empty page.
+    (function () {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const selector = 'main > h2, main > .post-list, main > .more-link, main > p, main > .startup-entry, main > .instagram-grid-wrapper, main > .badges, main > ul';
+      const els = document.querySelectorAll(selector);
+      const hidden = [];
+      let i = 0;
+      els.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        if (top < vh * 0.9) return; // already visible — leave alone
+        el.classList.add('scroll-in');
+        el.style.transitionDelay = `${i * 0.02}s`;
+        hidden.push(el);
+        i++;
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.scroll-in').forEach(el => scrollObserver.observe(el));
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            scrollObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      hidden.forEach((el) => scrollObserver.observe(el));
+      // Safety net: if for any reason IO never fires (e.g. layout stays
+      // short), unhide everything after 2s so we never strand content.
+      setTimeout(() => hidden.forEach((el) => el.classList.add('visible')), 2000);
+    })();
 
     // Relative timestamps
     document.querySelectorAll('time.post-date[datetime]').forEach(el => {
