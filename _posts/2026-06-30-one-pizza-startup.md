@@ -2,6 +2,8 @@
 layout: post
 title: The One Pizza Startup
 date: 2026-06-30
+image: /images/posts/one-pizza-startup.jpg
+image_alt: Two founders and small AI robots eating pizza around laptops
 ---
 
 Language models asked to assist engineers with writing code predict tokens non-deterministically, and need humans to manage their expense and set guardrails that guarantee quality and consistency. One human running *n* LLM conversations is limited by their ability to manage those *n* conversations in parallel — an **O(n)** _attention_ problem.
