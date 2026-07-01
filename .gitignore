@@ -3,3 +3,7 @@ _site/
 .DS_Store
 
 .gstack/
+
+# Ulysses external-folder metadata
+.Ulysses-Group.plist
+.Ulysses-Settings.plist
