@@ -72,7 +72,7 @@ The above is a capacity model, not a productivity claim.
 
 Less synchronization is needed since writing throwaway prototypes is now cheap. This speeds up the entire company’s learning loop, which is the primary engine of product-market fit, and gives founders a true dial for maximizing at-bats vs engineering budget.
 
-It gets very interesting when the team size drops down to 2 engineers with this structure.
+### One pizza for a long time
 
 A “one pizza startup” is a founding team small enough to have a single conversation pair, between two people who can hold the entire product in their heads and use concurrent LLM threads to get more done faster.
 
