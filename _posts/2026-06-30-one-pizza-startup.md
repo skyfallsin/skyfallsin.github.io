@@ -4,6 +4,7 @@ title: The One Pizza Startup
 date: 2026-06-30
 image: /images/posts/one-pizza-startup.jpg
 image_alt: Two founders and small AI robots eating pizza around laptops
+description: Zero-to-one teams used to trade O(n²) communication for speed. LLMs flip that math — two disciplined engineers can now get to PMF faster.
 ---
 
 ## The Math of Team Size
