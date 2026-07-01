@@ -51,6 +51,10 @@ So now the big question - why add more people to a zero-to-one engineering team 
 
 The heavy lifting being done in these team structures: the quality of the engineers in question, their paranoia when designing, building and editing systems over time, and their and the org’s token budgeting and discipline. Can these engineers context-switch aggressively without burning out over time? That’s another huge one.
 
+Code as leverage is well understood. But there’s a notion in the funding market right now that small teams produce easily reproducible products with no moat — the old logic being “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is the moat.” 
+
+The problem: no number of engineers saves a company that lacks product-market-fit. So that objection sounds less like analysis and more like an excuse to pass. It’s likely more interesting to check whether the team has a tight, compounding learning loop that leads to PMF.
+
 The worst-case downside scenario from before is now markedly different - if there is an acqui-hire, it’ll look more like an extra-rich IC offer at a big shop. But there may also not be an offer at all, since the team size is small.
 
 The best case scenario is you _actually_ solve for product-market-fit faster, instead of saying you do.  You have more at-bats as a founding team.
@@ -59,4 +63,4 @@ And once you have product-market-fit, there’s a higher probability of above-av
 
 High margins plus capital efficiency translate into premium multiples in the public markets.
 
-That single trade at the beginning: going from the _O(n²)_ personal communication problem to the _O(n)_ attention problem compounds in a lovely way from seed-stage runway all the way to IPO. But, it’ll take discipline.
+That single trade at the beginning: going from the _O(n²)_ personal communication problem to the _O(n)_ attention problem compounds from seed-stage runway all the way to IPO. But, it’ll take discipline.
