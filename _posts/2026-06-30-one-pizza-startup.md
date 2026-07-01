@@ -7,7 +7,6 @@ image_alt: Two founders and small AI robots eating pizza around laptops
 description: Zero-to-one teams used to trade O(n²) communication for speed. LLMs flip that math. Two disciplined engineers can now get to PMF faster.
 ---
 
-## The Math of Team Size
 
 Language models asked to assist engineers with writing code predict tokens non-deterministically, and need humans to manage their expense and set guardrails that guarantee quality and consistency. One human running *n* LLM conversations is limited by their ability to manage those *n* conversations in parallel: an O(n) _attention_ problem.
 
@@ -17,7 +16,6 @@ Each person in that group has to communicate with *every* other member, so the n
  
 But we’re talking about founding teams: zero-to-one product development with deeply technical founders. These are usually under 10 people, mostly engineers, so let’s say 6. Even at that size there are 6·5/2 = 15 distinct communication paths.
 
-## When Code Got Cheap
 
 Inside software companies, code generation by humans is usually the biggest cost center. Software companies also don’t grow unless the code changes to meet customer expectations, so also the biggest value center.
 
@@ -35,7 +33,6 @@ In the event they spawn more of themselves to work with, the relationships aren�
 
 As a software company, LLMs type out code faster than humans manually writing it. Tech, a measure of providence and human oversight combine to make that code actually shippable. The cost of managing a “team” of _n_ LLM agents is the cost of a highly paid engineer’s salary plus disciplined token burn. The best engineers are able to orchestrate LLMs to execute high-quality deltas in hours, not weeks, at the cost of _n_ individual 1:1 conversations with isolated agents.
 
-## The One Pizza Team
 
 Let’s do some rough napkin math now:  
 
@@ -60,7 +57,6 @@ So now the big question - why add more people to a zero-to-one engineering team 
 
 The heavy lifting being done in these team structures: the quality of the engineers in question, their paranoia when designing, building and editing systems over time, and their and the org’s token budgeting and discipline. Can these engineers context-switch aggressively without burning out over time? That’s another huge one.
 
-## Where the Moat Actually Lives
 
 Code as leverage is well understood. But there’s a notion in the funding market right now that small teams produce easily reproducible products with no moat. The old logic being “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is the moat.” 
 
