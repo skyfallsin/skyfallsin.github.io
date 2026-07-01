@@ -10,7 +10,9 @@ Around December 2025, seasoned engineers noticed that frontier coding models now
 
 Technical founders seem to be realizing collectively that there’s a new path, one that lets a small founding team run more product learning loops each week without adding the comms overhead that usually comes with adding more team members.
 
-The problem: no number of engineers saves a company that lacks product-market fit. Except, the engine of PMF is a tight, compounding learning loop, which requires a focused team. They need to maximize their probability of growth by getting as many high-quality at-bats as possible before time runs out. Otherwise the paths are failure or being annoyingly diluted, not to mention founder opportunity cost.
+The problem: no number of engineers saves a company that lacks product-market fit. Except, the engine of PMF is a tight, compounding learning loop, which requires a focused team and not lots of lines of code written by a large one.
+
+Founding teams need to maximize their probability of growth by getting as many high-quality at-bats as possible before time runs out. Otherwise the paths are failure or being annoyingly diluted, not to mention founder opportunity cost.
 
 This post is intended to start the conversation on how LLMs can change this, using back-of-the-napkin math and thinking.
 
@@ -24,7 +26,7 @@ Before LLMs, new startups were told to hire slowly but most never listened. The 
 >
 > Worst case scenario, if the product doesn’t work, the engineering team lands on its feet with an acqui-hire. [^1]
 
-But ever since Opus 4.7 & GPT-5.5, this line of pre-LLM thinking seems to be fraying.
+Ever since Opus 4.7 & GPT-5.5, this line of pre-LLM thinking seems to be fraying.
 
 Inside software companies, the act of changing code to meet customer expectations directly drives growth, and is both the biggest cost and value center.
 
@@ -53,7 +55,7 @@ Going from seed-stage startup to a robust company was and is quite brutal.
 
 ### LLMs break the patterns
 
-LLMs also behave non-deterministically and need human oversight. However, if an engineering team consists instead of a small number of engineers running many LLM code threads, this materially changes the velocity & survival possibilities for an early startup.
+Like humans, LLMs also behave non-deterministically and need human oversight. However, if an engineering team consists instead of a small number of engineers running many LLM code threads, this materially changes the velocity & survival possibilities for an early startup.
 
 The team structure goes from the `O(n²)` communication problem to a much more tractable  `O(n)` _attention_ problem of a small team of engineers attending to _n_ concurrent threads in parallel.
 
@@ -72,7 +74,9 @@ Less synchronization is needed since writing throwaway prototypes is now cheap. 
 
 It gets very interesting when the team size drops down to 2 engineers with this structure.
 
-A “one pizza startup” is a founding team small enough to have a single conversation pair, between two people who can hold the entire product in their heads and use concurrent LLM threads to get more done faster. Kevin & I have been iterating for a year or so now with this pattern, and it’s pretty freakin’ fast. It’s hard to go back.
+A “one pizza startup” is a founding team small enough to have a single conversation pair, between two people who can hold the entire product in their heads and use concurrent LLM threads to get more done faster.
+
+Kevin & I have been iterating for a year or so now with this pattern, and it’s pretty freakin’ fast. It’s hard to go back.
 
 _n_ LLMs type out code faster than humans manually writing it. A bit of tech, intuition and disciplined human oversight of quality and token burn makes that code actually shippable.
 
@@ -86,14 +90,19 @@ Engineering success within these new structures hinges on heavy lifting:
 
 The upside is simple: the founding team gets double the at-bats in a shorter window of time. It forces urgency, which materially increases your chances of _actually_ achieving product-market fit, rather than posturing that you have it. [^3]
 
-The best founders may now be able to stay small, fast and high-bandwidth for longer than before. Hiring goes from a structural issue to one that’s a problem to solve when the current team can’t, as it absolutely should. The best seed startups get more chances to iterate their way to PMF.
+So… why add more people to a zero-to-one engineering team until you need them?
+
+The best founders may now be able to stay small, fast and high-bandwidth for longer than before. Hiring goes from a structural issue to one that’s a problem to solve when the current team can’t, as it absolutely should. The best seed startups get more chances to iterate their way to PMF. But, it’ll take discipline!
 
 ----
 _Thank you to Naveen Selvadurai, Walter Chen, Silas Hundt, Hiten Shah and Michael Galpert for draft feedback._
 
 
-[^1]:	Pre-LLM — Since code was more expensive to create but highly leveraged, a notion also seems to have developed among seed-stage financiers that “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is also a part of the moat of a new product”. This means optically you were lower risk with a larger team. A team is always interesting to acquirers even if the product fails, increasing the chances of any return at all.
+[^1]:	Pre-LLM — Since code was more expensive to create but highly leveraged, a notion also seems to have developed among seed-stage financiers that “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is also a part of the moat of a new product”.
 
+	The problem is that implementation difficulty is a weak proxy (and getting weaker) for PMF. So when “small team” becomes a proxy for “easily implementable and not enough moat,” that objection starts to sound less like analysis and more like an excuse to pass.
+
+	This means optically you were lower risk with a larger team. A team is always interesting to acquirers even if the product fails, increasing the chances of any return at all.
 
 	Post-LLM — The worst-case downside scenario from before is now markedly different - if there is an acqui-hire, it’ll look more like an extra-rich IC offer at a big shop for phenomenal engineers. But there may also not be an offer at all, since the team size is small.
 
