@@ -55,7 +55,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -99,13 +99,13 @@
 
       /* ─── Light Mode Colors ──────────────────────────── */
       --lk-surface:                 #f8f6f2;
-      --lk-on-surface:              #1e2a32;
+      --lk-on-surface:              #3a444e;
       --lk-surface-container:       #f0ede8;
       --lk-surface-container-high:  #e8e5df;
-      --lk-primary:    #3d4f5f;
+      --lk-primary:    #4a5f75;
       --lk-on-primary: #f8f6f2;
-      --lk-secondary:  #6b7580;
-      --lk-tertiary:   #2a3a48;
+      --lk-secondary:  #8a939d;
+      --lk-tertiary:   #35485c;
       --lk-outline:         #d8d5d0;
       --lk-outline-variant: #cac7c2;
       --lk-selection:  #b8cad8;
@@ -190,13 +190,13 @@
     /* ─── Light Mode — explicit override ───────────────── */
     :root[data-theme="light"] {
       --lk-surface:                 #f8f6f2;
-      --lk-on-surface:              #1e2a32;
+      --lk-on-surface:              #3a444e;
       --lk-surface-container:       #f0ede8;
       --lk-surface-container-high:  #e8e5df;
-      --lk-primary:    #3d4f5f;
+      --lk-primary:    #4a5f75;
       --lk-on-primary: #f8f6f2;
-      --lk-secondary:  #6b7580;
-      --lk-tertiary:   #2a3a48;
+      --lk-secondary:  #8a939d;
+      --lk-tertiary:   #35485c;
       --lk-outline:         #d8d5d0;
       --lk-outline-variant: #cac7c2;
       --lk-selection:  #b8cad8;
@@ -255,8 +255,9 @@
     html { scroll-padding-top: 120px; }
     * { box-sizing: border-box; }
     body {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: var(--lk-size-md);
+      font-weight: 300;
       line-height: var(--lk-leading-normal);
       max-width: 720px;
       margin: 0 auto;
@@ -378,9 +379,9 @@
     }
     .handle {
       font-size: var(--lk-font-title1);
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-muted);
-      letter-spacing: var(--lk-tracking-tight);
+      letter-spacing: 0;
       text-decoration: none;
       transition: text-shadow 200ms ease-out;
       position: relative;
@@ -517,6 +518,17 @@
     [data-theme="light"] .theme-img-dark { display: none; }
     [data-theme="light"] .theme-img-light { display: inline; }
 
+    /* Post reading rhythm — looser leading + light weight for long-form mono */
+    article {
+      line-height: 1.75;
+      hanging-punctuation: first last;
+    }
+    article p, article li {
+      font-weight: 300;
+    }
+    article strong {
+      font-weight: 500;
+    }
     article p {
       margin-bottom: var(--lk-size-md);
     }
@@ -711,9 +723,9 @@
       display: block;
     }
     pre, code {
-      font-family: "JetBrains Mono", monospace;
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: var(--lk-font-caption);
-      font-weight: 300;
+      font-weight: 400;
     }
     pre { 
       padding: var(--lk-size-md); 
@@ -832,8 +844,8 @@
     h1, h2, h3 { 
       margin-top: var(--lk-size-2xl); 
       color: var(--text);
-      font-weight: 700;
-      letter-spacing: var(--lk-tracking-tight);
+      font-weight: 500;
+      letter-spacing: 0;
       line-height: var(--lk-leading-tight);
     }
     h1 { 
@@ -842,7 +854,7 @@
       padding-bottom: var(--lk-size-2xs); 
     }
     h1 {
-      text-shadow: 0 1px 2px color-mix(in srgb, var(--lk-on-surface) 6%, transparent);
+      text-shadow: none;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) h1 {
@@ -853,7 +865,7 @@
       text-shadow: 0 0 20px color-mix(in srgb, var(--lk-primary) 30%, transparent);
     }
     [data-theme="light"] h1 {
-      text-shadow: 0 1px 2px color-mix(in srgb, var(--lk-on-surface) 6%, transparent);
+      text-shadow: none;
     }
     h2 {
       font-size: var(--lk-font-title2);
@@ -920,6 +932,9 @@
     }
     .post-entry:hover .post-entry-title {
       color: var(--accent);
+    }
+    .post-list--home .post-entry .post-entry-title {
+      font-weight: 400;
     }
     /* uniform post list — engineer's index, no arbitrary emphasis on first row */
     .post-thumb-col {
@@ -1087,7 +1102,7 @@
         background: none;
         border: none;
         cursor: pointer;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
         font-size: var(--lk-font-caption);
         color: var(--text-muted);
         text-align: left;
@@ -1378,7 +1393,7 @@
   <script>
     Chart.defaults.animation.duration = 800;
     Chart.defaults.animation.easing = 'easeOutQuart';
-    Chart.defaults.font.family = "'JetBrains Mono', monospace";
+    Chart.defaults.font.family = "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
     Chart.defaults.font.size = 11;
     
     const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark' || 
