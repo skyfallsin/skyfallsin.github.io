@@ -36,7 +36,14 @@ layout: default
 (function() {
   const headings = document.querySelectorAll('article h1:not(:first-of-type), article h2, article h3');
   const toc = document.getElementById('toc');
-  if (headings.length < 2) return;
+  if (headings.length < 2) {
+    // No TOC-worthy headings: hide the nav and collapse the layout
+    // to a single content column so we don't leave a 280px void.
+    toc.hidden = true;
+    const layout = document.querySelector('.post-layout');
+    if (layout) layout.classList.add('no-toc');
+    return;
+  }
   
   const ul = document.createElement('ul');
   let currentH2Details = null;
