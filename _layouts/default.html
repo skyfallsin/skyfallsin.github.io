@@ -1147,51 +1147,43 @@
     }
     .table-wrapper {
       overflow-x: auto;
-      margin: var(--lk-size-xl) 0;
+      margin: var(--lk-size-lg) 0;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: max-content;
+      table-layout: auto;
+      font-variant-numeric: tabular-nums;
     }
     th, td {
-      padding: var(--lk-size-sm) var(--lk-size-md);
+      padding: var(--lk-size-2xs) var(--lk-size-xs);
       text-align: left;
       border-bottom: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      font-size: var(--lk-font-callout);
-      color: var(--text-muted);
-    }
-    th:last-child, td:last-child {
-      border-right: none;
+      font-size: var(--lk-font-caption);
+      font-weight: 300;
+      color: var(--text);
+      white-space: nowrap;
     }
     th {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: var(--lk-font-callout);
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: calc(var(--lk-font-caption) / 1.128);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: var(--bg-alt);
-      border-bottom: 2px solid var(--accent);
-    }
-    td:first-child, th:first-child {
-      position: sticky;
-      left: 0;
-      background: var(--bg);
-      z-index: 1;
-    }
-    th:first-child {
-      background: var(--bg-alt);
+      letter-spacing: 0.08em;
+      background: transparent;
+      border-bottom: 1px solid var(--border);
     }
     td:first-child {
       color: var(--text-muted);
-      font-weight: 600;
     }
-    tr:hover {
-      background: var(--bg-alt);
+    /* Right-align numeric columns (any column where every non-header cell
+       looks numeric). Handled via .num class added by the wrapping script. */
+    th.num, td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
     }
-    tr:hover td:first-child {
-      background: var(--bg-alt);
+    tr:hover td {
+      color: var(--accent);
     }
     #theme-toggle {
       background: none;
@@ -1436,13 +1428,30 @@
       }, { threshold: 0.2 });
       document.querySelectorAll('canvas[data-chart]').forEach(c => observer.observe(c));
 
-      // Wrap tables for horizontal scroll
+      // Wrap tables for horizontal scroll + auto-align numeric columns
       document.querySelectorAll('table').forEach(table => {
         if (!table.parentElement.classList.contains('table-wrapper')) {
           const wrapper = document.createElement('div');
           wrapper.className = 'table-wrapper';
           table.parentNode.insertBefore(wrapper, table);
           wrapper.appendChild(table);
+        }
+        // Detect numeric columns: if every body cell in a column parses
+        // as a number (or is empty/dash), right-align it.
+        const headerCells = table.querySelectorAll('thead th, tr:first-child th');
+        const bodyRows = [...table.querySelectorAll('tbody tr')];
+        const rows = bodyRows.length ? bodyRows : [...table.querySelectorAll('tr')].slice(1);
+        if (!rows.length) return;
+        const colCount = headerCells.length || rows[0].children.length;
+        for (let c = 0; c < colCount; c++) {
+          const values = rows.map(r => (r.children[c]?.textContent || '').trim());
+          const nonEmpty = values.filter(v => v && v !== '—' && v !== '-');
+          if (!nonEmpty.length) continue;
+          const numericLike = nonEmpty.every(v => /^-?[\d.,]+(\s*(tok\/s|GB\/s|nm|%|ms|s))?$/i.test(v));
+          if (numericLike) {
+            if (headerCells[c]) headerCells[c].classList.add('num');
+            rows.forEach(r => r.children[c]?.classList.add('num'));
+          }
         }
       });
 
