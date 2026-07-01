@@ -4,18 +4,18 @@ title: The One Pizza Startup
 date: 2026-06-30
 image: /images/posts/one-pizza-startup.jpg
 image_alt: Two founders and small AI robots eating pizza around laptops
-description: Zero-to-one teams used to trade O(n²) communication for speed. LLMs flip that math — two disciplined engineers can now get to PMF faster.
+description: Zero-to-one teams used to trade O(n²) communication for speed. LLMs flip that math. Two disciplined engineers can now get to PMF faster.
 ---
 
 ## The Math of Team Size
 
-Language models asked to assist engineers with writing code predict tokens non-deterministically, and need humans to manage their expense and set guardrails that guarantee quality and consistency. One human running *n* LLM conversations is limited by their ability to manage those *n* conversations in parallel — an **O(n)** _attention_ problem.
+Language models asked to assist engineers with writing code predict tokens non-deterministically, and need humans to manage their expense and set guardrails that guarantee quality and consistency. One human running *n* LLM conversations is limited by their ability to manage those *n* conversations in parallel: an O(n) _attention_ problem.
 
 Groups of *n* people coding without LLMs behave non-deterministically too, and need human oversight.
 
-Each person in that group has to communicate with *every* other member, so the number of 1:1 channels grows as **n(n−1)/2 → O(n²)**. Large teams slow down dramatically as headcount grows: a team of 10 has 10·9/2 = **45** potential 1:1 channels. In practice, org trees cap this by limiting each person to the handful they directly work with, pulling the effective cost back toward **O(n)** — a far more manageable experience.
+Each person in that group has to communicate with *every* other member, so the number of 1:1 channels grows as n(n−1)/2 → O(n²). Large teams slow down dramatically as headcount grows: a team of 10 has 10·9/2 = 45 potential 1:1 channels. In practice, org trees cap this by limiting each person to the handful they directly work with, pulling the effective cost back toward O(n), a far more manageable experience.
  
-But we’re talking about founding teams: zero-to-one product development with deeply technical founders. These are usually under 10 people, mostly engineers — so let’s say 6. Even at that size there are 6·5/2 = **15** distinct communication paths.
+But we’re talking about founding teams: zero-to-one product development with deeply technical founders. These are usually under 10 people, mostly engineers, so let’s say 6. Even at that size there are 6·5/2 = 15 distinct communication paths.
 
 ## When Code Got Cheap
 
@@ -54,7 +54,7 @@ Let’s add one more engineer just to solve the “what if the one engineer gets
 
 2x engineers at this rate is `$4,167/day`, savings of 33% compared to six engineers.
 
-The real benefit though, is going from 15 conversation pairs to just **ONE**, between two people who can hold the entire product in their head. This is a “one medium pizza” team, and it’s pretty freakin’ fast. 
+The real benefit though, is going from 15 conversation pairs to just one, between two people who can hold the entire product in their head. This is a “one medium pizza” team, and it’s pretty freakin’ fast. 
 
 So now the big question - why add more people to a zero-to-one engineering team anymore?  A single disciplined, seasoned engineer can run multiple backends and frontends solo, written in the best language for that problem. Do we need more?
 
@@ -62,7 +62,7 @@ The heavy lifting being done in these team structures: the quality of the engine
 
 ## Where the Moat Actually Lives
 
-Code as leverage is well understood. But there’s a notion in the funding market right now that small teams produce easily reproducible products with no moat — the old logic being “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is the moat.” 
+Code as leverage is well understood. But there’s a notion in the funding market right now that small teams produce easily reproducible products with no moat. The old logic being “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is the moat.” 
 
 The problem: no number of engineers saves a company that lacks product-market-fit. So that objection sounds less like analysis and more like an excuse to pass. It’s likely more interesting to check whether the team has a tight, compounding learning loop that leads to PMF.
 
