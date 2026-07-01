@@ -6,6 +6,8 @@ image: /images/posts/one-pizza-startup.jpg
 image_alt: Two founders and small AI robots eating pizza around laptops
 ---
 
+## The Math of Team Size
+
 Language models asked to assist engineers with writing code predict tokens non-deterministically, and need humans to manage their expense and set guardrails that guarantee quality and consistency. One human running *n* LLM conversations is limited by their ability to manage those *n* conversations in parallel — an **O(n)** _attention_ problem.
 
 Groups of *n* people coding without LLMs behave non-deterministically too, and need human oversight.
@@ -13,6 +15,8 @@ Groups of *n* people coding without LLMs behave non-deterministically too, and n
 Each person in that group has to communicate with *every* other member, so the number of 1:1 channels grows as **n(n−1)/2 → O(n²)**. Large teams slow down dramatically as headcount grows: a team of 10 has 10·9/2 = **45** potential 1:1 channels. In practice, org trees cap this by limiting each person to the handful they directly work with, pulling the effective cost back toward **O(n)** — a far more manageable experience.
  
 But we’re talking about founding teams: zero-to-one product development with deeply technical founders. These are usually under 10 people, mostly engineers — so let’s say 6. Even at that size there are 6·5/2 = **15** distinct communication paths.
+
+## When Code Got Cheap
 
 Inside software companies, code generation by humans is usually the biggest cost center. Software companies also don’t grow unless the code changes to meet customer expectations, so also the biggest value center.
 
@@ -29,6 +33,8 @@ LLMs are a fraction of the cost of human engineers, generate higher quality code
 In the event they spawn more of themselves to work with, the relationships aren’t fraught with human dynamics and are a lot more predictably high quality.
 
 As a software company, LLMs type out code faster than humans manually writing it. Tech, a measure of providence and human oversight combine to make that code actually shippable. The cost of managing a “team” of _n_ LLM agents is the cost of a highly paid engineer’s salary plus disciplined token burn. The best engineers are able to orchestrate LLMs to execute high-quality deltas in hours, not weeks, at the cost of _n_ individual 1:1 conversations with isolated agents.
+
+## The One Pizza Team
 
 Let’s do some rough napkin math now:  
 
@@ -52,6 +58,8 @@ The real benefit though, is going from 15 conversation pairs to just **ONE**, be
 So now the big question - why add more people to a zero-to-one engineering team anymore?  A single disciplined, seasoned engineer can run multiple backends and frontends solo, written in the best language for that problem. Do we need more?
 
 The heavy lifting being done in these team structures: the quality of the engineers in question, their paranoia when designing, building and editing systems over time, and their and the org’s token budgeting and discipline. Can these engineers context-switch aggressively without burning out over time? That’s another huge one.
+
+## Where the Moat Actually Lives
 
 Code as leverage is well understood. But there’s a notion in the funding market right now that small teams produce easily reproducible products with no moat — the old logic being “more code needs more engineers, so it’s hard to pull off fast, and *that difficulty* is the moat.” 
 
