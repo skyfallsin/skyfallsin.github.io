@@ -911,30 +911,39 @@
     .post-entry {
       display: flex;
       align-items: baseline;
-      padding: var(--lk-size-sm) 0;
+      padding: var(--lk-size-sm) 0 var(--lk-size-sm) var(--lk-size-md);
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
       gap: var(--lk-size-md);
+      position: relative;
+      transition: color 150ms ease;
+    }
+    .post-entry::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 0;
+      background: var(--accent);
+      transition: height 150ms ease;
     }
     .post-entry:last-child {
       border-bottom: none;
     }
-    .post-entry:hover {
-      background: var(--bg-alt);
-      padding-left: var(--lk-size-xs);
-      margin-left: calc(-1 * var(--lk-size-xs));
-      padding-right: var(--lk-size-xs);
-      margin-right: calc(-1 * var(--lk-size-xs));
-      border-radius: var(--lk-size-2xs);
+    .post-entry:hover::before {
+      height: 60%;
+    }
+    .post-entry:hover .post-entry-title {
+      color: var(--accent);
     }
     .post-entry-title {
       color: var(--text);
       flex: 1;
       min-width: 0;
-    }
-    .post-entry:hover .post-entry-title {
-      color: var(--accent);
+      transition: color 150ms ease;
     }
     .post-list--home .post-entry .post-entry-title {
       font-weight: 400;
