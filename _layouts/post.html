@@ -8,7 +8,9 @@ layout: default
     <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
     {% if page.image %}
     <figure class="post-hero">
+      {% if page.image_link %}<a href="{{ page.image_link }}" aria-label="Open {{ page.title }}">{% endif %}
       <img src="{{ page.image }}" alt="{{ page.image_alt | default: page.title }}">
+      {% if page.image_link %}</a>{% endif %}
       {% if page.image_credit %}
       <figcaption>Photo: <a href="{{ page.image_credit_url }}">{{ page.image_credit }}</a></figcaption>
       {% endif %}
