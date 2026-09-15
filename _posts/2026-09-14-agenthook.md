@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "agenthook: give your coding agent an inbox"
-date: 2026-09-14 23:30:00 -0700
+date: 2026-09-14 12:00:00 +0000
 published: true
 description: "agenthook is a webhook inbox for coding agents: GitHub Actions, services, and other agents can send an update into the session that needs it."
 image: /images/posts/agenthook.png
