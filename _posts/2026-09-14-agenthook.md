@@ -5,6 +5,7 @@ date: 2026-09-14 12:00:00 +0000
 published: true
 description: "agenthook is a webhook inbox for coding agents: GitHub Actions, services, and other agents can send an update into the session that needs it."
 image: /images/posts/agenthook.png
+og_image: /images/posts/agenthook-og.png
 image_alt: "A friendly blue hawk holding a sealed envelope"
 image_class: post-hero-logo
 thumb: /images/logos/agenthook.jpg
