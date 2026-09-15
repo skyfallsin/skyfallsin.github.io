@@ -74,3 +74,28 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-agenthook:
+    needs: [deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send deployment result to agenthook
+        env:
+          AGENTHOOK_URL: ${{ secrets.AGENTHOOK_URL }}
+          AGENTHOOK_TOKEN: ${{ secrets.AGENTHOOK_TOKEN }}
+          AGENTHOOK_TOPIC: ${{ secrets.AGENTHOOK_TOPIC }}
+          STATUS: ${{ needs.deploy.result }}
+        run: |
+          curl --fail --silent --show-error --retry 3 \
+            --request POST \
+            --header "Authorization: Bearer ${AGENTHOOK_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data "$(jq -nc \
+              --arg status "$STATUS" \
+              --arg repo "$GITHUB_REPOSITORY" \
+              --arg branch "$GITHUB_REF_NAME" \
+              --arg sha "$GITHUB_SHA" \
+              --arg run_url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+              '{kind:"deployment",status:$status,repository:$repo,branch:$branch,sha:$sha,run_url:$run_url}')" \
+            "${AGENTHOOK_URL}/v1/webhooks/${AGENTHOOK_TOPIC}"
