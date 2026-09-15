@@ -55,7 +55,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -255,9 +255,9 @@
     html { scroll-padding-top: 120px; }
     * { box-sizing: border-box; }
     body {
-      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
       font-size: var(--lk-size-md);
-      font-weight: 300;
+      font-weight: 400;
       line-height: var(--lk-leading-normal);
       max-width: 720px;
       margin: 0 auto;
@@ -434,6 +434,7 @@
     }
     
     .handle.page-title {
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       white-space: nowrap;
     }
 
@@ -529,7 +530,7 @@
       hanging-punctuation: first last;
     }
     article p, article li {
-      font-weight: 300;
+      font-weight: 400;
     }
     article strong {
       font-weight: 500;
@@ -558,6 +559,11 @@
       display: block;
       width: 100%;
       border-radius: 12px;
+    }
+    .post-hero-logo img {
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto;
     }
     .post-hero figcaption {
       margin-top: var(--lk-size-2xs);
@@ -731,7 +737,7 @@
       display: block;
     }
     pre, code {
-      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
       font-size: var(--lk-font-caption);
       font-weight: 400;
     }
@@ -960,7 +966,7 @@
     .post-date { 
       color: var(--text-muted); 
       font-size: var(--lk-font-caption);
-      font-weight: 300;
+      font-weight: 400;
       white-space: nowrap;
       flex-shrink: 0;
       letter-spacing: 0.02em;
@@ -999,16 +1005,23 @@
     .post-layout article {
       min-width: 0;
     }
-    .post-layout article h1:first-child {
-      margin-top: 0;
+    .post-heading {
+      display: flex;
+      align-items: baseline;
+      gap: var(--lk-size-sm);
+      margin-bottom: var(--lk-size-lg);
+    }
+    .post-heading h1 {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
       font-size: calc(1rem * 1.618 * 1.618 * 1.128);
       letter-spacing: var(--lk-tracking-tight);
-      padding-bottom: var(--lk-size-sm);
-      border-bottom: none;
-      margin-bottom: 0;
     }
     .back-arrow {
-      font-size: 0.6em;
+      flex: none;
+      font-size: var(--lk-font-heading);
       color: var(--text-muted) !important;
       opacity: 0.5;
       text-decoration: none !important;
@@ -1019,12 +1032,12 @@
       opacity: 1;
       color: var(--accent) !important;
     }
-    .post-layout article h1:first-child + .post-date {
-      text-align: right;
-      width: auto;
-      padding-top: var(--lk-size-xs);
-      margin-top: 0;
-      margin-bottom: var(--lk-size-lg);
+    .post-heading .post-date {
+      flex: none;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: var(--lk-font-caption);
+      white-space: nowrap;
     }
     @media (min-width: 1200px) {
       body:has(.post-layout) {
@@ -1125,7 +1138,7 @@
         background: none;
         border: none;
         cursor: pointer;
-        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
         font-size: var(--lk-font-caption);
         color: var(--text-muted);
         text-align: left;
@@ -1160,7 +1173,7 @@
       text-align: left;
       border-bottom: 1px solid var(--border);
       font-size: var(--lk-font-caption);
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text);
       white-space: nowrap;
     }
@@ -1396,6 +1409,15 @@
       object-fit: contain;
       background: var(--bg);
     }
+    .startup-logo img.mailcheck-logo {
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      object-fit: contain;
+    }
+    .startup-entry:hover .startup-logo img.mailcheck-logo {
+      box-shadow: none;
+    }
     .startup-text {
       line-height: var(--lk-leading-normal);
     }
@@ -1411,7 +1433,7 @@
   <script>
     Chart.defaults.animation.duration = 800;
     Chart.defaults.animation.easing = 'easeOutQuart';
-    Chart.defaults.font.family = "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
+    Chart.defaults.font.family = "'Instrument Sans', ui-sans-serif, system-ui, sans-serif";
     Chart.defaults.font.size = 11;
     
     const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark' || 

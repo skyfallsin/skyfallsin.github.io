@@ -4,10 +4,13 @@ layout: default
 <div class="post-layout">
   <nav class="toc" id="toc"><button class="toc-toggle" onclick="this.parentElement.classList.toggle('toc-open')">Contents</button></nav>
   <article>
-    <h1><a href="/" class="back-arrow" aria-label="Back to home">←</a> {{ page.title }}</h1>
-    <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
+    <header class="post-heading">
+      <a href="/" class="back-arrow" aria-label="Back to home">←</a>
+      <h1>{{ page.title }}</h1>
+      <p class="post-date">{{ page.date | date: "%Y-%m-%d" }}</p>
+    </header>
     {% if page.image %}
-    <figure class="post-hero">
+    <figure class="post-hero{% if page.image_class %} {{ page.image_class }}{% endif %}">
       {% if page.image_link %}<a href="{{ page.image_link }}" aria-label="Open {{ page.title }}">{% endif %}
       <img src="{{ page.image }}" alt="{{ page.image_alt | default: page.title }}">
       {% if page.image_link %}</a>{% endif %}

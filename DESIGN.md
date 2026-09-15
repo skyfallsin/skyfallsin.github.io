@@ -13,11 +13,12 @@
 - **Identity elements:** Graph-paper grid background, crosshair cursor, "PRADEEP.md" handle with typing animation, profile photo with glow ring (dark mode), retro 88×31 badge footer
 
 ## Typography
-- **Display/Hero:** JetBrains Mono 600 — used for post titles, site handle
-- **Body:** JetBrains Mono 400 — used everywhere, single-font system
-- **UI/Labels:** JetBrains Mono 700 — uppercase section labels with letter-spacing
-- **Data/Tables:** JetBrains Mono 300 — lighter weight for table content
-- **Code:** JetBrains Mono 300 — same font, lighter weight distinguishes code blocks
+- **Display/Hero:** Instrument Sans 600 — used for post titles
+- **Site handle:** IBM Plex Mono 600 — used for `PRADEEP.md`
+- **Body:** Instrument Sans 400 — used everywhere else, for a clean editorial reading experience
+- **UI/Labels:** Instrument Sans 700 — uppercase section labels with letter-spacing
+- **Data/Tables:** Instrument Sans 400 — clear compact table content
+- **Code:** Instrument Sans 400 — matches the single-font system
 - **Loading:** Google Fonts CDN, `font-display: swap`
 - **Scale:** Golden ratio (φ = 1.618)
   - 3xs: `calc(1rem / φ³)` ≈ 0.236rem
@@ -100,5 +101,5 @@
 |------|----------|-----------|
 | 2026-03-31 | Initial design system created | Codified from existing site by /design-consultation |
 | 2026-03-31 | Dark mode shifted from purple to phosphor green | Purple triggered AI slop pattern #1; green is more authentic to the retro-terminal aesthetic |
-| 2026-03-31 | Single-font system (JetBrains Mono) retained | Bold choice that reinforces engineer identity; hierarchy achieved through weight, size, and color instead of font variety |
+| 2026-09-14 | Instrument Sans for the site, IBM Plex Mono for `PRADEEP.md` | The readable sans-serif keeps long posts light while the site handle preserves the technical character |
 | 2026-03-31 | Golden ratio scale retained | Unusual but distinctive; creates natural visual rhythm |
