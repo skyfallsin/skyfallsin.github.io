@@ -58,6 +58,11 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 ## OPEN SOURCE
 
 <div class="startup-entry">
+<a href="https://github.com/skyfallsin/agenthook" class="startup-logo"><img src="/images/logos/agenthook.jpg" alt="agenthook" class="logo-padded"></a>
+<div class="startup-text"><strong><a href="https://github.com/skyfallsin/agenthook">agenthook</a></strong> — A webhook inbox for coding agents. GitHub Actions, long-running services, and other agents can send an update into the session that needs it. <a href="/2026/09/14/agenthook.html">Blog post</a>.</div>
+</div>
+
+<div class="startup-entry">
 <a href="https://github.com/mailcheck/mailcheck" class="startup-logo"><img src="/images/logos/mailcheck.png" alt="Mailcheck" class="mailcheck-logo theme-img-light"><img src="/images/logos/mailcheck-dark.png" alt="" class="mailcheck-logo theme-img-dark"></a>
 <div class="startup-text"><strong><a href="https://github.com/mailcheck/mailcheck">Mailcheck</a></strong> — Conservative email typo suggestions for JavaScript forms. Built at Kicksend; now maintained as a current, backwards-compatible 2.0. <a href="/2026/09/14/mailcheck-2-0.html">Blog post</a>.</div>
 </div>
