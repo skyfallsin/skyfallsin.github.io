@@ -3,7 +3,8 @@ layout: default
 title: pradeep
 ---
 
-## RECENT WRITING <a href="/feed.xml" class="rss-icon" aria-label="RSS Feed"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg></a>
+## Recent writing <a href="/feed.xml" class="rss-icon" aria-label="RSS Feed"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg></a>
+{: #recent-writing}
 
 <div class="post-list post-list--home">
 {% assign published_posts = site.posts | where_exp: "post", "post.published != false" %}
@@ -20,20 +21,20 @@ title: pradeep
 <a href="/posts" class="more-link">more →</a>
 {% endif %}
 
-## PHONE PICS
+## Phone pics
 
 <div class="instagram-grid-wrapper" id="instagram-wrapper">
   <div class="instagram-grid" id="instagram-grid"></div>
   <div class="show-more" onclick="document.getElementById('instagram-wrapper').classList.add('expanded')">show more ↓</div>
 </div>
 
-## ABOUT
+## About
 
 Hacker since 2000. I build teams that ship joyful consumer products (usually from scratch). I work with like-minded folk who prize quality, skill, speed and courage.
 
 I solo backpack, make landscape photos, and read a lot of fiction.
 
-## PROJECTS
+## Projects
 
 <div class="startup-entry">
 <a href="https://askjo.ai" class="startup-logo"><img src="/images/logos/jo.png" alt="jo"></a>
@@ -55,7 +56,7 @@ I solo backpack, make landscape photos, and read a lot of fiction.
 <div class="startup-text"><strong>Lyft</strong> — Stayed on after acquisition. Driver growth, unlocking conversion in major markets.</div>
 </div>
 
-## OPEN SOURCE
+## Open source
 
 <div class="startup-entry">
 <a href="https://github.com/skyfallsin/agenthook" class="startup-logo"><img src="/images/logos/agenthook.jpg" alt="agenthook" class="logo-padded"></a>
