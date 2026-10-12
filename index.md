@@ -21,6 +21,40 @@ title: pradeep
 <a href="/posts" class="more-link">more →</a>
 {% endif %}
 
+## Popular Tweets
+{: #popular-tweets}
+
+<div class="post-list">
+  <a href="https://x.com/pradeep24/status/1788696546738905558" class="post-entry">
+    <span class="post-entry-title">A T-1000 chasing my Tesla in FSD</span>
+    <time class="post-date" datetime="2024-05-09">2024-05-09</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/1250479128731693056" class="post-entry">
+    <span class="post-entry-title">Why you couldn’t get a grocery delivery slot</span>
+    <time class="post-date" datetime="2020-04-15">2020-04-15</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/2053173787160609230" class="post-entry">
+    <span class="post-entry-title">Testing antirez’s ds4.c on my M3 Max</span>
+    <time class="post-date" datetime="2026-05-09">2026-05-09</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/1307733595289604096" class="post-entry">
+    <span class="post-entry-title">Why Walmart’s interest in TikTok was savvy</span>
+    <time class="post-date" datetime="2020-09-20">2020-09-20</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/1344739578372968450" class="post-entry">
+    <span class="post-entry-title">Supermarket gross margins</span>
+    <time class="post-date" datetime="2020-12-31">2020-12-31</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/1917640826018226337" class="post-entry">
+    <span class="post-entry-title">What YC gave my startups</span>
+    <time class="post-date" datetime="2025-04-30">2025-04-30</time>
+  </a>
+  <a href="https://x.com/pradeep24/status/1780042889550270648" class="post-entry">
+    <span class="post-entry-title">Garry’s nudge to apply to YC in 2011</span>
+    <time class="post-date" datetime="2024-04-15">2024-04-15</time>
+  </a>
+</div>
+
 ## Phone pics
 
 <div class="instagram-grid-wrapper" id="instagram-wrapper">
