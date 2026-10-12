@@ -57,14 +57,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Xanh+Mono:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Xanh+Mono:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
   <script>document.addEventListener('DOMContentLoaded', () => hljs.highlightAll());</script>
   <style>
+    @font-face { font-family: "Michelangelus"; src: url("/assets/fonts/Michelangelus-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Michelangelus"; src: url("/assets/fonts/Michelangelus-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: "Michelangelus"; src: url("/assets/fonts/Michelangelus-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Michelangelus"; src: url("/assets/fonts/Michelangelus-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
     /* ─── Tokens ───────────────────────────────────────── */
     :root {
-      --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+      --serif: "Michelangelus", "Iowan Old Style", Georgia, serif;
       --sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
       --meta: "Xanh Mono", ui-monospace, monospace;
       --code: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -188,8 +192,8 @@
       font-family: var(--meta);
       font-size: 0.95rem;
       letter-spacing: 0;
-      vertical-align: super;
-      margin-left: 0.15em;
+      vertical-align: baseline;
+      margin-left: 0;
       color: var(--text-muted);
     }
     .tagline {
@@ -206,28 +210,16 @@
       display: flex;
       flex-direction: column;
       gap: var(--s-1);
-      counter-reset: nav;
     }
     .rail-nav a {
       font-family: var(--sans);
       font-size: 0.875rem;
       letter-spacing: 0.02em;
       color: var(--text-muted);
-      display: grid;
-      grid-template-columns: 2.5ch 1fr;
-      align-items: baseline;
+      display: block;
       padding: var(--s-1) 0;
     }
-    .rail-nav a::before {
-      counter-increment: nav;
-      content: counter(nav, decimal-leading-zero);
-      font-family: var(--meta);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      opacity: 0.6;
-    }
     .rail-nav a:hover { color: var(--text); }
-    .rail-nav a:hover::before { color: var(--accent); opacity: 1; }
     .rail-bottom {
       margin-top: auto;
       display: flex;
@@ -266,34 +258,22 @@
     main {
       grid-column: 2;
       grid-row: 1;
-      counter-reset: section;
       min-width: 0;
     }
     main > * { max-width: var(--measure); }
     main > h2 {
       font-family: var(--serif);
       font-weight: 400;
+      font-style: italic;
       font-size: 2rem;
       line-height: 1.05;
       letter-spacing: -0.015em;
       text-transform: none;
       color: var(--text);
       margin: var(--s-9) 0 var(--s-5);
-      padding-top: var(--s-4);
-      border-top: 1px solid var(--rule);
       display: flex;
       align-items: baseline;
       gap: var(--s-3);
-    }
-    main > h2::before {
-      counter-increment: section;
-      content: counter(section, decimal-leading-zero);
-      font-family: var(--meta);
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      position: relative;
-      top: -0.9em;
     }
     main > h2:first-child { margin-top: 0; }
     main > h2 .rss-icon {
@@ -684,10 +664,16 @@
       font-size: 0.75rem;
       letter-spacing: 0.06em;
       color: var(--text-muted);
+      line-height: 1;
       margin-right: var(--s-3);
     }
-    .badges img { image-rendering: pixelated; opacity: 0.75; transition: opacity 200ms ease; }
+    .badges a { display: inline-flex; }
+    .badges img { display: block; image-rendering: pixelated; opacity: 0.75; transition: opacity 200ms ease; }
     .badges img:hover { opacity: 1; }
+    @media (hover: none) {
+      .profile-photo, .instagram-thumb img { filter: none; }
+      .social a, #theme-toggle, main > h2 .rss-icon, .badges img { opacity: 1; }
+    }
 
     /* ─── Motion ───────────────────────────────────────── */
     .scroll-in { opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
@@ -721,14 +707,11 @@
       }
       .rail-top { grid-area: top; }
       .rail-nav { grid-area: nav; flex-direction: row; flex-wrap: wrap; gap: var(--s-2) var(--s-5); }
-      .rail-nav a { grid-template-columns: auto auto; gap: var(--s-1); }
       .rail-bottom { grid-area: bottom; margin: 0; margin-right: calc(-1 * var(--s-3)); }
       .profile-photo { width: 44px; height: 44px; margin-bottom: var(--s-3); }
       .handle.page-title { font-size: 2.1rem; }
       .tagline { font-size: 1rem; }
       main > h2 { font-size: 1.7rem; margin-top: var(--s-8); }
-      main > h2:first-child { border-top: none; padding-top: 0; }
-      main > h2::before { top: -0.75em; }
       .post-entry { grid-template-columns: 1fr; row-gap: var(--s-1); }
       .post-date { grid-column: 1; grid-row: 2; padding-top: 0; }
       .post-entry-title { grid-column: 1; grid-row: 1; font-size: 1.3rem; }

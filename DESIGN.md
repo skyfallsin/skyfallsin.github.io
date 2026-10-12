@@ -9,16 +9,17 @@
 ## Aesthetic Direction
 - **Direction:** Editorial index — a quiet, typographic personal site
 - **Decoration level:** Minimal — the type and hairline rules do all the work; no textures, grids, glows, or shadows
-- **Mood:** A well-set table of contents. Large serif headings, numbered sections, a fixed left rail, and generous whitespace. Confident and unhurried.
-- **Identity elements:** Sticky left rail with the serif `Pradeep` masthead and a superscript mono `.md`, numbered sections (`01`, `02`…), full-width hairline rules above each section, mono dates in a left column
+- **Mood:** A well-set table of contents. Large serif headings, a fixed left rail, and generous whitespace. Confident and unhurried.
+- **Identity elements:** Sticky left rail with the serif `Pradeep` masthead and a baseline mono `.md` with no added gap, unnumbered navigation and sections, italic section headings without outer rules, mono dates in a left column
 
 ## Typography
-- **Display/Hero:** Instrument Serif 400 — masthead, section headings, post titles, post list titles, project names
-- **Display italic:** Instrument Serif italic — tagline, `h3` inside posts, blockquotes
+- **Display/Hero:** Michelangelus 400 — masthead, upright post titles, post list titles, project names
+- **Display italic:** Michelangelus italic — index section headings, tagline, `h3` inside posts, blockquotes
 - **Body:** Instrument Sans 400 — paragraphs, descriptions, navigation
-- **Meta:** Xanh Mono 400 — dates, section numbers, labels (`Contents`, `TL;DR`, `built with`), table headers
+- **Meta:** Xanh Mono 400 — dates, labels (`Contents`, `TL;DR`, `built with`), table headers
 - **Code:** JetBrains Mono 400 — inline code and code blocks
-- **Loading:** Google Fonts CDN, `font-display: swap`
+- **Loading:** Michelangelus self-hosted WOFF2; other fonts through Google Fonts CDN; `font-display: swap`
+- **License note:** The downloaded Michelangelus EULA does not grant distribution rights. The owner explicitly directed publication despite that unresolved licensing risk; this is not evidence of permission.
 - **Sizes:** masthead 2.75rem; section `h2` 2rem; post list title 1.5rem; post title `clamp(2.4rem, 4.2vw, 3.5rem)`; body 1rem (index) / 1.0625rem (posts); meta 0.8rem; code 0.84rem
 - **Measure:** 42rem for prose and lists
 
@@ -51,12 +52,12 @@ Links are the text color with a thin underline; color appears only on hover.
 ## Spacing
 - **Scale:** `0.25 / 0.5 / 0.75 / 1 / 1.5 / 2 / 3 / 4.5 / 7rem`
 - **Density:** Generous — sections are separated by 7rem on desktop, 4.5rem on mobile
-- **Rules:** 1px. Section rules use the text color; row separators use the hairline color
+- **Rules:** 1px row separators; no rules above index section headings
 
 ## Layout
 - **Canvas:** max 1240px, centered, 3rem side padding
 - **Grid:** two columns — 240px rail + content, 7rem gutter. Content is left-aligned against the rail, not centered.
-- **Rail:** sticky on the index (masthead, numbered nav, social + theme toggle pinned to the bottom); static on posts, where the table of contents sits beneath it and becomes the sticky element
+- **Rail:** sticky on the index (masthead, unnumbered nav, social + theme toggle pinned to the bottom); static on posts, where the table of contents sits beneath it and becomes the sticky element
 - **Post list:** two-column rows — mono date (7.5rem column) then serif title — separated by hairlines
 - **Projects:** 40px flat logo + serif name and sans description, separated by hairlines
 - **Photos:** 4-column masonry, 2px radius, capped at 320px with a fade and `show more`
@@ -67,7 +68,7 @@ Links are the text color with a thin underline; color appears only on hover.
 
 ## Motion
 - **Approach:** Almost none
-- **Effects:** 150ms color transitions on hover; profile photo is grayscale and regains color when the rail is hovered; below-fold sections fade in by 6px
+- **Effects:** 150ms color transitions on hover; profile photo is grayscale and regains color when the rail is hovered; below-fold sections fade in by 6px. On devices without hover, photos use full color and icons and badges use full opacity.
 - **Respects `prefers-reduced-motion`:** all transitions and animations disabled
 
 ## Decisions Log
