@@ -14,7 +14,7 @@
 
 ## Typography
 - **Display/Hero:** Instrument Sans 600 — used for post titles
-- **Site handle:** IBM Plex Mono 600 — used for `PRADEEP.md`
+- **Site handle:** JetBrains Mono 600 — used for `PRADEEP.md`
 - **Body:** Instrument Sans 400 — used everywhere else, for a clean editorial reading experience
 - **UI/Labels:** Instrument Sans 700 — uppercase section labels with letter-spacing
 - **Data/Tables:** Instrument Sans 400 — clear compact table content
@@ -102,4 +102,5 @@
 | 2026-03-31 | Initial design system created | Codified from existing site by /design-consultation |
 | 2026-03-31 | Dark mode shifted from purple to phosphor green | Purple triggered AI slop pattern #1; green is more authentic to the retro-terminal aesthetic |
 | 2026-09-14 | Instrument Sans for the site, IBM Plex Mono for `PRADEEP.md` | The readable sans-serif keeps long posts light while the site handle preserves the technical character |
+| 2026-10-11 | JetBrains Mono for the `PRADEEP.md` handle | Give the site title a distinct, technical monospace treatment |
 | 2026-03-31 | Golden ratio scale retained | Unusual but distinctive; creates natural visual rhythm |

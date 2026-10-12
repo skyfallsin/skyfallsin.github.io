@@ -56,7 +56,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/nord.min.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -99,7 +99,7 @@
       --lk-tracking-wide:     0.006em;
 
       /* ─── Light Mode Colors ──────────────────────────── */
-      --lk-surface:                 #f8f6f2;
+      --lk-surface:                 #ffffff;
       --lk-on-surface:              #3a444e;
       --lk-surface-container:       #f0ede8;
       --lk-surface-container-high:  #e8e5df;
@@ -190,7 +190,7 @@
 
     /* ─── Light Mode — explicit override ───────────────── */
     :root[data-theme="light"] {
-      --lk-surface:                 #f8f6f2;
+      --lk-surface:                 #ffffff;
       --lk-on-surface:              #3a444e;
       --lk-surface-container:       #f0ede8;
       --lk-surface-container-high:  #e8e5df;
@@ -269,7 +269,7 @@
         var(--bg);
       background-size: 16px 16px, 16px 16px, 100% 100%;
       color: var(--text);
-      --grid-color: color-mix(in srgb, var(--lk-on-surface) 2.5%, transparent);
+      --grid-color: transparent;
       cursor: crosshair;
     }
     body::before {
@@ -299,11 +299,9 @@
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       opacity: 0.03;
     }
-    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: color-mix(in srgb, var(--lk-on-surface) 2.5%, transparent); }
+    [data-theme="light"] body, :root[data-theme="light"] body { --grid-color: transparent; }
     [data-theme="light"] body::before {
-      opacity: 1;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.04;
+      opacity: 0;
     }
     
     a, button, .social a { cursor: pointer; }
@@ -441,7 +439,7 @@
     }
     
     .handle.page-title {
-      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       white-space: nowrap;
     }
 
@@ -1403,13 +1401,10 @@
       height: 48px;
       border-radius: var(--lk-size-2xs);
       object-fit: cover;
-      border: 2px solid var(--border);
-      box-shadow: var(--lk-shadow-md);
-      transition: transform 150ms ease, box-shadow 150ms ease;
+      transition: transform 150ms ease;
     }
     .startup-entry:hover .startup-logo img {
       transform: scale(1.08) rotate(-2deg);
-      box-shadow: var(--lk-shadow-lg);
     }
     .startup-logo img.logo-padded {
       padding: 6px;
