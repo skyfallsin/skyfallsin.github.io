@@ -44,4 +44,5 @@ stay on your Mac.
 
 Markdash doesn't collect any data. It opens the files you choose and renders
 them locally. Images referenced by a web URL are loaded from the web when a
-document contains them; everything else stays on your machine.
+document contains them; everything else stays on your machine. See the full
+[privacy policy](/markdash/privacy/) for details.
